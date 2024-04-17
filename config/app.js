@@ -6,7 +6,8 @@ import morgan from 'morgan'
 import { config } from 'dotenv'
 
 //Routers
-
+import routerHotel from '../src/Hoteles/Hotel.routes.js'
+import routerHabitacion from '../src/Habitaciones/Habitacion.routes.js'
 
 //Configs
 const app = express()
@@ -21,7 +22,8 @@ app.use(cors())
 app.use(morgan('dev'))
 
 //Declared of routers
-
+app.use('/Hotel', routerHotel)
+app.use('/Habitacion',routerHabitacion)
 
 //Raise the server
 export const initServerd = ()=>{
