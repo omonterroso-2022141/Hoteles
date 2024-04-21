@@ -1,5 +1,7 @@
-import { initServerd } from './config/app.js'
+import { initServer } from './config/app.js'
 import { connect } from './config/mongo.js'
+import { defaultAdmin } from './src/User/User.controller.js'
 
-initServerd()
+initServer()
 connect()
+defaultAdmin()
