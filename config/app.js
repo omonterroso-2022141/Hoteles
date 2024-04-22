@@ -5,6 +5,7 @@ import express from 'express'
 import morgan from 'morgan'
 import { config } from 'dotenv'
 import userRoutes from '../src/User/User.routes.js'
+import categoryRoutes from '../src/Category/Category.routes.js'
 
 //Configs
 const app = express()
@@ -20,6 +21,7 @@ app.use(morgan('dev'))
 
 //Routes Declarations
 app.use('/user', userRoutes)
+app.use('/category', categoryRoutes)
 
 //Build Server
 export const initServer = ()=>{
