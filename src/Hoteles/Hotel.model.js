@@ -22,12 +22,12 @@ const hotelSchema = Schema({
     },
     categoria: {
         type: mongoose.Schema.ObjectId,
-        ref: 'Categoria',
+        ref: 'CHabitacion',
         required: true
     },
     favorito: [{
         type: mongoose.Schema.ObjectId,
-        required: true
+        ref: 'user'
     }],
 
 })

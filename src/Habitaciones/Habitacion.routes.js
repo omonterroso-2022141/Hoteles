@@ -14,7 +14,7 @@ const api = Router()
 api.get('/testHabitacion', testHabitacion)
 api.post('/addHabitacion', addHabitacion)
 api.get('/viewHabitacion', viewHabitacion)
-api.put('/updateHabitacion', updateHabitacion)
-api.delete('/deleteHabitacion', deleteHabitacion)
+api.put('/updateHabitacion/:id', updateHabitacion)
+api.delete('/deleteHabitacion/:id', deleteHabitacion)
 
 export default api

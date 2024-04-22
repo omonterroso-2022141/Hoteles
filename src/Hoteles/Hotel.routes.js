@@ -14,7 +14,7 @@ const api = Router()
 api.get('/testHotel', testHotel)
 api.post('/addHotel', addHotel)
 api.get('/viewHotel', viewHotel)
-api.put('/updateHotel', updateHotel)
-api.delete('/deleteHotel', deleteHotel)
+api.put('/updateHotel/:id', updateHotel)
+api.delete('/deleteHotel/:id', deleteHotel)
 
 export default api

@@ -1,7 +1,7 @@
 'use strict'
 
 import Hotel from './Hotel.model.js'
-import { eliminarEspacios } from '../utils/apoyo.js'
+import CHabitacionModel from '../CategoriaHabitacion/CHabitacion.model.js'
 
 export const testHotel = (req, res)=>{
     return res.send({message: 'Conexion a Hotel'})
@@ -10,19 +10,12 @@ export const testHotel = (req, res)=>{
 export const addHotel = async(req, res)=>{
     try{
         let data = req.body
-        if(
-            !data.nombre || data.nombre == '',
-            !data.direccion || data.direccion == '',
-            !data.telefono || data.telefono == '',
-            !data.descripcion || data.descripcion == '',
-            !data.categoria || data.categoria == ''
-        ) return res.status(500).send({message: 'Error'})
         
-        //let existeCategoria = await Categoria.finOne({name:data.categoria})
-        //if(!existeCategoria) return res.status(500).send({message: 'Error'})
+        let existeCategoria = await CHabitacionModel.findOne({_id:data.categoria})
+        if(!existeCategoria) return res.status(404).send({message: 'The category not found'})
 
-        let hotel = new Hotel(eliminarEspacios(data))
-        //await hotel.save()
+        let hotel = new Hotel(data)
+        await hotel.save()
         return res.send({message: 'saved hotel', hotel})
     }catch(err){
         console.error(err)

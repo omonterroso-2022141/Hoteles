@@ -9,7 +9,7 @@ const habitacionSchema = Schema({
         required: true
     },
     disponibilidad: {
-        type: String,
+        type: Boolean,
         required: true
     },
     numeroCuarto: {
@@ -20,9 +20,9 @@ const habitacionSchema = Schema({
         type: String,
         required: true
     },
-    categoriaHabitacion: {
+    cHabitacion: {
         type: mongoose.Schema.ObjectId,
-        ref: 'CategoriaHabitacion',
+        ref: 'CHabitacion',
         required: true
     },
     precio: {

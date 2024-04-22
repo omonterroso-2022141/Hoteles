@@ -2,19 +2,19 @@
 
 import { Router } from 'express'
 import { 
-    addHabitacion, 
-    deleteHabitacion, 
-    testHabitacion,
-    updateHabitacion, 
-    viewHabitacion 
+    addCHabitacion, 
+    deleteCHabitacion, 
+    testCHabitacion,
+    updateCHabitacion, 
+    viewCHabitacion 
 } from './CHabitacion.controller.js'
 
 const api = Router()
 
-api.get('/testHabitacion', testHabitacion)
-api.post('/addHabitacion', addHabitacion)
-api.get('/viewHabitacion', viewHabitacion)
-api.put('/updateHabitacion', updateHabitacion)
-api.delete('/deleteHabitacion', deleteHabitacion)
+api.get('/testCHabitacion', testCHabitacion)
+api.post('/addCHabitacion', addCHabitacion)
+api.get('/viewCHabitacion', viewCHabitacion)
+api.put('/updateCHabitacion/:id', updateCHabitacion)
+api.delete('/deleteCHabitacion/:id', deleteCHabitacion)
 
 export default api

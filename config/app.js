@@ -8,6 +8,8 @@ import { config } from 'dotenv'
 //Routers
 import routerHotel from '../src/Hoteles/Hotel.routes.js'
 import routerHabitacion from '../src/Habitaciones/Habitacion.routes.js'
+import routerCHabitacion from '../src/CategoriaHabitacion/CHabitacion.routes.js'
+import routerReservacion from '../src/Reservacion/Reservacion.routes.js'
 
 //Configs
 const app = express()
@@ -23,7 +25,9 @@ app.use(morgan('dev'))
 
 //Declared of routers
 app.use('/Hotel', routerHotel)
-app.use('/Habitacion',routerHabitacion)
+app.use('/Habitacion', routerHabitacion)
+app.use('/CHabitacion', routerCHabitacion)
+app.use('/Reservacion', routerReservacion)
 
 //Raise the server
 export const initServerd = ()=>{

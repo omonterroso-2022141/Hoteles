@@ -1,7 +1,8 @@
 'use strict'
 
 import Habitacion from './Habitacion.model.js'
-import { eliminarEspacios } from '../utils/apoyo.js'
+import CHabitacionModel from '../CategoriaHabitacion/CHabitacion.model.js'
+import Hotel from '../Hoteles/Hotel.model.js'
 
 export const testHabitacion = (req, res)=>{
     return res.send({message: 'Conexion a Habitacion'})
@@ -10,15 +11,13 @@ export const testHabitacion = (req, res)=>{
 export const addHabitacion = async(req, res)=>{
     try{
         let data = req.body
-        //Validacion si hay vacios o nulos
-        //if() return res.status(500).send({message: 'Error'})
         
-        //let existeCHabitacion = await CHabitacion.finOne({name:data.categoriaHabitacion})
-        //if(!existeCHabitacion) return res.status(500).send({message: 'Error'})
-        //let existeHotel = await Hotel.finOne({name:data.Hotel})
-        //if(!existeHotel) return res.status(500).send({message: 'Error'})
+        let existeCHabitacion = await CHabitacionModel.findOne({_id:data.cHabitacion})
+        if(!existeCHabitacion) return res.status(404).send({message: 'The category not found'})
+        let existeHotel = await Hotel.findOne({_id:data.hotel})
+        if(!existeHotel) return res.status(404).send({message: 'The hotel not found'})
 
-        let habitacion = new Habitacion(eliminarEspacios(data))
+        let habitacion = new Habitacion(data)
         await habitacion.save()
         return res.send({message: 'saved room', habitacion})
     }catch(err){
@@ -63,7 +62,7 @@ export const deleteHabitacion = async(req, res)=>{
         if(!existHabitacion) return res.status(500).send({message: 'The room not exist'})
         let habitacionDelte = await Habitacion.findOneAndDelete({_id: id})
         if(!habitacionDelte) return res.status(404).send({message: 'The room could not be deleted'})
-        return res.send({message: `The room: ${habitacionDelte.nombre} has been successfully removed`})
+        return res.send({message: `The room has been successfully removed`})
     }catch(err){
         console.error(err)
         return res.status(500).send({message: err})
