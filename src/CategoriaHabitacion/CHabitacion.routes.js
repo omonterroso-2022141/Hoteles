@@ -1,12 +1,12 @@
 'use strict'
 
 import { Router } from 'express'
-import { 
-    addCHabitacion, 
-    deleteCHabitacion, 
+import {
+    addCHabitacion,
+    deleteCHabitacion,
     testCHabitacion,
-    updateCHabitacion, 
-    viewCHabitacion 
+    updateCHabitacion,
+    viewCHabitacion,
 } from './CHabitacion.controller.js'
 
 const api = Router()
