@@ -1,5 +1,6 @@
 'use strict'
 
+import Habitacion from '../Habitaciones/Habitacion.model.js'
 import CHabitacion from './CHabitacion.model.js'
 
 export const testCHabitacion = (req, res) => {
@@ -74,22 +75,22 @@ export const updateCHabitacion = async (req, res) => {
     }
 }
 
+//@ Modified By: Yerick Aguilar
 export const deleteCHabitacion = async (req, res) => {
     try {
         let { id } = req.params
+        //# Validate If Exists
         let existCHabitacion = await CHabitacion.findOne({ _id: id })
-        if (!existCHabitacion)
-            return res
-                .status(404)
-                .send({ message: 'The category room not exist' })
+        if (!existCHabitacion)return res.status(404).send({ message: 'This Category Does Not Exists' })
+
+        //# Update CHabitacion To: 'Default'
+        const defaultCHabitacion = await CHabitacion.findOne({Nombre: 'Default'})
+        await Habitacion.updateMany({cHabitacion: id}, {cHabitacion: defaultCHabitacion._id})
+
+        //# Delete CHabitacion
         let cHabitacionDelte = await CHabitacion.findOneAndDelete({ _id: id })
-        if (!cHabitacionDelte)
-            return res
-                .status(404)
-                .send({ message: 'The category room could not be deleted' })
-        return res.send({
-            message: `The category room: ${cHabitacionDelte.Nombre} has been successfully removed`,
-        })
+        if (!cHabitacionDelte)return res.status(404).send({ message: 'Category Not Found, Not Deleted' })
+        return res.send({message: `The category room: ${cHabitacionDelte.Nombre} has been successfully removed`})
     } catch (err) {
         console.error(err)
         return res.status(500).send({ message: err })

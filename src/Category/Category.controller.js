@@ -1,5 +1,6 @@
 'use strict'
 import Category from './Category.model.js'
+import Hotel from '../Hoteles/Hotel.model.js'
 
 export const test = (req, res) => {
     return res.send({ message: 'CATEGORY | Function Test' })
@@ -8,18 +9,6 @@ export const test = (req, res) => {
 export const create = async (req, res) => {
     try {
         let data = req.body
-        if (
-            data.name == '' ||
-            !data.name ||
-            data.content == '' ||
-            !data.content
-        )
-            return res
-                .status(400)
-                .send({
-                    message:
-                        'Please Enter a Valid Name Or Content for Category',
-                })
         let exists = await Category.findOne({ name: data.name })
         if (exists) return res.send({ message: 'This Category Already Exist' })
         let category = new Category(data)
@@ -63,13 +52,6 @@ export const update = async (req, res) => {
     try {
         let { id } = req.params
         let data = req.body
-        if (
-            !data.name ||
-            !data.content ||
-            data.name == '' ||
-            data.content == ''
-        )
-            return res.status(404).send({ message: 'Please Enter Valid Data' })
         let updatedCategory = await Category.findOneAndUpdate(
             { _id: id },
             data,
@@ -89,13 +71,17 @@ export const update = async (req, res) => {
 export const deleteCategory = async (req, res) => {
     try {
         let { id } = req.params
-        // * Validation to update deleted category
+        //# Validate if Exists
+        let exist = await Category.findOne({_id: id})
+        if(!exist)return res.status(404).send({message: 'This Category Does Not Exists'})
 
-        let deletedCategory = await Category.deleteOne({ _id: id })
-        if (!deleteCategory)
-            return res
-                .status(404)
-                .send({ message: 'Category not found not deleted' })
+        //# Update Category To: 'DEFAULT'
+        const defaultCategory = await Category.findOne({name: 'DEFAULT'})
+        await Hotel.updateMany({categoria: id}, {categoria: defaultCategory._id})
+
+        //# Delete Category
+        let categoryDelete = await Category.findOneAndDelete({_id: id})
+        if(!categoryDelete)return res.status(404).send({message: 'Category Not Found, Not deleted'})
         return res.send({ message: 'Category deleted Successfully !!' })
     } catch (err) {
         console.error(err)

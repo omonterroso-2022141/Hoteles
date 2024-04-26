@@ -10,13 +10,6 @@ export const test = (req, res) => {
 export const register = async (req, res) => {
     try {
         let data = req.body
-
-        // # Regex for password
-        const regex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
-        if (!regex.test(data.password))
-            return res.status(400).send
-                ({ message: 'Password must contain Uppercase, Lowercase, Numbers, Special Characters and have 8 characters Long or More' })
-
         data.password = await encrypt(data.password)
         let user = new User(data)
         await user.save()
@@ -93,15 +86,6 @@ export const updateProfile = async (req, res) => {
         let update = checkUpdate(data, id)
         if (!update) return res.status(400).send({ message: 'Some Data Cannot Be Updated or Mising Data' })
 
-        // # Validations to Update Password
-        if ((
-            data.password === '' ||
-            data.newPassword == '') ||
-            (data.password && !data.newPassword) ||
-            (!data.password && data.newPassword) ||
-            (!data.password && !data.newPassword))
-            return res.status(404).send({ message: 'Some Data Cannot Be Updated or Mising Data' })
-
         if (data.newPassword &&
             !await checkPassword(data.password, user.password))
             return res.status(401).send({ message: 'Incorrect Password' })
@@ -112,12 +96,6 @@ export const updateProfile = async (req, res) => {
         }
 
         if (data.password && data.newPassword) {
-            // # Regex for password
-            const regex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
-            if (!regex.test(data.password))
-                return res.status(400).send
-                    ({ message: 'Password must contain Uppercase, Lowercase, Numbers, Special Characters and have 8 characters Long or More' })
-
             data.password = await encrypt(data.newPassword)
             let updatedUser = await User.findOneAndUpdate(
                 { _id: id },
@@ -148,14 +126,8 @@ export const deleteUser = async (req, res) => {
         let { id } = req.params
         let { password, username } = req.body
         let user = await User.findOne({ username })
+        
         // # Validations To Delete Account
-        if (
-            !user ||
-            user == '' ||
-            !password ||
-            password == '')
-            return res.status(404).send({ message: 'Please Enter Valid Credentials' })
-
         if (user && await checkPassword(password, user.password)) {
             let deletedUser = await User.deleteOne({ _id: id })
             if (deletedUser.deleteCount == 0) return res.status(404).send({ message: 'User not found, not Deleted' })
