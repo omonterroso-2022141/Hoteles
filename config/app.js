@@ -32,7 +32,7 @@ app.use('/CHabitacion', routerCHabitacion)
 app.use('/Reservacion', routerReservacion)
 
 //Raise the server
-export const initServerd = () => {
+export const initServer = () => {
     app.listen(port)
     console.log(`Server HTTP running in port ${port}`)
 }
