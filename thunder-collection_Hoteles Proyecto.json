@@ -2,7 +2,7 @@
     "clientName": "Thunder Client",
     "collectionName": "Hoteles Proyecto",
     "collectionId": "c9305e29-9f48-4638-baf1-4cdb22086874",
-    "dateExported": "2024-04-26T19:44:21.680Z",
+    "dateExported": "2024-04-26T20:03:16.916Z",
     "version": "1.2",
     "folders": [
         {
@@ -352,5 +352,5 @@
             "baseUrl": "localhost:3200/"
         }
     },
-    "ref": "ouJKYQLt-6fGHoGH6vBTy-IZK6dIMpAVnpP1n3A88cEVxdznPhteeA-NY3QFUcbDdJ3I_0NmACLccjT8gsb2cQ"
+    "ref": "ouJKYQLt-6fGHoGH6vBTy-IZK6dIMpAVnpP1n3A88cH9qi87-Pj5jC01Nn72bDlodFMUielYfrgOLFRGzQRkXg"
 }
