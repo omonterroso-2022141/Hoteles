@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useLogin } from "../Shared/Hooks/useLogin.jsx";
 import { Logo } from "./Logo.jsx";
 import { useNavigate } from "react-router-dom";
+import { ClockLoader } from "react-spinners"
 
 export const Login = ({ switchAuthHandler }) => {
   const { login, isLoading } = useLogin()
@@ -40,6 +41,15 @@ export const Login = ({ switchAuthHandler }) => {
       }
     ))
   }
+
+  if(isLoading){
+    return ( 
+      <div className="container d-flex align-items-center justify-content-center vh-100">
+        <ClockLoader />
+      </div>
+    )
+  }
+  
   const handleLogin = (e) => {
     e.preventDefault()
     login(
@@ -85,7 +95,7 @@ export const Login = ({ switchAuthHandler }) => {
     <div className='contorno-login'>
       <div className="container">
         <Logo className='Logo' />
-        <h1 className="Titulo">¡Bienvenido!</h1>
+        <h1 className="TituloL">¡Bienvenido!</h1>
       </div>
       <form
         className='form-auth'

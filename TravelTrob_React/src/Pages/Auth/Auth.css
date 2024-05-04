@@ -2,7 +2,7 @@ body {
     justify-content: center;
     align-items: center;
     display: flex;
-    background-image: url('https://i.pinimg.com/564x/86/05/e1/8605e149e302aa22a3ab94ea64954e13.jpg');
+    background-image: url('../../Components/IMG/imagen.png');
 }
 
 .form-auth {
@@ -30,6 +30,7 @@ body {
 
 .contorno-register {
     display: flex;
+    color: transparent;
     justify-content: center;
     align-items: center;
     background-color: transparent;
@@ -61,7 +62,6 @@ body {
 
 .form-auth-Register input {
     padding: 5px;
-    /* Reducido el relleno */
     width: calc(100% - 16px);
     background: transparent;
     border: 1px solid rgba(0, 0, 0, .2);
@@ -81,17 +81,26 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; 
+    background-color: transparent;
 }
 
 .Logo {
     max-width: 100%;
     height: auto;
     margin-top: -100px;
-    /* Reducido el espacio debajo del logo */
 }
 
 .Titulo {
+    color: black;
+    font-size: 50px;
+    margin-top: -100px;
+    margin-bottom: 150px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.TituloL{
     color: black;
     font-size: 50px;
     margin-top: -100px;
@@ -172,7 +181,6 @@ button:hover {
 .CambioRegister {
     margin-right: 20px;
     padding-top: 10px;
-    /* Ajusta el margen para separar el logo del formulario */
     color: orangered;
     justify-content: center;
     align-items: center;
