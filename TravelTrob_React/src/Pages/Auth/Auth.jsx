@@ -21,9 +21,9 @@ export const Auth = () => {
             </div>
             <div className="container">
                 {/* Repite el patrón de hexágonos */}
-                {[...Array(16)].map((_, row) => (
+                {[...Array(50)].map((_, row) => (
                     <div className="hex" key={row}>
-                        {[...Array(16)].map((_, col) => (
+                        {[...Array(50)].map((_, col) => (
                             <div className="hexagon" key={`${row}-${col}`}></div>
                         ))}
                     </div>

@@ -1,41 +1,34 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { registerRequest } from "../../Services/api";
 
 export const useRegister = () => {
     const [isLoading, setIsLoading] = useState(false)
 
-    const register = async (email, username, password,phone, name,surname) => {
+    const register = async (name, surname, username, email, password, phone) => {
         setIsLoading(true)
         const user = {
-            email,
-            username,
-            password,
-            phone,
             name,
-            surname
+            surname,
+            username,
+            email,
+            password,
+            phone
         }
         const response = await registerRequest(user)
         setIsLoading(false)
-        if (response.error) {
-            if (response?.err?.response?.data?.errors) {
-                let arr = response?.err?.response?.data?.errors
-                for (const error of arr) {
-                    return toast.error(
-                        error.msg
-                    )
-                }
-            }
+        if(response.error){
             return toast.error(
-                response?.err?.response?.data?.msg ||
-                response?.err?.data?.msg ||
-                '¡Oh no! Error al registrarte, verifica tus credenciales y intentalo de nuevo'
+                response?.e?.response?.data ||
+                '¡On! No pudimos registrarte, intenta de nuevo porfvor'
             )
         }
-        console.log(response)
-
     }
-    return (
+
+
+    return {
         register,
         isLoading
-    )
+
+    }
 }

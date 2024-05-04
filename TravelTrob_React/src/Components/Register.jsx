@@ -6,11 +6,15 @@ import {
   passConfirmationValidationMessage, passwordValidationMessage, usernameValidationMessage,
   emailValidationMessage, validatePhone, phoneValidationMessage
 } from '../Shared/Validators/validators.js'
+import { useNavigate } from 'react-router-dom'
 
 export const Register = ({ switchAuthHandler }) => {
   const { register, isLoading } = useRegister()
-  const [showPassword, setShowPassword] = useState(false);
-  const [password, setPassword] = useState('');
+  //Contraseña
+  const [showPassword, setShowPassword] = useState(false)
+  const [password, setPassword] = useState('')
+  const navigate = useNavigate()
+
 
   const [formData, setFormData] = useState(
     {
@@ -108,6 +112,7 @@ export const Register = ({ switchAuthHandler }) => {
       formData.password.value,
       formData.phone.value
     )
+    switchAuthHandler()
   }
 
   const handleTogglePassword = () => {
@@ -121,8 +126,8 @@ export const Register = ({ switchAuthHandler }) => {
     !formData.passwordConfirm.isValid ||
     !formData.phone.isValid
   return (
-
     <div className='contorno-register'>
+      
       <form
         className='form-auth'
         onSubmit={handleRegister}
@@ -214,6 +219,7 @@ export const Register = ({ switchAuthHandler }) => {
         </span>
       </form>
     </div>
+    
 
   )
 }

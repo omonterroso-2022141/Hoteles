@@ -16,7 +16,7 @@ export const usernameValidationMessage = 'Tu nombre de usuario tiene que tener m
 
 //VALIDACION DE CONTRASEÑA
 export const validatePassword = (password) => {
-    const regex = /^\S{6,12}$/
+    const regex = /^\S{6,25}$/
     return regex.test(password)
 }
 
