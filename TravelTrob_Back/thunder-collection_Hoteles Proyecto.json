@@ -1,0 +1,356 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "Hoteles Proyecto",
+    "collectionId": "c9305e29-9f48-4638-baf1-4cdb22086874",
+    "dateExported": "2024-04-26T20:03:16.916Z",
+    "version": "1.2",
+    "folders": [
+        {
+            "_id": "43cf81d1-7497-4bf1-a04b-a9e1fa3b789d",
+            "name": "CHabitacion",
+            "containerId": "",
+            "created": "2024-04-26T19:07:20.008Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "3443dcf4-966b-476a-8266-eccdecaaf2da",
+            "name": "Hoteles",
+            "containerId": "",
+            "created": "2024-04-26T19:22:37.728Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "1e99536a-7d77-4175-bceb-cc3b7ed8d7c1",
+            "name": "Habitaciones",
+            "containerId": "",
+            "created": "2024-04-26T19:35:21.824Z",
+            "sortNum": 30000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "491c7246-488c-4fc5-9436-90a23ae69db2",
+            "colId": "c9305e29-9f48-4638-baf1-4cdb22086874",
+            "containerId": "43cf81d1-7497-4bf1-a04b-a9e1fa3b789d",
+            "name": "testCHabitacion",
+            "url": "CHabitacion/testCHabitacion",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-04-26T19:09:51.141Z",
+            "modified": "2024-04-26T19:10:02.264Z",
+            "headers": []
+        },
+        {
+            "_id": "a4c6b6a8-88c0-4d64-9703-f8e8670fe0b2",
+            "colId": "c9305e29-9f48-4638-baf1-4cdb22086874",
+            "containerId": "43cf81d1-7497-4bf1-a04b-a9e1fa3b789d",
+            "name": "addCHabitacion",
+            "url": "CHabitacion/addCHabitacion",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-04-26T19:10:08.974Z",
+            "modified": "2024-04-26T19:19:08.060Z",
+            "headers": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "Nombre",
+                        "value": "VIP"
+                    },
+                    {
+                        "name": "Contenido",
+                        "value": "Solo para presonas de prestigio"
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "410f3c67-c366-4bb3-b4c9-4a02ffd28ca8",
+            "colId": "c9305e29-9f48-4638-baf1-4cdb22086874",
+            "containerId": "43cf81d1-7497-4bf1-a04b-a9e1fa3b789d",
+            "name": "viewCHabitacion",
+            "url": "CHabitacion/viewCHabitacion",
+            "method": "GET",
+            "sortNum": 35000,
+            "created": "2024-04-26T19:19:22.592Z",
+            "modified": "2024-04-26T19:19:34.974Z",
+            "headers": []
+        },
+        {
+            "_id": "058edc88-ff02-44cb-ad87-756881885ea1",
+            "colId": "c9305e29-9f48-4638-baf1-4cdb22086874",
+            "containerId": "43cf81d1-7497-4bf1-a04b-a9e1fa3b789d",
+            "name": "updateCHabitacion",
+            "url": "CHabitacion/updateCHabitacion/",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2024-04-26T19:19:17.816Z",
+            "modified": "2024-04-26T19:20:38.192Z",
+            "headers": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "Nombre",
+                        "value": "VIP Inferior"
+                    },
+                    {
+                        "name": "Contenido",
+                        "value": "Clase media-alta"
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "99d139a8-f6ff-456a-aa57-3912ec39bb67",
+            "colId": "c9305e29-9f48-4638-baf1-4cdb22086874",
+            "containerId": "43cf81d1-7497-4bf1-a04b-a9e1fa3b789d",
+            "name": "deleteCHabitacion",
+            "url": "CHabitacion/deleteCHabitacion/",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2024-04-26T19:20:58.679Z",
+            "modified": "2024-04-26T19:21:29.771Z",
+            "headers": []
+        },
+        {
+            "_id": "c5ae653c-3b9f-48fb-9797-71e80454d97a",
+            "colId": "c9305e29-9f48-4638-baf1-4cdb22086874",
+            "containerId": "3443dcf4-966b-476a-8266-eccdecaaf2da",
+            "name": "testHotel",
+            "url": "Hotel/testHotel",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2024-04-26T19:24:12.039Z",
+            "modified": "2024-04-26T19:24:52.297Z",
+            "headers": []
+        },
+        {
+            "_id": "9acbbf4e-2600-48d4-85d7-5515bd4bc5b6",
+            "colId": "c9305e29-9f48-4638-baf1-4cdb22086874",
+            "containerId": "1e99536a-7d77-4175-bceb-cc3b7ed8d7c1",
+            "name": "testHabitacion",
+            "url": "Habitacion/testHabitacion",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2024-04-26T19:35:21.824Z",
+            "modified": "2024-04-26T19:35:50.819Z",
+            "headers": []
+        },
+        {
+            "_id": "776ac4bd-5472-4045-a65a-2c73753dbf26",
+            "colId": "c9305e29-9f48-4638-baf1-4cdb22086874",
+            "containerId": "3443dcf4-966b-476a-8266-eccdecaaf2da",
+            "name": "addHotel",
+            "url": "Hotel/addHotel",
+            "method": "POST",
+            "sortNum": 80000,
+            "created": "2024-04-26T19:24:33.055Z",
+            "modified": "2024-04-26T19:29:26.659Z",
+            "headers": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "nombre",
+                        "value": "Trivago"
+                    },
+                    {
+                        "name": "direccion",
+                        "value": "Aveinida elena"
+                    },
+                    {
+                        "name": "telefono",
+                        "value": "84659812"
+                    },
+                    {
+                        "name": "descripcion",
+                        "value": "Hotel vacacionista"
+                    },
+                    {
+                        "name": "categoria",
+                        "value": ""
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "0def1cec-f0e6-402c-aec2-94a152949fa6",
+            "colId": "c9305e29-9f48-4638-baf1-4cdb22086874",
+            "containerId": "1e99536a-7d77-4175-bceb-cc3b7ed8d7c1",
+            "name": "addHabitacion",
+            "url": "Habitacion/addHabitacion",
+            "method": "POST",
+            "sortNum": 80000,
+            "created": "2024-04-26T19:35:21.825Z",
+            "modified": "2024-04-26T19:41:54.164Z",
+            "headers": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "hotel",
+                        "value": ""
+                    },
+                    {
+                        "name": "cHabitacion",
+                        "value": ""
+                    },
+                    {
+                        "name": "disponibilidad",
+                        "value": "true"
+                    },
+                    {
+                        "name": "numeroCuarto",
+                        "value": "B-56"
+                    },
+                    {
+                        "name": "descripcion",
+                        "value": "Cuarto pequeño para 1 persona"
+                    },
+                    {
+                        "name": "precio",
+                        "value": "150.80"
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "d30fecfa-413a-4bb9-b81d-aa2763b997b1",
+            "colId": "c9305e29-9f48-4638-baf1-4cdb22086874",
+            "containerId": "3443dcf4-966b-476a-8266-eccdecaaf2da",
+            "name": "viewHotel",
+            "url": "Hotel/viewHotel",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2024-04-26T19:24:57.312Z",
+            "modified": "2024-04-26T19:25:05.354Z",
+            "headers": []
+        },
+        {
+            "_id": "f5a44cff-2319-444a-8721-9f52f39808dd",
+            "colId": "c9305e29-9f48-4638-baf1-4cdb22086874",
+            "containerId": "1e99536a-7d77-4175-bceb-cc3b7ed8d7c1",
+            "name": "viewHabitacion",
+            "url": "Habitacion/viewHabitacion",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2024-04-26T19:35:21.826Z",
+            "modified": "2024-04-26T19:36:23.886Z",
+            "headers": []
+        },
+        {
+            "_id": "800beb5f-4693-469a-934d-1582a2514d61",
+            "colId": "c9305e29-9f48-4638-baf1-4cdb22086874",
+            "containerId": "3443dcf4-966b-476a-8266-eccdecaaf2da",
+            "name": "updateHotel",
+            "url": "Hotel/updateHotel/",
+            "method": "PUT",
+            "sortNum": 105000,
+            "created": "2024-04-26T19:29:40.719Z",
+            "modified": "2024-04-26T19:33:58.006Z",
+            "headers": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "nombre",
+                        "value": "Trivago 2"
+                    },
+                    {
+                        "name": "direccion",
+                        "value": "Calzada"
+                    },
+                    {
+                        "name": "telefono",
+                        "value": "45981235"
+                    },
+                    {
+                        "name": "descripcion",
+                        "value": "Hotel vacacionista casual"
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "a07aaa2a-3c30-40ff-af14-751c6118b498",
+            "colId": "c9305e29-9f48-4638-baf1-4cdb22086874",
+            "containerId": "1e99536a-7d77-4175-bceb-cc3b7ed8d7c1",
+            "name": "updateHabitacion",
+            "url": "Habitacion/updateHabitacion/",
+            "method": "PUT",
+            "sortNum": 107500,
+            "created": "2024-04-26T19:42:11.169Z",
+            "modified": "2024-04-26T19:43:13.899Z",
+            "headers": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "hotel",
+                        "value": "",
+                        "isDisabled": true
+                    },
+                    {
+                        "name": "cHabitacion",
+                        "value": "",
+                        "isDisabled": true
+                    },
+                    {
+                        "name": "disponibilidad",
+                        "value": "false"
+                    },
+                    {
+                        "name": "numeroCuarto",
+                        "value": "B-56"
+                    },
+                    {
+                        "name": "descripcion",
+                        "value": "Cuarto pequeño para 1 persona"
+                    },
+                    {
+                        "name": "precio",
+                        "value": "150.80"
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "10053461-90c6-4d7f-bd9a-989e2f9ffae3",
+            "colId": "c9305e29-9f48-4638-baf1-4cdb22086874",
+            "containerId": "3443dcf4-966b-476a-8266-eccdecaaf2da",
+            "name": "deleteHotel",
+            "url": "Hotel/deleteHotel/",
+            "method": "DELETE",
+            "sortNum": 110000,
+            "created": "2024-04-26T19:25:29.319Z",
+            "modified": "2024-04-26T19:34:04.409Z",
+            "headers": []
+        },
+        {
+            "_id": "e43a4220-3661-475b-b9d2-fca29b156cd7",
+            "colId": "c9305e29-9f48-4638-baf1-4cdb22086874",
+            "containerId": "1e99536a-7d77-4175-bceb-cc3b7ed8d7c1",
+            "name": "deleteHabitacion",
+            "url": "Habitacion/deleteHabitacion/",
+            "method": "DELETE",
+            "sortNum": 110000,
+            "created": "2024-04-26T19:35:21.828Z",
+            "modified": "2024-04-26T19:43:55.704Z",
+            "headers": []
+        }
+    ],
+    "settings": {
+        "options": {
+            "baseUrl": "localhost:3200/"
+        }
+    },
+    "ref": "ouJKYQLt-6fGHoGH6vBTy-IZK6dIMpAVnpP1n3A88cH9qi87-Pj5jC01Nn72bDlodFMUielYfrgOLFRGzQRkXg"
+}
