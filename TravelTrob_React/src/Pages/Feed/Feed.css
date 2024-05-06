@@ -1,0 +1,31 @@
+.body {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column; /* Alinea el contenido en columna */
+  height: 100vh; /* Ajusta la altura del cuerpo */
+  background-color: #f0f0f0; /* Color de fondo */
+}
+
+.navbar {
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  border-bottom: 2px solid rgb(41, 37, 37);
+  box-shadow: 0 0 5px 0 rgb(61, 61, 61);
+  box-sizing: border-box;
+  z-index: 10;
+  display: flex;
+  align-items: center; /* Alinea los elementos en el centro verticalmente */
+  justify-content: space-between; /* Espacia los elementos uniformemente */
+  padding: 0 20px; /* Añade un poco de espacio alrededor de los elementos */
+}
+
+.feed {
+  width: 80%; /* Ancho del feed */
+  max-width: 800px; /* Ancho máximo del feed para que no se extienda demasiado en pantallas grandes */
+  background-color: #fff; /* Color de fondo del feed */
+  padding: 20px; /* Añade espacio alrededor del contenido del feed */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Sombra suave para el feed */
+  border-radius: 8px; /* Borde redondeado para el feed */
+}

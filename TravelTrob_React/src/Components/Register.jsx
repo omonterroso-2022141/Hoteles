@@ -7,6 +7,7 @@ import {
   emailValidationMessage, validatePhone, phoneValidationMessage
 } from '../Shared/Validators/validators.js'
 import { useNavigate } from 'react-router-dom'
+import { Logo } from "./Logo.jsx";
 
 export const Register = ({ switchAuthHandler }) => {
   const { register, isLoading } = useRegister()
@@ -127,9 +128,13 @@ export const Register = ({ switchAuthHandler }) => {
     !formData.phone.isValid
   return (
     <div className='contorno-register'>
-      
+      <div className='Container'>
+        <Logo className='Logo' />
+        <h1 className='Titulo'>Registro</h1>
+      </div>
+
       <form
-        className='form-auth'
+        className='form-auth-Register'
         onSubmit={handleRegister}
       >
         <Input
@@ -207,19 +212,18 @@ export const Register = ({ switchAuthHandler }) => {
         />
         <button
           disabled={isSubmitButtonDisable}
-
         >
           Register
         </button>
         <button onClick={handleTogglePassword}>
           {showPassword ? 'Ocultar' : 'Mostrar'} contraseña
         </button>
-        <span onClick={switchAuthHandler}>
+        <span className="CambioRegister" onClick={switchAuthHandler}>
           ¿Ya tienes una cuenta? ¡Inicia sesión acá!
         </span>
       </form>
     </div>
-    
+
 
   )
 }

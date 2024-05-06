@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom"
-import { Register } from "./Register.jsx"
+import { Logo } from "./Logo.jsx"
+import './CSS/Info.css'
 
 export const Info = ({ switchAuthHandler }) => {
     const navigate = useNavigate()
@@ -8,18 +9,20 @@ export const Info = ({ switchAuthHandler }) => {
         navigate('/auth')
     }
     const handlerNavigateRegister = () => {
-        navigate('/register') 
+        navigate('/register')
     }
     return (
-        <div>
-
-            <h1>Hola es la info de Travel Trob :#</h1>
-
-            <div>
-            <button onClick={handlerNavigateLogin}>Login</button>
+        <div className="Container">
+            <div className="Logo">
+                <Logo />
             </div>
-            
-            <button onClick={handlerNavigateRegister}>Register</button>
+            <div className="Button-Container">
+                <button onClick={handlerNavigateLogin}>Login</button>
+                <button onClick={handlerNavigateRegister}>Register</button>
+            </div>
+            <div>
+                <h1 className="Titulos">Hola es la info de Travel Trob :#</h1>
+            </div>
         </div>
     )
 }

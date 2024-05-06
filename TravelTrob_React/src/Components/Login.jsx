@@ -4,9 +4,11 @@ import { Input } from "./Input.jsx";
 import { useState } from "react";
 import { useLogin } from "../Shared/Hooks/useLogin.jsx";
 import { Logo } from "./Logo.jsx";
+import { useNavigate } from "react-router-dom";
 
 export const Login = ({ switchAuthHandler }) => {
   const { login, isLoading } = useLogin()
+  const navigate = useNavigate()
   const [formData, setFormData] = useState(
     {
       email: {
@@ -44,7 +46,9 @@ export const Login = ({ switchAuthHandler }) => {
       formData.email.value,
       formData.password.value
     )
+    
   }
+
   const handleValidationOnBlur = (value, field) => {
     let isValid = false
     switch (field) {
@@ -69,59 +73,66 @@ export const Login = ({ switchAuthHandler }) => {
     ))
   }
 
-  
-//Mostrar o oCULTAR cONTRASEÑA
+
+  //Mostrar o oCULTAR cONTRASEÑA
   const handleTogglePassword = () => {
     setShowPassword(prevState => !prevState);
   };
+  //Viajar a Feed
+
 
   return (
-    
-    <div>
-      <Logo className='Logo'/>  
-      <div className='contorno-login'>
-
-        <form
-          className='form-auth'
-          onSubmit={handleLogin}
-        >
-          <Input
-            field='email'
-            label='Email'
-            type='email'
-            value={formData.email.value}
-            onChangeHandler={onValueChange}
-            onBlurHandler={handleValidationOnBlur}
-            showErrorMessage={formData.email.showError}
-            validationMessage={emailValidationMessage}
-          />
-
-          <Input
-            field='password'
-            label='Contraseña'
-            type={showPassword ? 'text' : 'password'}
-            value={formData.password.value}
-            onChangeHandler={onValueChange}
-            onChange={e => setPassword(e.target.value)}
-            onBlurHandler={handleValidationOnBlur}
-            showErrorMessage={formData.password.showError}
-            validationMessage={passwordValidationMessage}
-
-          />
-          <button
-            disabled={isSubmitButtonDisable}
-          >
-            LogIn
-          </button>
-          <button onClick={handleTogglePassword}>
-            {showPassword ? 'Ocultar' : 'Mostrar'} contraseña
-          </button>
-        </form>
-        <span onClick={switchAuthHandler}>
-          ¿Aún no tienes una cuenta? ¡Registrate...!
-        </span>
+    <div className='contorno-login'>
+      <div className="container">
+        <Logo className='Logo' />
+        <h1 className="Titulo">¡Bienvenido!</h1>
       </div>
-    </div>
+      <form
+        className='form-auth'
+        onSubmit={handleLogin}
+      >
 
+        <Input
+          field='email'
+          label='Email'
+          type='email'
+          value={formData.email.value}
+          onChangeHandler={onValueChange}
+          onBlurHandler={handleValidationOnBlur}
+          showErrorMessage={formData.email.showError}
+          validationMessage={emailValidationMessage}
+        />
+
+        <Input
+          field='password'
+          label='Contraseña'
+          type={showPassword ? 'text' : 'password'}
+          value={formData.password.value}
+          onChangeHandler={onValueChange}
+          onChange={e => setPassword(e.target.value)}
+          onBlurHandler={handleValidationOnBlur}
+          showErrorMessage={formData.password.showError}
+          validationMessage={passwordValidationMessage}
+
+        />
+        <button
+          disabled={isSubmitButtonDisable}
+        >
+          LogIn
+        </button>
+
+        <span className="CambioRegister" onClick={switchAuthHandler}>
+          ¿Aún no tienes una cuenta? ¡Regístrate...!
+        </span>
+      </form>
+      <div className="Contra">
+
+        <button onClick={handleTogglePassword}>
+          {showPassword ? '0.0' : '-.-'}
+        </button>
+      </div>
+
+
+    </div>
   )
 }

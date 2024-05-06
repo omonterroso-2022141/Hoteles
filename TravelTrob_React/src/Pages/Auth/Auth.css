@@ -1,73 +1,150 @@
-/* Estilos generales */
 body {
-    position: relative;
-    display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    background-size: cover;
-    background-position: center;
-    margin: 0;
-    font-family: Arial, sans-serif;
+    display: flex;
+    background-image: url('https://i.pinimg.com/564x/86/05/e1/8605e149e302aa22a3ab94ea64954e13.jpg');
 }
 
-.contenedor-auth {
-    position: relative;
-    z-index: 1;
+.form-auth {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    height: 100%;
+    max-width: 400px;
+    padding: 0 20px; /* Ajuste de padding para pantallas pequeñas */
+}
+.contorno-login {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: transparent;
+    backdrop-filter: blur(4px);
+    border: 2px solid #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    max-height: calc(100vh - 40px);
+    overflow: hidden;
 }
 
-/* Contenedor del fondo animado */
+.contorno-register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    backdrop-filter: blur(4px);
+    border: 2px solid #ffffff;
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    max-height: calc(100vh - 40px);   
+    overflow: hidden;
+}
+
+.form-auth-Register {
+    margin-left: 5%;
+    padding-left: 5%;
+    margin-top: 5%;
+}
+
+.Contra{
+    margin-top: 30px;
+    margin-right: 10px;
+    padding: 5px;
+}
+.Contra button{
+    padding: 10px;
+    background-color: black;
+}
+
+.form-auth-Register input {
+    padding: 5px;
+    /* Reducido el relleno */
+    width: calc(100% - 16px);
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, .2);
+    outline: none;
+    border-radius: 40px;
+    transition: border-color 0.3s ease;
+    color: black;
+    font-size: 13px;
+    box-sizing: border-box;
+    
+}
+.form-auth-Register input:focus {
+    outline: none;
+    border-color: #ff5733;
+}
+
 .container {
-    position: absolute;
-    top: 0;
-    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Logo {
+    max-width: 100%;
+    height: auto;
+    margin-top: -100px;
+    /* Reducido el espacio debajo del logo */
+}
+
+.Titulo {
+    color: black;
+    font-size: 50px;
+    margin-top: -100px;
+    /* Reducido el espacio encima del título */
+    margin-bottom: 150px;
+    /* Reducido el espacio debajo del título */
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.form-auth input {
+    margin: 10px 0;
+    padding: 12px;
+    width: calc(100% - 20px);
+    background: transparent;
+    border: 3px solid transparent;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    transition: border-color 0.3s ease;
+    border-radius: 40px;
+    color: black;
+    font-size: 14px;
+}
+
+.form-auth input:focus {
+    outline: none;
+    border-color: #ff5733;
+}
+
+.label-form {
     width: 100%;
-    height: 100%;
-    z-index: 0;
-    pointer-events: none;
-    overflow: hidden;
-    animation: anim 10s linear infinite;
+    font-weight: 500;
+    max-width: 100%;
+    margin-bottom: 10px;
+    color: black;
 }
 
-/* Hexágonos */
-.hex {
-    display: inline-flex;
-    margin-top: -32px;
-    margin-left: -50px;
-    overflow: hidden;
+.messageValidate {
+    font-size: 10px;
+    text-align: center;
+    color: red;
+    justify-content: center;
+    display: flex;
 }
 
-.hex:nth-child(even) {
-    margin-left: 1px;
-}
 
-.hexagon {
-    position: relative;
-    background: #111;
-    height: 110px;
-    width: 100px;
-    margin: 1px;
-    transition: 1s;
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    pointer-events: auto;
-}
-
-.hexagon::before {
-    position: absolute;
-    content: '';
-    height: 100%;
-    width: 50%;
-    background: rgba(255, 255, 255, 0.04);
-}
-
-.hexagon:hover {
-    transition: 0s;
-    background: orange;
+.form-logo-container {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin: 1.5%;
+    padding: 1.;
 }
 
 /* Botones */
@@ -92,92 +169,12 @@ button:hover {
     opacity: 0.8;
 }
 
-/* Formularios de registro y login */
-.contorno-login,
-.contorno-register {
-    width: 70%; 
-    max-width: 400px; 
-    background: transparent;
-    border: 2px solid rgba(255, 255, 255, .2);
-    backdrop-filter: blur(9px);
-    color: #fff;
-    border-radius: 12px;
-    padding: 30px;
-    text-align: center;
-    margin: 0 auto;
-    box-shadow: 0px 0px 10px rgb(300, 200, 50);
-}
-
-.contorno-login h1,
-.contorno-register h1 {
-    font-size: 30px;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-/* Campos de formulario */
-.form-auth {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-}
-
-.form-auth input {
-    margin: 10px 0;
-    padding: 10px;
-    width: calc(100% - 20px);
-    background: transparent;
-    border: 3px solid transparent;
-    outline: none;
-    border: 2px solid rgba(255, 255, 255, .2);
-    transition: border-color 0.3s ease;
-    border-radius: 40px;
-    color: #fff;
-    font-size: 14px;
-}
-
-.form-auth input:focus {
-    outline: none;
-    border-color: #ff5733;
-}
-
-.label-form {
-    width: 100%;
-    font-weight: 500;
-    max-width: 100%;
-    margin-bottom: 10px;
-    color: white;
-}
-
-.messageValidate {
-    font-size: 14px;
-    text-align: center;
-    margin: 20px 0 15px;
-    color: red;
-}
-
-/* Logo */
-.Logo {
-    display: flex;
+.CambioRegister {
+    margin-right: 20px;
+    padding-top: 10px;
+    /* Ajusta el margen para separar el logo del formulario */
+    color: orangered;
     justify-content: center;
     align-items: center;
-    max-width: 100px; /* Ajusta el tamaño máximo de la imagen según sea necesario */
-    height: 50px; /* Mantén la proporción de la imagen */
-    margin-bottom: 20px;
-    animation: logoAnimation 2s ease-in-out infinite alternate; /* Animación del logo */
-}
-
-/* Media queries */
-@media screen and (max-width: 600px) {
-    .contorno-auth {
-        width: 90%;
-        padding: 15px;
-    }
-
-    .form-auth input {
-        width: calc(100% - 20px);
-        padding: 10px;
-    }
+    display: flex;
 }

@@ -1,0 +1,28 @@
+.body {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-color: black;
+}
+
+.Titulos {
+    color: black;
+}
+
+.Logo img {
+    display: flex;
+}
+
+.Container {
+    background-color: black;
+    width: 500px;
+    height: 30% ;
+}
+
+.Button-Container {
+    display: flex;
+}
+
+.Button-Container button {
+    width: 20%;
+}
