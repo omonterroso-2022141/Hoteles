@@ -11,13 +11,17 @@ const reservacionSchema = Schema({
         type: Date,
         required: true
     },
+    cantidadPersonas: {
+        type: Number,
+        required: true
+    },
+    detallesExtra: {
+        type: Stringr,
+        required: true
+    },
     hotel: {
         type: mongoose.Schema.ObjectId,
         ref: 'Hotel',
-        required: true
-    },
-    cantidadPersonas: {
-        type: Number,
         required: true
     },
     habitacion: {
@@ -25,7 +29,6 @@ const reservacionSchema = Schema({
         ref: 'Habitacion',
         required: true
     }
-
 })
 
 export default model('Reservacion', reservacionSchema)

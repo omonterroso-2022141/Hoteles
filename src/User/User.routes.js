@@ -12,7 +12,7 @@ api.get('/list', list)
 //# Role CLIENT
 api.post('/register', register)
 api.post('/login', login)
-api.put('/update/:id', updateProfile)
-api.delete('/delete/:id', deleteUser)
+api.put('/update/:id', [validateJwt], updateProfile)
+api.delete('/delete/:id', [validateJwt], deleteUser)
 
 export default api
