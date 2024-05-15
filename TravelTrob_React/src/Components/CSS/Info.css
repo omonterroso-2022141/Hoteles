@@ -1,140 +1,80 @@
-/* Estilos para el navbar */
-.navbar {
-    position: fixed;
-    top:4;
-    left: 4;
-    width: 100vw;
-    background-color: #2c2c2c;
-    color: white;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1000;
-}
-
-/* Estilos para el logo */
-.logo img {
-    max-width: 100px;
-    height: auto;
-}
-
-/* Estilos para el botón de navegación */
-.NavButton {
-    cursor: pointer;
-    margin: 0 10px;
-    padding: 10px 20px;
-    background-color: gray;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.NavButton:hover {
-    background-color: orange;
-}
-
-/* Estilos para la imagen dentro de Content-Info */
-.Content-Info img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 50px;
-}
-
-/* Estilos para el título dentro de Content-Info */
-.Content-Info h1 {
-    font-size: 36px;
-    color: white;
-    background-color: #2c2c2c;
-    padding: 20px;
-    border-radius: 10px;
-    margin: 0;
-}
-
-/* Estilos para el contenedor del carrusel */
-.Info-container {
-    text-align: center;
-    background-color: white;
-    margin-top: 20px;
-}
-
-.slider {
-    position: relative;
-    overflow: hidden;
-    width: 80%;
-    margin: 0 auto; /* Centra horizontalmente */
-}
-
-.slide {
-    display: none;
-    width: 100%;
-    transition: opacity 0.5s ease;
-}
-
-.slide.active {
-    display: block;
-}
-
-.slider img {
-    width: 100%;
-    border-radius: 50px;
-    height: auto;
-    transition: transform 0.5s ease;
-}
-
-.prev, .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 5%;
-    padding: 10px; /* Aumenta el espacio para hacer clic */
-    background-color: rgba(255, 136, 0, 0.3);
-    color: black;
-    border-radius: 50%; /* Hazlo más redondeado */
-    z-index: 100;
-    transition: background-color 0.3s ease;
-}
-
-.prev:hover, .next:hover {
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.prev {
-    left: 0;
-}
-
-.next {
-    right: 0;
-}
-
-@media (max-width: 768px) {
-    /* Estilos para pantallas pequeñas */
-    .navbar {
-        padding: 10px;
-    }
-
-    .NavButton {
-        padding: 8px 16px;
-        margin: 0 5px;
-    }
-
-    .Info-container {
-        margin-top: 50px; /* Ajusta el margen para centrar */
-    }
-
-    .slider {
-        width: 90%; /* Ajusta el ancho del carrusel */
-    }
-
-    .prev, .next {
-        width: 8%;
-        padding: 8px; /* Ajusta el espacio para hacer clic */
-    }
-}
-
 /* Estilos para el contenedor principal de la página */
 #root {
     overflow-y: hidden; /* Oculta el desplazamiento vertical */
+}
+
+/* Estilos para el contenedor de la información */
+.info-background {
+    background-image: url('../../Components/IMG/FondoFeed.png');    
+    padding: 50px 0; /* Espaciado interno */
+}
+
+/* Estilos para el contenedor de la imagen y el contenido */
+.info-container {
+    max-width: 1200px; /* Ancho máximo */
+    margin: 0 auto; /* Centra el contenido horizontalmente */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilos para la imagen */
+.IMG2 {
+    width: 100%; /* Ocupa todo el ancho del contenedor */
+    max-width: 600px; /* Ancho máximo */
+    height: auto; /* Altura automática */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    margin-bottom: 30px; /* Espacio inferior */
+}
+
+/* Estilos para la tarjeta de información */
+.card-info {
+    background-color: #fff; /* Color de fondo */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding: 30px; /* Espaciado interno */
+    text-align: center; /* Alineación del texto */
+}
+
+/* Estilos para el título */
+.card-info h1 {
+    margin-bottom: 20px; /* Espacio inferior */
+    font-size: 32px; /* Tamaño de fuente */
+    color: #333; /* Color del texto */
+}
+
+/* Estilos para el texto */
+.card-info p {
+    font-size: 18px; /* Tamaño de fuente */
+    color: #666; /* Color del texto */
+    line-height: 1.6; /* Altura de línea */
+}
+
+/* Estilos para hacerlo responsive */
+@media screen and (max-width: 768px) {
+    .info-background {
+        padding: 30px 0; /* Espaciado interno */
+    }
+
+    .info-container {
+        padding: 0 20px; /* Espaciado interno */
+    }
+
+    .IMG2 {
+        margin-bottom: 20px; /* Espacio inferior */
+    }
+
+    .card-info {
+        padding: 20px; /* Espaciado interno */
+    }
+
+    .card-info h1 {
+        font-size: 28px; /* Tamaño de fuente */
+    }
+
+    .card-info p {
+        font-size: 16px; /* Tamaño de fuente */
+    }
 }

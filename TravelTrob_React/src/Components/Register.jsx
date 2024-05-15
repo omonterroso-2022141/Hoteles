@@ -215,9 +215,7 @@ export const Register = ({ switchAuthHandler }) => {
         >
           Register
         </button>
-        <button onClick={handleTogglePassword}>
-          {showPassword ? 'Ocultar' : 'Mostrar'} contraseña
-        </button>
+        
         <span className="CambioRegister" onClick={switchAuthHandler}>
           ¿Ya tienes una cuenta? ¡Inicia sesión acá!
         </span>

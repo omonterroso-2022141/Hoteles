@@ -89,7 +89,9 @@ export const Login = ({ switchAuthHandler }) => {
     setShowPassword(prevState => !prevState);
   };
   //Viajar a Feed
-
+    const handlerNavigateToLogin = () =>{
+      navigate('/feed')
+    }
 
   return (
     <div className='contorno-login'>
@@ -126,6 +128,8 @@ export const Login = ({ switchAuthHandler }) => {
 
         />
         <button
+          onClick={handlerNavigateToLogin}
+          
           disabled={isSubmitButtonDisable}
         >
           LogIn

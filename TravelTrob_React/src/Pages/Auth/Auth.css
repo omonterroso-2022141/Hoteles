@@ -2,7 +2,8 @@ body {
     justify-content: center;
     align-items: center;
     display: flex;
-    background-image: url('../../Components/IMG/imagen.png');
+    background-image: url('../../Components/IMG/fONDOlOGIN2.png');
+    background-size: cover;
 }
 
 .form-auth {
@@ -12,16 +13,18 @@ body {
     align-items: center;
     width: 100%;
     max-width: 400px;
-    padding: 0 20px; /* Ajuste de padding para pantallas pequeñas */
+    padding: 5 15px; 
 }
 .contorno-login {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: transparent;
-    backdrop-filter: blur(4px);
-    border: 2px solid #ffffff;
+    backdrop-filter: blur(30px);
+    border: 2px solid #000000;
     border-radius: 8px;
+    padding-top: 12px;
+    margin-top:10% ;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     max-width: 100%;
     max-height: calc(100vh - 40px);
@@ -34,10 +37,12 @@ body {
     justify-content: center;
     align-items: center;
     background-color: transparent;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(20px);
     border: 2px solid #ffffff;
     border-radius: 8px;
     padding: 12px;
+    padding-top: 12px;
+    margin-top:4% ;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     max-width: 100%;
     max-height: calc(100vh - 40px);   
@@ -67,6 +72,7 @@ body {
     border: 1px solid rgba(0, 0, 0, .2);
     outline: none;
     border-radius: 40px;
+    margin-bottom: 15px;
     transition: border-color 0.3s ease;
     color: black;
     font-size: 13px;
@@ -113,7 +119,7 @@ body {
 }
 
 .form-auth input {
-    margin: 10px 0;
+    margin: 13px 0;
     padding: 12px;
     width: calc(100% - 20px);
     background: transparent;
@@ -123,6 +129,7 @@ body {
     transition: border-color 0.3s ease;
     border-radius: 40px;
     color: black;
+    font-style: italic ;
     font-size: 14px;
 }
 
@@ -170,7 +177,7 @@ button {
     transition: background-color 0.3s ease, color 0.3s ease;
     font-size: 16px;
     font-weight: 600;
-    margin-top: 10px;
+    margin-top: 19px;
 }
 
 button:hover {

@@ -1,12 +1,15 @@
 import { useDetails } from '../Shared/Hooks/useDetails.jsx';
 import { useNavigate } from 'react-router-dom';
-import '../Components/CSS/Info.css';
+import '../Components/CSS/Navbar.css';
 const logo = 'src/Components/IMG/Loogo1_Nombre.png'
 
 const NavLogo = () => (
+  
   <div className='logo'>
     <img src={logo} alt="" />
+
   </div>
+  
 );
 
 const NavButton = ({ text, onClickHandler }) => (
@@ -26,12 +29,29 @@ export const Navbar = () => {
   const handleNavigateToLogin = () => {
     navigate('/auth');
   };
+  const handlerNaavigateToFeed = ()=>{
+    navigate('/feed')
+  }
+
+  const handlerNavigatetoInfo = () =>{
+    navigate('/*')
+  }
+  const handlerNaavigateToReserva=() =>{
+    navigate('/reserva')
+  }
 
   return (
     <div className='navbar'>
-      <NavLogo />
+
+      <div onClick={handlerNavigatetoInfo}>
+      <NavLogo   
+      />
+     
+      </div>
+    
       <div Text-Container>
-        <NavButton text='Browse' />
+        <NavButton text='Browse' onClickHandler={handlerNaavigateToFeed} />
+        <NavButton text='Reservar' onClickHandler={handlerNaavigateToReserva} />
         {!isLogged ? (
           <NavButton text='Login' onClickHandler={handleNavigateToLogin} />
         ) : (
