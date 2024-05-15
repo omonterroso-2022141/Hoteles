@@ -1,6 +1,6 @@
 'use strict'
 import User from './User.model.js'
-import { encrypt, checkPassword, checkUpdate } from '../utils/validator.js'
+import { encrypt, checkPassword, checkUpdate } from '../Utils/Validator.js'
 import { generateJwt } from '../utils/jwt.js'
 
 export const test = (req, res) => {

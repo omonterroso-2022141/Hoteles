@@ -7,7 +7,7 @@ const reservacionSchema = Schema({
         type: Date,
         required: true
     },
-    fechaFinalización: {
+    fechaFinalizacion: {
         type: Date,
         required: true
     },
@@ -16,7 +16,7 @@ const reservacionSchema = Schema({
         required: true
     },
     detallesExtra: {
-        type: Stringr,
+        type: String,
         required: true
     },
     hotel: {
@@ -27,6 +27,11 @@ const reservacionSchema = Schema({
     habitacion: {
         type: mongoose.Schema.ObjectId,
         ref: 'Habitacion',
+        required: true
+    },
+    user: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
         required: true
     }
 })

@@ -13,9 +13,9 @@ import {
 const api = Router()
 
 api.get('/testCHabitacion', [validateJwt], testCHabitacion)
-api.post('/addCHabitacion', [validateJwt], addCHabitacion)
+api.post('/addCHabitacion', [validateJwt, isAdmin], addCHabitacion)
 api.get('/viewCHabitacion', [validateJwt], viewCHabitacion)
-api.put('/updateCHabitacion/:id', [validateJwt], updateCHabitacion)
-api.delete('/deleteCHabitacion/:id', [validateJwt], deleteCHabitacion)
+api.put('/updateCHabitacion/:id', [validateJwt, isAdmin], updateCHabitacion)
+api.delete('/deleteCHabitacion/:id', [validateJwt, isAdmin], deleteCHabitacion)
 
 export default api

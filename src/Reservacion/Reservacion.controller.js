@@ -1,5 +1,8 @@
 import Habitacion from '../Habitaciones/Habitacion.model.js'
 import Hotel from '../Hoteles/Hotel.model.js'
+import User from '../User/User.model.js'
+import { formatDate } from '../Utils/Validator.js'
+import { enviarCorreo } from '../Utils/enviarCorreo.js'
 import Reservacion from './Reservacion.model.js'
 
 export const testReservacion = (req, res)=>{
@@ -10,7 +13,12 @@ export const testReservacion = (req, res)=>{
 export const addReservacion = async(req, res)=>{
     try{
         let data = req.body
+        let { id } = req.user
         
+        let existeUser = await User.findOne({_id:id})
+        if(!existeUser) return res.status(404).send({message: 'The User not found'})
+        data.user = id
+
         let existeHotel = await Hotel.findOne({_id:data.hotel})
         if(!existeHotel) return res.status(404).send({message: 'The Hotel not found'})
 
@@ -19,6 +27,8 @@ export const addReservacion = async(req, res)=>{
 
         let reservacion = new Reservacion(data)
         await reservacion.save()
+        setReservacion(existeUser, existeHotel, existeHabitacion, reservacion)
+
         return res.send({message: 'saved reservation', reservacion})
     }catch(err){
         console.error(err)
@@ -26,13 +36,22 @@ export const addReservacion = async(req, res)=>{
     }
 }
 
-export const viewReservacion = async(req, res)=>{
+const setReservacion = async(existeUser, existeHotel, existeHabitacion, reservacion)=>{
     try{
-        let reservaciones = await Reservacion.find({})
-        return res.send({message: reservaciones})
+        let data = {//'incmonster365@gmail.com'
+            correoEnviar: existeUser.email, 
+            fechaInicio: formatDate(reservacion.fechaInicio), 
+            fechaCierre: formatDate(reservacion.fechaFinalizacion), 
+            hotel: existeHotel.nombre, 
+            cantidadPersonas: reservacion.cantidadPersonas, 
+            habitacion: existeHabitacion.descripcion, 
+            dataExtra: reservacion.detallesExtra
+        }
+        enviarCorreo(data)
+        return true
     }catch(err){
         console.error(err)
-        return res.status(500).send({message: err})
+        return false
     }
 }
 
@@ -68,3 +87,4 @@ export const deleteReservacion = async(req, res)=>{
         return res.status(500).send({message: err})
     }
 }
+

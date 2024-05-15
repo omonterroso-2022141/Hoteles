@@ -20,6 +20,11 @@ const hotelSchema = Schema({
         type: String,
         required: true,
     },
+    imagen:{
+        type: String,
+        required: true,
+        default: ''
+    },
     categoria: {
         type: mongoose.Schema.ObjectId,
         ref: 'Category',

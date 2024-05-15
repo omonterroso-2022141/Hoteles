@@ -6,15 +6,13 @@ import {
     addReservacion,
     deleteReservacion,
     testReservacion, 
-    updateReservacion, 
-    viewReservacion
+    updateReservacion
 } from './Reservacion.controller.js'
 
 const api = Router()
 
 api.get('/testReservacion', testReservacion)
 api.post('/addReservacion', [validateJwt], addReservacion)
-api.get('/viewReservacion', [validateJwt], viewReservacion)
 api.put('/updateReservacion/:id', [validateJwt], updateReservacion)
 api.delete('/deleteReservacion/:id', [validateJwt], deleteReservacion)
 

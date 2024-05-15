@@ -7,7 +7,7 @@ const api = express.Router()
 
 //# Role ADMIN
 api.get('/test', test)
-api.get('/list', list)
+api.get('/list', [validateJwt, isAdmin], list)
 
 //# Role CLIENT
 api.post('/register', register)
