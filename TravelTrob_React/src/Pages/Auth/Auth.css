@@ -152,6 +152,7 @@ button:hover {
     transition: border-color 0.3s ease;
     border-radius: 40px;
     color: black;
+    background-color: white;
     font-style: italic;
     font-size: 14px;
 }
