@@ -50,6 +50,14 @@ export const formatDate = (date) => {
         const day = match[3]
         return `${day}/${month}/${year}`
     } else {
-        return 'Err'
+        return null
     }
+}
+
+export const obtenerFechaActual = () => {
+    const fecha = new Date();
+    const año = fecha.getFullYear();
+    const mes = ('0' + (fecha.getMonth() + 1)).slice(-2);
+    const dia = ('0' + fecha.getDate()).slice(-2);
+    return `${año}-${mes}-${dia}`;
 }

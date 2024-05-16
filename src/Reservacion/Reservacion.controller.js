@@ -1,7 +1,7 @@
 import Habitacion from '../Habitaciones/Habitacion.model.js'
 import Hotel from '../Hoteles/Hotel.model.js'
 import User from '../User/User.model.js'
-import { formatDate } from '../Utils/Validator.js'
+import { formatDate, obtenerFechaActual } from '../Utils/Validator.js'
 import { enviarCorreo } from '../Utils/enviarCorreo.js'
 import Reservacion from './Reservacion.model.js'
 
@@ -24,11 +24,19 @@ export const addReservacion = async(req, res)=>{
 
         let existeHabitacion = await Habitacion.findOne({_id:data.habitacion})
         if(!existeHabitacion) return res.status(404).send({message: 'The Habitacion not found'})
-
+        
         let reservacion = new Reservacion(data)
-        await reservacion.save()
+        /*await reservacion.save()
         setReservacion(existeUser, existeHotel, existeHabitacion, reservacion)
-
+        */
+        let fechaActual = obtenerFechaActual()
+        if(fechaActual>=data.fechaInicio || fechaActual>= fechaFinalizacion)
+            return res.status(400).send({message: 'You cannot request past days'})
+        else if(data.fechaFinalizacion<data.fechaInicio)
+            return res.status(400).send({message: 'Logically, you cannot request a start date after the end date, please try again.'})
+        else if(data.fechaFinalizacion==data.fechaInicio)
+            return res.status(400).send({message: 'You cannot request a room that starts and ends on the same day'})
+        
         return res.send({message: 'saved reservation', reservacion})
     }catch(err){
         console.error(err)
