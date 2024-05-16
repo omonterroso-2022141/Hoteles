@@ -108,11 +108,13 @@ export const Login = ({ switchAuthHandler }) => {
           field='email'
           label='Email'
           type='email'
+          placeholder='example@gmai.com'
           value={formData.email.value}
           onChangeHandler={onValueChange}
           onBlurHandler={handleValidationOnBlur}
           showErrorMessage={formData.email.showError}
           validationMessage={emailValidationMessage}
+         
         />
 
         <Input

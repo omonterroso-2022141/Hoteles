@@ -10,7 +10,7 @@ export const Auth = () => {
     }
     return (
         <>
-            <div className="contenedor-auth">
+            <div>
                 {
                     isLogin ? (
                         <Login switchAuthHandler={handleAuthPage}></Login>

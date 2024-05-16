@@ -30,3 +30,34 @@ export const checkUpdate = async (data, userId) => {
         return true
     }
 }
+
+export const formatDate = (date) => {
+    // Check if date is a Date object
+    if (!(date instanceof Date)) {
+        return 'Err';
+    }
+
+    // Convertir el objeto Date a una cadena de caracteres en formato ISO 8601
+    const isoString = date.toISOString()
+
+    // Expresión regular para coincidir con el formato ISO 8601
+    let regex = /^(\d{4})-(\d{2})-(\d{2})T.*$/
+    let match = isoString.match(regex)
+    
+    if (match) {
+        const year = match[1]
+        const month = match[2]
+        const day = match[3]
+        return `${day}/${month}/${year}`
+    } else {
+        return null
+    }
+}
+
+export const obtenerFechaActual = () => {
+    const fecha = new Date();
+    const año = fecha.getFullYear();
+    const mes = ('0' + (fecha.getMonth() + 1)).slice(-2);
+    const dia = ('0' + fecha.getDate()).slice(-2);
+    return `${año}-${mes}-${dia}`;
+}

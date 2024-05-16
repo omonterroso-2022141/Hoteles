@@ -1,6 +1,7 @@
 'use strict'
 
 import { Router } from 'express'
+import { isAdmin, validateJwt } from '../middlewares/validateJwt.js'
 import {
     addCHabitacion,
     deleteCHabitacion,
@@ -11,10 +12,10 @@ import {
 
 const api = Router()
 
-api.get('/testCHabitacion', testCHabitacion)
-api.post('/addCHabitacion', addCHabitacion)
-api.get('/viewCHabitacion', viewCHabitacion)
-api.put('/updateCHabitacion/:id', updateCHabitacion)
-api.delete('/deleteCHabitacion/:id', deleteCHabitacion)
+api.get('/testCHabitacion', [validateJwt], testCHabitacion)
+api.post('/addCHabitacion', [validateJwt, isAdmin], addCHabitacion)
+api.get('/viewCHabitacion', [validateJwt], viewCHabitacion)
+api.put('/updateCHabitacion/:id', [validateJwt, isAdmin], updateCHabitacion)
+api.delete('/deleteCHabitacion/:id', [validateJwt, isAdmin], deleteCHabitacion)
 
 export default api

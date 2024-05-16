@@ -7,12 +7,12 @@ const api = express.Router()
 
 //# Role ADMIN
 api.get('/test', test)
-api.get('/list', list)
+api.get('/list', [validateJwt, isAdmin], list)
 
 //# Role CLIENT
 api.post('/register', register)
 api.post('/login', login)
-api.put('/update/:id', updateProfile)
-api.delete('/delete/:id', deleteUser)
+api.put('/update/:id', [validateJwt], updateProfile)
+api.delete('/delete/:id', [validateJwt], deleteUser)
 
 export default api
