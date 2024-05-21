@@ -1,21 +1,51 @@
-import React from 'react';
-import IMG2 from './IMG/IMG2.png';
-import { Navbar } from './Navbar';
-import './CSS/Info.css';
+import { Navbar } from "./Navbar"
+import { BarraBusqueda } from "./BarraBusqueda";
+import './CSS/Info.css'
+import { useNavigate } from "react-router-dom";
 
- export const Info = ({ switchAuthHandler }) => {
+import { Footer } from "./Footer";
+
+export const Info = () => {
+    const navigate = useNavigate()
+    const handleNavigateToLogin = () => {
+        navigate('/auth');
+    };
     return (
         <div>
-            <Navbar />
-            <div className="info-background">
-                <div className="info-container">
-                    <img className="IMG2" src={IMG2} alt="" />
-                    <div className="card-info">
-                        <h1>¡Bienvenido a Travel Trob!</h1>
-                        <p>¡Hola! Somos Travel Trob, una empresa dedicada a servicios de hoteles. Te ayudamos a encontrar el hotel perfecto para tus vacaciones...</p>
+            <header className="header">
+                <div className='NavBarBuscar'>
+                    <Navbar />
+                    <BarraBusqueda />
+                </div>
+            </header>
+
+            <section className="info-section">
+
+                <div className="container-TitleDinamic">
+                    <div className="typewriter">Bienvenido a Travel Trob</div>
+                </div>
+                <div className="info-boxes">
+
+                    <div className="info-box">
+                        <span>🌐</span>
+                        <p>Somos una web de Gestor de Hoteles</p>
+                    </div>
+                    <div className="info-box" onClick={handleNavigateToLogin}>
+                        <span>👤</span>
+                        <p>Crea tu cuenta y accede a Travel Trob</p>
+                    </div>
+                    <div className="info-box">
+                        <span>📍</span>
+                        <p>Los mejores Hoteles con los mejores precios</p>
+                    </div>
+                    <div className="info-box">
+                        <span>📱</span>
+                        <p>Una web muy intuitiva</p>
                     </div>
                 </div>
-            </div>
+            </section>
+            <Footer />
         </div>
-    );
-};
+    )
+}
+

@@ -25,10 +25,8 @@ export const useRegister = () => {
         }
     }
 
-
     return {
         register,
         isLoading
-
     }
 }

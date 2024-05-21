@@ -12,6 +12,7 @@ export const useLogin = () => {
         const user = {
             email,
             password
+            
         }
         const response = await loginRequest(user)
         setIsLoading(false)
@@ -22,6 +23,7 @@ export const useLogin = () => {
             )
         }
         localStorage.setItem('token', response.data.token)
+        navigate('/feed')
         
         
     }

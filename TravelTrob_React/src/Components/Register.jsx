@@ -170,17 +170,19 @@ export const Register = ({ switchAuthHandler }) => {
           field='email'
           label='Email'
           type='email'
+          placeholder='example@gmai.com'
           value={formData.email.value}
           onChangeHandler={onValueChange}
           onBlurHandler={handleValidationOnBlur}
           showErrorMessage={formData.email.showError}
           validationMessage={emailValidationMessage}
+
         />
 
         <Input
           field='password'
           label='Contraseña'
-          type={showPassword ? 'text' : 'password'}
+          type={'password'}
           value={formData.password.value}
           onChangeHandler={onValueChange}
           onChange={e => setPassword(e.target.value)}
@@ -200,6 +202,7 @@ export const Register = ({ switchAuthHandler }) => {
           showErrorMessage={formData.passwordConfirm.showError}
           validationMessage={passConfirmationValidationMessage}
         />
+
         <Input
           field='phone'
           label='Telefono'
@@ -215,7 +218,6 @@ export const Register = ({ switchAuthHandler }) => {
         >
           Register
         </button>
-        
         <span className="CambioRegister" onClick={switchAuthHandler}>
           ¿Ya tienes una cuenta? ¡Inicia sesión acá!
         </span>

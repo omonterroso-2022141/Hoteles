@@ -1,3 +1,4 @@
+import '../Pages/Auth/Auth.css'
 export const Input = (
     {
         field,
@@ -30,12 +31,11 @@ export const Input = (
                         type={type}
                         value={value}
                         rows={5}
-                        style={{ maxWidth: '400px' }}
                         onChange={handleValueChange}
                         onBlur={handleInputBlur}
                     />
                 ) : (
-                    <input
+                    <input className="FuncionaInput"
                         type={type}
                         value={value}
                         onChange={handleValueChange}

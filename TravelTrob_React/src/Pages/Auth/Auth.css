@@ -3,33 +3,19 @@ body {
     justify-content: center;
     align-items: center;
     display: flex;
-    background-image: url('../../Components/IMG/fONDOlOGIN2.png');
+    background-image: url('../../Components/IMG/Fondo2.02asda.png');
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
-    height: 100vh;
+    height: 100%;
     margin: 0;
 }
 
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: transparent;
-}
-
 .messageValidate {
-    font-size: 10px;
+    font-size: 15px;
     text-align: center;
     color: red;
     justify-content: center;
     display: flex;
-}
-
-@media only screen and (max-width: 768px) {
-    body {
-        background-size: cover;
-    }
 }
 
 .label-form {
@@ -44,22 +30,7 @@ body {
     align-items: center;
     display: flex;
     margin: 1.5%;
-    padding: 1.;
 }
-
-/* Contraseña */
-.Contra {
-    margin-top: 30px;
-    margin-right: 10px;
-    padding: 5px;
-}
-
-.Contra button {
-    padding: 10px;
-    background-color: black;
-}
-
-
 
 /* Botones */
 button {
@@ -75,7 +46,7 @@ button {
     transition: background-color 0.3s ease, color 0.3s ease;
     font-size: 16px;
     font-weight: 600;
-    margin-top: 19px;
+    padding-top: 5px;
 }
 
 button:hover {
@@ -84,7 +55,16 @@ button:hover {
 }
 
 /* Area de Login */
+.form-auth {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-right: 10%;
+}
+
 .contorno-login {
+    margin-top: 20%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -92,25 +72,10 @@ button:hover {
     backdrop-filter: blur(30px);
     border: 2px solid #000000;
     border-radius: 10px;
-    margin: auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     max-width: 100%;
     max-height: calc(100vh - 40px);
     overflow: hidden;
-}
-
-.form-auth input {
-    margin: auto;
-    padding: 12px;
-    width: 100%;
-    background: transparent;
-    border: 2px solid black;
-    transition: border-color 0.3s ease;
-    border-radius: 40px;
-    color: black;
-    background-color: white;
-    font-style: italic;
-    font-size: 14px;
 }
 
 .form-auth input:focus {
@@ -118,10 +83,10 @@ button:hover {
     border-color: #ff5733;
 }
 
+
 /* Area Register */
 .contorno-register {
     display: flex;
-
     justify-content: center;
     background-color: transparent;
     backdrop-filter: blur(20px);
@@ -132,32 +97,30 @@ button:hover {
     max-width: 100%;
     max-height: calc(100vh - 40px);
     overflow: hidden;
+    margin-top: 10%;
 }
 
 
 .form-auth-Register {
     margin-right: 5%;
-    padding-left: 1%;
-    margin-top: 1%;
 }
 
-.form-auth-Register Input {
-    margin: auto;
-    padding: 0.5px;
-    width: calc(100% - 20px);
+.FuncionaInput {
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
     background: transparent;
-    border: 3px solid transparent;
+    border: 2px solid transparent;
     outline: none;
     border: 2px solid rgba(255, 255, 255, .2);
     transition: border-color 0.3s ease;
-    border-radius: 40px;
-    color: black;
-    background-color: white;
-    font-style: italic;
+    border-radius: 5px;
+    color: #000000;
+    background-color: burlywood;
     font-size: 14px;
 }
 
-.form-auth-Register Input:focus {
+.FuncionaInput:focus {
     outline: none;
     border-color: 5px #ff5733;
 }
@@ -168,7 +131,8 @@ button:hover {
     margin-top: -100px;
 }
 
-.Titulo {
+.Titulo,
+.TituloL {
     color: black;
     font-size: 50px;
     margin-top: -100px;

@@ -24,8 +24,6 @@ export const Login = ({ switchAuthHandler }) => {
       }
     }
   )
-  const [showPassword, setShowPassword] = useState(false);
-  const [password, setPassword] = useState('');
 
   const isSubmitButtonDisable =
     !formData.email.isValid ||
@@ -82,12 +80,6 @@ export const Login = ({ switchAuthHandler }) => {
       }
     ))
   }
-
-
-  //Mostrar o oCULTAR cONTRASEÑA
-  const handleTogglePassword = () => {
-    setShowPassword(prevState => !prevState);
-  };
   //Viajar a Feed
     const handlerNavigateToLogin = () =>{
       navigate('/feed')
@@ -120,7 +112,7 @@ export const Login = ({ switchAuthHandler }) => {
         <Input
           field='password'
           label='Contraseña'
-          type={showPassword ? 'text' : 'password'}
+          type={'password'}
           value={formData.password.value}
           onChangeHandler={onValueChange}
           onChange={e => setPassword(e.target.value)}
@@ -130,8 +122,6 @@ export const Login = ({ switchAuthHandler }) => {
 
         />
         <button
-          onClick={handlerNavigateToLogin}
-          
           disabled={isSubmitButtonDisable}
         >
           LogIn
@@ -141,12 +131,6 @@ export const Login = ({ switchAuthHandler }) => {
           ¿Aún no tienes una cuenta? ¡Regístrate...!
         </span>
       </form>
-      <div className="Contra">
-
-        <button onClick={handleTogglePassword}>
-          {showPassword ? '0.0' : '-.-'}
-        </button>
-      </div>
 
 
     </div>
