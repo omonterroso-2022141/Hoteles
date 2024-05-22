@@ -12,6 +12,7 @@ import {
     phoneValidationMessage
 } from '../../Shared/Validators/validators.js'
 import { Input } from '../Input.jsx'
+import '../../Pages/Auth/Auth.css'
 
 export const UserConfigure = ({ settings, saveSettings }) => {
     const inputs = [

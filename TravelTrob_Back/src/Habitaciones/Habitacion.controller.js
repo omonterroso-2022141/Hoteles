@@ -75,6 +75,16 @@ export const viewHotelForHabitacion = async (req, res) => {
     }
 }
 
+export const viewHoteHabitacion = async (req, res) => {
+    try{
+        let habitacion = await Habitacion.find({})
+        return res.send({habitacion})
+    }catch(err){
+        console.error(err)
+        return res.status(500).send({ message: err })
+    }
+}
+
 export const updateHabitacion = async(req, res)=>{
     try{
         let { id } = req.params

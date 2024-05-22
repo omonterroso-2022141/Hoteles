@@ -23,6 +23,10 @@ export const AdminFeed = () => {
         navigate('/admin/habitaciones')
     }
 
+    const navigateToReserva = () => {
+        navigate('/admin/graficosReserva')
+    }
+
     return (
         <>
             <h1>AdminFeed:</h1>
@@ -31,7 +35,7 @@ export const AdminFeed = () => {
             <h3 onClick={navigateToHotels}>Hoteles</h3>
             <h3 onClick={navigateToHabitaciones}>Habitación</h3>
             <h3 onClick={navigateToCatHabs}>Cat.Habitación</h3>
-            <h3>Reservación ()</h3>
+            <h3 onClick={navigateToReserva}>Estadisticas de Reserva ()</h3>
         </>
     )
 }

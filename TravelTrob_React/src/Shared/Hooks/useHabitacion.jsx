@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { deleteHabitacionRequest, getHabitacionRequest, getHabitacionesRequest, saveCategoryRequest, updateCatHabRequest } from '../../Services/api'
+import { deleteHabitacionRequest, getHabitacionRequest, getHabitacionesRequest, saveCategoryRequest, saveHabitacionRequest, updateCatHabRequest, updateHabitacionRequest } from '../../Services/api'
+import toast from 'react-hot-toast'
 
 export const useHabitacion = () => {
     const navigate = useNavigate()
@@ -27,7 +28,7 @@ export const useHabitacion = () => {
                 'Error al obtener Categorias'
             )
         }
-        setHabitaciones(res.data.message)
+        setHabitaciones(res.data.habitacion)
     }
 
     //# ------------- Delete Habitacion ------------
@@ -52,7 +53,7 @@ export const useHabitacion = () => {
 
     //# ------------- Save Habitacion ------------
     const saveHabitacionHook = async (habitacion) => {
-        const res = await saveCategoryRequest(habitacion)
+        const res = await saveHabitacionRequest(habitacion)
         if (res.error) {
             return alert('error al agregar la categoría')
         }
@@ -69,7 +70,7 @@ export const useHabitacion = () => {
             cHabitacion,
             precio
         }
-        const res = await updateCatHabRequest(id, habitacion)
+        const res = await updateHabitacionRequest(id, habitacion)
         if (res.error) {
             if (res?.err?.res?.data?.errors) {
                 let arr = res?.err?.res?.data?.errors

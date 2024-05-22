@@ -18,13 +18,13 @@ export const addHotel = async (req, res) => {
     try {
         let { nombre, direccion, telefono, descripcion, ubicacion, categoria } = req.body
         let existeCategoria = await Category.findOne({_id: categoria})
-
         if (!existeCategoria)
             return res.status(404).send({ message: 'The category not found' })
 
-
         const validacion = validar(nombre,direccion,telefono,descripcion,ubicacion,req.file,'Y')
+        console.log(validacion);
         if(validacion == ''){
+            console.log('3');
             const hotel = new Hotel({
                 nombre: nombre,
                 direccion: direccion,
@@ -51,14 +51,16 @@ export const viewHotel = async (req, res) => {
         
         await Promise.all(categorys.map(async (category) => {
             let hotelesAdd = await Hotel.find({ categoria: category.id })
-            hotelesAdd = hotelesAdd.map(hotel => ({
-                ...hotel.toObject(),
-                nombreCategoria: category.name
-            }))
-            hoteles.push({
-                titulo: category.name,
-                hoteles: hotelesAdd
-            })
+            if(!(hotelesAdd.length === 0)){
+                hotelesAdd = hotelesAdd.map(hotel => ({
+                    ...hotel.toObject(),
+                    nombreCategoria: category.name
+                }))
+                hoteles.push({
+                    titulo: category.name,
+                    hoteles: hotelesAdd
+                })
+            }
         }))
 
         return res.send({ hoteles })
@@ -67,6 +69,17 @@ export const viewHotel = async (req, res) => {
         return res.status(500).send({ message: err })
     }
 }
+
+export const viewHotelRequest = async (req, res) => {
+    try {
+        let hoteles = await Hotel.find({})
+        return res.send({ hoteles })
+    } catch (err) {
+        console.error(err)
+        return res.status(500).send({ message: err })
+    }
+}
+
 
 export const updateHotel = async (req, res) => {
     try {

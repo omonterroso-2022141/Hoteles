@@ -10,6 +10,7 @@ export const HotelsForm = () => {
   const [formData, setFormData] = useState({
     nombre: '',
     direccion: '',
+    ubicacion: '',
     telefono: '',
     descripcion: '',
     imagen: '',
@@ -49,6 +50,8 @@ export const HotelsForm = () => {
           <input value={formData.nombre} onChange={handleChange} type='text' name='nombre' id='nombre'/>
           <h3>Dirección:</h3>
           <input value={formData.direccion} onChange={handleChange} type='text' name='direccion' id='direccion'/>
+          <h3>Ubicación:</h3>
+          <input value={formData.ubicacion} onChange={handleChange} type='text' name='ubicacion' id='ubicacion'/>
           <h3>Teléfono:</h3>
           <input value={formData.telefono} onChange={handleChange} type='text' name='telefono' id='telefono'/>
           <h3>Descripción:</h3>

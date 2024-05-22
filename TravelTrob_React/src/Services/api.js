@@ -182,7 +182,18 @@ export const deleteUserRequest = async (id) => {
 
 //# --------------------- Hotels -----------------------
 //? ----------------- GetHotelsRequest -----------------
-export const getHotelsRequest = async (list) => {
+export const getHotelsRequest = async () => {
+    try {
+        return await apiClient.get('/hotel/viewHotelRequest')
+    } catch (err) {
+        return {
+            error: true,
+            err
+        }
+    }
+}
+
+export const getHotelsUser = async () => {
     try {
         return await apiClient.get('hotel/viewHotel')
     } catch (err) {
@@ -285,7 +296,7 @@ export const updateCatHabRequest = async(id, data) =>{
 //? ------------------ GetHabitaciónRequest -----------------
 export const getHabitacionRequest = async(list)=>{
     try {
-        return await apiClient.get('Habitacion/viewHabitacion')
+        return await apiClient.get('/Habitacion/viewHoteHabitacion')
     } catch (err) {
         return{
             error:true,
@@ -382,6 +393,18 @@ export const addEvento = async(data)=>{
     }catch(err){
         console.log(err)
         return{
+            error: true,
+            err
+        }
+    }
+}
+
+export const getReservasRequest = async () => {
+    try {
+        return await apiClient.get('/Reservacion/getReservas');
+    } catch (err) {
+        console.log(err);
+        return {
             error: true,
             err
         }

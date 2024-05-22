@@ -6,6 +6,7 @@ import { Register } from "./Components/Register.jsx";
 import { ContentHabitacion } from "./Components/Habibtaciones/ContentHabitacion.jsx";
 import { UsuarioPerfil } from './Components/UsuarioPerfil.jsx'
 import { ReservaDeEventos } from "./Components/ReservaDeEventos.jsx";
+import { Admin } from "./Pages/Admin/Admin.jsx";
 
 
 export const routes = [
@@ -18,5 +19,6 @@ export const routes = [
     { path: '/habitaciones/:idHotel/reservacion/:idHabitacion', element: <Reserva /> },
     { path: '/UsuarioPerfil', element: <UsuarioPerfil /> },
     { path: '/ReservaEvento/:idHotel', element: <ReservaDeEventos /> },
-    { path: '/ReservaEvento', element: <ReservaDeEventos /> }
+    { path: '/ReservaEvento', element: <ReservaDeEventos /> },
+    { path: '/admin/*', element: <Admin /> },
 ]

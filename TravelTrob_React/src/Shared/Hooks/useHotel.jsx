@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { UpdateHotelRequest, addHotelRequest, deleteHotelRequest, getHotelsRequest, getHotelsRequestId, updateUserRequest } from "../../Services/api"
+import { UpdateHotelRequest, addHotelRequest, deleteHotelRequest, getHotelsRequest, getHotelsRequestId, getHotelsUser, updateUserRequest } from "../../Services/api"
 import toast from "react-hot-toast"
 
 export const useHotel = () => {
@@ -10,7 +10,7 @@ export const useHotel = () => {
   const [hotel, setHotel] = useState(false)
 
   const getHotels = async()=>{
-    const response = await getHotelsRequest()
+    const response = await getHotelsUser()
     if(response.error){
       return toast.error(
         'Error al obtener los hoteles'
@@ -28,7 +28,7 @@ export const useHotel = () => {
         'Error al Obtener Hoteles'
       )
     }
-    setHotels(res.data.message)
+    setHotels(res.data.hoteles)
   }
 
   //# ------------- Save Hotels ------------
@@ -39,7 +39,7 @@ export const useHotel = () => {
     })
     const res = await addHotelRequest(data)
     if (res.error) {
-      return alert('Error al guardar Usuario')
+      return alert('Error al guardar el Hotel')
     }
     navigate('/admin/hotels')
   }

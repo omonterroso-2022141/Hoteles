@@ -21,6 +21,7 @@ import { Habitacion } from "../../Components/AdminComponents/Habitacion/Habitaci
 import { useHabitacion } from "../../Shared/Hooks/useHabitacion"
 import { HabitacionForm } from "../../Components/AdminComponents/Habitacion/HabitacionForm"
 import { UpdateHabitacion } from "../../Components/AdminComponents/Habitacion/UpdateHabitacion"
+import { ReservaChart } from "../../Components/ReservaChart"
 
 export const Admin = () => {
     const { categories, getCategories, isFetching } = useCategory()
@@ -33,22 +34,18 @@ export const Admin = () => {
     const { hotels, getHotelsHook, isFetchingHotels} = useHotel()
 
     //# Cat. Habitación
-    const {cHabs, getCatHabitacionHook, isFetchingCatHabs} = useCatHabitacion()
+    const { cHabs, getCatHabitacionHook, isFetchingCatHabs} = useCatHabitacion()
 
     //# Habitaciones
-    const {habitaciones, getHabitacionesHook, isFetchingHabitaciones} = useHabitacion()
+    const { habitaciones, getHabitacionesHook, isFetchingHabitaciones} = useHabitacion()
 
     const navigate = useNavigate()
 
-    const navigateToCategory = () => {
-        navigate('/admin/categories')
-    }
-
     useEffect(() => {
-        getCategories(),
-        getUsersHook(),
-        getHotelsHook(),
-        getCatHabitacionHook(),
+        getCategories()
+        getUsersHook()
+        getHotelsHook()
+        getCatHabitacionHook()
         getHabitacionesHook()
     }, [])
 
@@ -82,6 +79,7 @@ export const Admin = () => {
                 <Route path="/hotels" element={<Hotels hotels={hotels} />} />
                 <Route path="/catHabs" element={<CatHabitacion cHabs={cHabs}/>}/>
                 <Route path="/habitaciones" element={<Habitacion habitaciones={habitaciones}/>}/>
+                <Route path="/graficosReserva" element={<ReservaChart />}/>
             </Routes>
         </div>
     )

@@ -2,10 +2,20 @@ import { useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { useHotel } from '../../../Shared/Hooks/useHotel'
 
-export const Hotels = ({ hotels = [] }) => {
+export const Hotels = () => {
   const navigate = useNavigate()
-  const { deleteHotelHook } = useHotel()
+  const { getHotelsHook, deleteHotelHook, hotels, isFetchingHotels } = useHotel()
   const urlBase = 'http://localhost:3200/hotel/getImage/'
+
+  useEffect(() => {
+    getHotelsHook()
+  }, [])
+
+  if (isFetchingHotels) {
+    return (
+        <span>Loading...</span>
+    )
+  }
 
   const navigateToUpdate = (hotel) => {
     navigate(`/admin/updateHotel/${hotel._id}`,{state:{hotel}})
@@ -35,27 +45,29 @@ export const Hotels = ({ hotels = [] }) => {
       </div>
       <h1 style={{textAlign:'center'}}>Hoteles:</h1>
       <div className='card-container'>
-        {
-          hotels.length == 0 ? noData : (
-            hotels.map((hotel) => (
-              <div key={hotel._id}>
-                <div className='card-content' style={{ width: '25em' }}>
-                  <p style={{ textAlign: 'center', fontSize: '30px' }}><strong>{hotel.nombre}</strong></p>
-                  <img style={{ width: '100%', height: '200px', objectFit: 'cover', borderRadius: '20px' }} src={`${urlBase}${hotel.imagen.split('/').pop()}`} crossOrigin='anonymous' />
-                  <p><strong>ID: </strong>{hotel._id}</p>
-                  <p><strong>Dirección: </strong>{hotel.direccion}</p>
-                  <p><strong>Teléfono: </strong>{hotel.telefono}</p>
-                  <p><strong>Descripción: </strong>{hotel.descripcion}</p>
-                  <p><strong>Categoría: </strong>{hotel.categoria}</p>
-                  <div style={{ display: 'flex', gap: '30%'}}>
-                    <button onClick={() => navigateToUpdate(hotel)} className='category-add-button'>Editar</button>
-                    <button onClick={() => deleteHotel(hotel._id)} className='category-delete-button'>Eliminar</button>
-                  </div>
+      {
+        hotels == null || hotels.length == 0 ? noData : (
+          hotels.map((hotel) => (
+            <div key={hotel._id}>
+              <div className='card-content' style={{ width: '25em' }}>
+                <p style={{ textAlign: 'center', fontSize: '30px' }}><strong>{hotel.nombre}</strong></p>
+                <img style={{ width: '100%', height: '200px', objectFit: 'cover', borderRadius: '20px' }} 
+                  src={hotel.imagen ? `${urlBase}${hotel.imagen}` : 'defaultImagePath'} 
+                  crossOrigin='anonymous' />
+                <p><strong>ID: </strong>{hotel._id}</p>
+                <p><strong>Dirección: </strong>{hotel.direccion}</p>
+                <p><strong>Teléfono: </strong>{hotel.telefono}</p>
+                <p><strong>Descripción: </strong>{hotel.descripcion}</p>
+                <p><strong>Categoría: </strong>{hotel.categoria}</p>
+                <div style={{ display: 'flex', gap: '30%' }}>
+                  <button onClick={() => navigateToUpdate(hotel)} className='category-add-button'>Editar</button>
+                  <button onClick={() => deleteHotel(hotel._id)} className='category-delete-button'>Eliminar</button>
                 </div>
               </div>
-            ))
-          )
-        }
+            </div>
+          ))
+        )
+      }
       </div>
     </>
   )

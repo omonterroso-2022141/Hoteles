@@ -1,11 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { useHabitacion } from '../../../Shared/Hooks/useHabitacion'
 
-export const Habitacion = ({habitaciones = []}) => {
+export const Habitacion = () => {
     const navigate = useNavigate()
+    const { deleteHabitacionHook, getHabitacionesHook, habitaciones, isFetchingHabitaciones} = useHabitacion()
 
-    const {deleteHabitacionHook} = useHabitacion()
+    useEffect(() => {
+        getHabitacionesHook()
+    }, [])
+
+    if (isFetchingHabitaciones) {
+        return (
+            <span>Loading...</span>
+        )
+    }
 
     const navigateToUpdate = (habitacion)=>{
         navigate(`/admin/updateHabitacion/${habitacion._id}`,{state:{habitacion}})
@@ -36,7 +45,7 @@ export const Habitacion = ({habitaciones = []}) => {
     <h1 style={{textAlign:'center'}}>Habitaciones:</h1>
     <div className='card-container'>
         {
-            habitaciones.length == 0 ? noData:(
+            habitaciones == null || habitaciones.length == 0 ? noData:(
                 habitaciones.map((habitacion)=>(
                     <div key={habitacion._id}>
                         <div className='card-content'>
@@ -48,7 +57,7 @@ export const Habitacion = ({habitaciones = []}) => {
                             <div className='parraf'>
                                 {habitacion.descripcion}
                             </div>
-                            <p><strong>Precio: {habitacion.precio}</strong></p>
+                            <p><strong>Precio: Q {habitacion.precio}.00</strong></p>
                             <div style={{display:'flex', gap:'40%'}}>
                                 <button onClick={()=> navigateToUpdate(habitacion)} className="category-add-button">Editar</button>
                                 <button onClick={()=> deleteHabitacion(habitacion._id)} className="category-delete-button">Eliminar</button>

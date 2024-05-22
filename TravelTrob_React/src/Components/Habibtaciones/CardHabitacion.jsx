@@ -15,9 +15,9 @@ export const CardHabitacion = ({id, disponibilidad, numeroCuarto, descripcion, p
             <div key={id} className="card">
                 <div className="card-content">
                     <h2 className="card-title">{disponibilidad}</h2>
-                    <p className="card-description">{numeroCuarto}</p>
-                    <p className="card-description">{descripcion}</p>
-                    <p className="card-description">{precio}</p>
+                    <p className="card-description"><b>Numbero Carto: </b>{numeroCuarto}</p>
+                    <p className="card-description"><b>Descripcion breve: </b>{descripcion}</p>
+                    <p className="card-description"><b>Precio: </b>Q {precio}.00</p>
                     <button onClick={irReserva}>Reservar</button>
                 </div>
             </div>

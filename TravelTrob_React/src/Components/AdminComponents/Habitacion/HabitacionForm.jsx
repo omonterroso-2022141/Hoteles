@@ -37,20 +37,20 @@ export const HabitacionForm = () => {
         <h1>Agregar Habitación:</h1>
         <form onSubmit={handleSubmit}>
             <div>
-                <h3>Hotel ID:</h3>
-                <input value={formData.hotel} onChange={handleChange} type="text" name="HotelID" id="HotelID" />
+                <h3>Hotel:</h3> {/* Cambié HotelID a hotel */}
+                <input value={formData.hotel} onChange={handleChange} type="text" name="hotel" id="hotel" />
                 <h3>Disponibilidad:</h3>
-                <input value={formData.disponibilidad} onChange={handleChange} type="text" name="Disponibilidad" id="Disponibilidad" />
+                <input value={formData.disponibilidad} onChange={handleChange} type="text" name="disponibilidad" id="disponibilidad" />
                 <h3>No. Cuarto:</h3>
-                <input value={formData.numeroCuarto} onChange={handleChange} type="number" name="Cuarto" id="Cuarto" />
+                <input value={formData.numeroCuarto} onChange={handleChange} type="number" name="numeroCuarto" id="numeroCuarto" />
                 <h3>Descripción:</h3>
-                <textarea value={formData.descripcion} onChange={handleChange} style={{maxHeight:'20em'}} name="Descripcion" id="Descripcion"></textarea>
+                <textarea value={formData.descripcion} onChange={handleChange} style={{maxHeight:'20em'}} name="descripcion" id="descripcion"></textarea>
                 <h3>Cat. Habitación:</h3>
-                <input value={formData.cHabitacion} onChange={handleChange} type="text" name="CatHabitacion" id="CatHabitacion" />
+                <input value={formData.cHabitacion} onChange={handleChange} type="text" name="cHabitacion" id="cHabitacion" />
                 <h3>Precio:</h3>
-                <input value={formData.precio} onChange={handleChange} type="number" name="Precio" id="Precio" />
+                <input value={formData.precio} onChange={handleChange} type="number" name="precio" id="precio" />
                 <button type='submit'>Agregar</button>
-                <button onClick={navigateToHabitaciones}>Cancelar</button>
+                <button type='button' onClick={navigateToHabitaciones}>Cancelar</button> {/* Cambié el tipo a 'button' */}
             </div>
         </form>
         </>
