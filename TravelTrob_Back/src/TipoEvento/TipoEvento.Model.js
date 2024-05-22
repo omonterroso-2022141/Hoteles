@@ -1,10 +1,14 @@
 'use strict'
 
-import { Schema, model } from 'mongoose'
+import mongoose, { Schema, model } from 'mongoose'
 
 const tipoEventoSchema = Schema({
     nombre: {
         type: String,
+        required: true
+    },
+    hotel: {
+        type: mongoose.Schema.ObjectId,
         required: true
     }
 })

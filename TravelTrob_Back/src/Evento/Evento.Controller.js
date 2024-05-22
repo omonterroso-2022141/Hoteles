@@ -1,5 +1,7 @@
 import TipoEvento from '../TipoEvento/TipoEvento.Model.js'
 import Evento from './Evento.Model.js'
+import Hotel from '../Hoteles/Hotel.model.js'
+import { obtenerFechaActual } from '../Utils/Validator.js'
 
 export const testCHabitacion = (req, res) => {
     return res.send({ message: 'Conexion a CHabitacion' })
@@ -12,6 +14,12 @@ export const addEvento = async (req, res) => {
         let existTipoEvento = await TipoEvento.findOne({_id:data.tipoEvento})
         if(!existTipoEvento) return res.status(403).send({message: 'The type event not exist'})
 
+        let fechaActual = obtenerFechaActual()
+        if(fechaActual>=data.fecha)
+            return res.status(400).send({message: 'No puedes solicitar días pasados'})
+        else if(fechaActual==data.fecha)
+            return res.status(400).send({message: 'No se puede solicitar un eveneto el mismo dia actual'})
+        
         let evento = new Evento(data)
         await evento.save()
         return res.send({ message: 'save event', evento })
@@ -40,6 +48,12 @@ export const updateEvento = async (req, res) => {
                 .status(404)
                 .send({ message: 'The event not exist' })
         let data = req.body
+        
+        if(data.tipoEvento){
+            let existTipoEvento = await TipoEvento.findOne({_id:data.tipoEvento})
+            if(!existTipoEvento) return res.status(403).send({message: 'The type event not exist'})
+        }
+        
         let eventActualizado = await Evento.findOneAndUpdate(
             { _id: id },
             data,
@@ -64,7 +78,6 @@ export const deleteEvento = async (req, res) => {
         let existeEvento = await Evento.findOne({ _id: id })
         if (!existeEvento)return res.status(404).send({ message: 'This Event Does Not Exists' })
 
-        //# Delete CHabitacion
         let eventoDelete = await Evento.findOneAndDelete({ _id: id })
         if (!eventoDelete) return res.status(404).send({ message: 'Event Not Found, Not Deleted' })
         return res.send({message: `The event: has been successfully removed`})

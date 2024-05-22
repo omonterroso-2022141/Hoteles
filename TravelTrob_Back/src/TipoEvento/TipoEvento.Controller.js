@@ -2,34 +2,21 @@
 
 import TipoEvento from './TipoEvento.Model.js'
 import Evento from '../Evento/Evento.Model.js'
+import Hotel from '../Hoteles/Hotel.model.js'
 
 export const testCHabitacion = (req, res) => {
     return res.send({ message: 'Conexion a CHabitacion' })
 }
 
-export const tipoEventoDefault = async (req, res) => {
-    try {
-        let existe = await TipoEvento.findOne({ nombre: 'Default' })
-        if (!existe) {
-            let data = {
-                nombre: 'Default'
-            }
-            let tipoEvento = new TipoEvento(data)
-            await tipoEvento.save()
-            console.log('Type Evente Default Create')
-        }
-        console.log('Type Evente already exists')
-    } catch (err) {
-        console.error(err)
-        return res
-            .status(500)
-            .send({ message: 'Error course could not be added', err })
-    }
-}
-
 export const addTipoEvento = async (req, res) => {
     try {
         let data = req.body
+
+        if(data.hotel){
+            let existeHotel = await Hotel.findOne({_id:data.hotel})
+            if(!existeHotel) return res.status(404).send({message: 'The hotel not found'})
+        }
+
         let tipoEvento = new TipoEvento(data)
         await tipoEvento.save()
         return res.send({ message: 'save tipo evento', tipoEvento })
@@ -49,6 +36,17 @@ export const viewTipoEvento = async (req, res) => {
     }
 }
 
+export const viewTipoEventoHotel = async (req, res) => {
+    try {
+        let { id } = req.params
+        let tipoEvento = await TipoEvento.find({hotel: id})
+        return res.send({ tipoEvento })
+    } catch (err) {
+        console.error(err)
+        return res.status(500).send({ message: err })
+    }
+}
+
 export const updateTipoEvento = async (req, res) => {
     try {
         let { id } = req.params
@@ -58,6 +56,12 @@ export const updateTipoEvento = async (req, res) => {
                 .status(404)
                 .send({ message: 'The type event not exist' })
         let data = req.body
+
+        if(data.hotel){
+            let existeHotel = await Hotel.findOne({_id:data.hotel})
+            if(!existeHotel) return res.status(404).send({message: 'The hotel not found'})
+        }
+
         let tipoEventActualizado = await TipoEvento.findOneAndUpdate(
             { _id: id },
             data,

@@ -13,7 +13,7 @@ export const Card = ({ id, title, image, description, infoButton }) => {
         navigate(`/habitaciones/${id}`);
     };
     const evento = () =>{
-        navigate('/ReservaEvento')
+        navigate(`/ReservaEvento/${id}`)
     }
 
     return (

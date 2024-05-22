@@ -30,6 +30,14 @@ export const addReservacion = async(req, res)=>{
         if(!existeHotel) return res.status(404).send({message: 'The Hotel not found'})
         data.hotel = existeHotel._id
 
+        let fechaActual = obtenerFechaActual()
+        if(fechaActual>=data.fechaInicio || fechaActual>= data.fechaFinalizacion)
+            return res.status(400).send({message: 'No puedes solicitar días pasados'})
+        else if(data.fechaFinalizacion<data.fechaInicio)
+            return res.status(400).send({message: 'Lógicamente no puedes solicitar una fecha de inicio posterior a la fecha de finalización, por favor inténtalo de nuevo.'})
+        else if(data.fechaFinalizacion==data.fechaInicio)
+            return res.status(400).send({message: 'No se puede solicitar una habitación que empiece y acabe el mismo día'})
+        
         let reservacion = new Reservacion(data)
         await reservacion.save()
 
@@ -41,15 +49,7 @@ export const addReservacion = async(req, res)=>{
         if(!habitacionUpdate) return res.status(401).send({message: 'La habitación no se pudo actualizar.'}) 
 
         setReservacion(existeUser, existeHotel, existeHabitacion, reservacion)
-        
-        let fechaActual = obtenerFechaActual()
-        if(fechaActual>=data.fechaInicio || fechaActual>= data.fechaFinalizacion)
-            return res.status(400).send({message: 'No puedes solicitar días pasados'})
-        else if(data.fechaFinalizacion<data.fechaInicio)
-            return res.status(400).send({message: 'Lógicamente no puedes solicitar una fecha de inicio posterior a la fecha de finalización, por favor inténtalo de nuevo.'})
-        else if(data.fechaFinalizacion==data.fechaInicio)
-            return res.status(400).send({message: 'No se puede solicitar una habitación que empiece y acabe el mismo día'})
-        
+
         return res.send({message: 'saved reservation', reservacion})
     }catch(err){
         console.error(err)
@@ -109,3 +109,37 @@ export const deleteReservacion = async(req, res)=>{
     }
 }
 
+export const getReservas = async (req, res) => {
+    try {
+        let reservas = await Reservacion.aggregate([
+            {
+                $group: {
+                    _id: "$hotel",
+                    count: { $sum: 1 }
+                }
+            },
+            {
+                $lookup: {
+                    from: "hotels",
+                    localField: "_id",
+                    foreignField: "_id",
+                    as: "hotel"
+                }
+            },
+            {
+                $unwind: "$hotel"
+            },
+            {
+                $project: {
+                    _id: 0,
+                    hotel: "$hotel.nombre",
+                    count: 1
+                }
+            }
+        ])
+        return res.status(200).send(reservas);
+    } catch (err) {
+        console.error(err);
+        return res.status(500).send({ message: err.message });
+    }
+}

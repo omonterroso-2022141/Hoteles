@@ -54,3 +54,10 @@ export const validateNumber = (phone)=>{
 }
 
 export const numberValidationMessage = 'Solo numeros porfavor'
+
+export const validateTime = (time)=>{
+    const regex = /^([01]?[0-9]|2[0-4]):([0-5][0-9])$/
+    return regex.test(time)
+}
+
+export const timeValidationMessage = 'Ingrese una hora valida porfavor'

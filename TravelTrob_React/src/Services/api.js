@@ -97,3 +97,27 @@ export const saveReservaRequest = async(data)=>{
         }
     }
 }
+
+export const getTipoEventosHotel = async(id)=>{
+    try{
+        return await apiClient.get(`/TipoEvento/viewTipoEventoHotel/${id}`)
+    }catch(err){
+        console.log(err)
+        return{
+            error: true,
+            err
+        }
+    }
+}
+
+export const addEvento = async(data)=>{
+    try{
+        return await apiClient.post(`/Evento/addTipoEvento`, data)
+    }catch(err){
+        console.log(err)
+        return{
+            error: true,
+            err
+        }
+    }
+}
