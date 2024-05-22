@@ -9,7 +9,7 @@ import { useReserva } from '../Shared/Hooks/useReserva.jsx'
 import { useNavigate } from 'react-router-dom'
 
 export const Reserva = () => {
-  let { getHotelId, hotel } = useHotel()
+  let { getHotelId, hotel, isFetching } = useHotel()
   let { saveReserva } = useReserva()
   const { idHabitacion } = useParams()
   const urlBase = 'http://localhost:3200/Hotel/getImage/'
@@ -17,6 +17,12 @@ export const Reserva = () => {
   useEffect(() => {
     getHotelId(idHabitacion)
   }, [])
+
+  if (isFetching) {
+    return (
+        <span>Loading...</span>
+    )
+  }
 
   const [fechaInicio, setFechaInicio] = useState(null);
   const [fechaFinalizacion, setFechaFinalizacion] = useState(null)

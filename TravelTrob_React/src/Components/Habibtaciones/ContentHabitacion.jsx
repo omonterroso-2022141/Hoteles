@@ -7,14 +7,14 @@ import { Outlet, useParams } from 'react-router-dom';
 
 
 export const ContentHabitacion = () => {
-    const { getHabitaciones, habitaciones, hotelName, isFetching } = useHabitacion()
+    const { getHabitaciones, habitaciones, hotelName, isFetchingHabitaciones } = useHabitacion()
     let { idHotel } = useParams()
 
     useEffect(() => {
       getHabitaciones(idHotel)
     }, [idHotel])
 
-    if (isFetching) {
+    if (isFetchingHabitaciones) {
         return (
             <span>Loading...</span>
         )

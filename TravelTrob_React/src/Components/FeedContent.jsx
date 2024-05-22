@@ -6,14 +6,13 @@ import { useHotel } from '../Shared/Hooks/useHotel.jsx'
 
 
 export const FeedContent = () => {
-    const { getHotels, hotels, isFetching } = useHotel()
-    let nombreCategory = []
+    const { getHotels, hotels, isFetchingHotels } = useHotel()
 
     useEffect(() => {
-        getHotels()
+      getHotels()
     }, [])
 
-    if (isFetching) {
+    if (isFetchingHotels) {
         return (
             <span>Loading...</span>
         )
