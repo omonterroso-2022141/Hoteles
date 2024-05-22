@@ -90,14 +90,13 @@ export const updateProfile = async (req, res) => {
             !await checkPassword(data.password, user.password))
             return res.status(401).send({ message: 'Incorrect Password' })
 
-        if (user.role != 'ADMIN') { 
+        if (user.role != 'ADMIN') { // # Role 'Client' cannot update own role
             if (data.role)
                 return res.status(404).send({ message: 'Some Data Cannot Be Updated or Mising Data' })
         }
 
         if (data.password && data.newPassword) {
             data.password = await encrypt(data.newPassword)
-
             let updatedUser = await User.findOneAndUpdate(
                 { _id: id },
                 data,
@@ -124,37 +123,18 @@ export const updateProfile = async (req, res) => {
 */
 export const deleteUser = async (req, res) => {
     try {
-        let { role } = req.user
+        let { id } = req.params
         let { password, username } = req.body
         let user = await User.findOne({ username })
         
-        if(role == 'ADMIN'){
-            let userDelete = await User.findOneAndDelete({username: username})
-            if(!userDelete) 
-                return res.status(404).send({ message: 'User not found, not Deleted' })
-
-            let deletedUser = await User.deleteOne({ username: username })
-            if (deletedUser.deleteCount == 0) 
-                return res.status(404).send({ message: 'User not found, not Deleted' })
-            
-            return res.send({ message: 'Account Deleted Successfully !!' })
-
         // # Validations To Delete Account
-        }else if ((user && await checkPassword(password, user.password))){
-            // # Validations To Delete Account
-            let userDelete = await User.findOneAndDelete({username: username})
-            if(!userDelete) 
-                return res.status(404).send({ message: 'User not found, not Deleted' })
-
-            if (user) {
-                let deletedUser = await User.deleteOne({ username: username })
-                if (deletedUser.deleteCount == 0) return res.status(404).send({ message: 'User not found, not Deleted' })
-                    return res.send({ message: 'Account Deleted Successfully !!' })
-            } else {
-                return res.send({ message: 'Account Deleted Successfully !!' })
-            }
+        if (user && await checkPassword(password, user.password)) {
+            let deletedUser = await User.deleteOne({ _id: id })
+            if (deletedUser.deleteCount == 0) return res.status(404).send({ message: 'User not found, not Deleted' })
+            return res.send({ message: 'Account Deleted Successfully !!' })
+        } else {
+            return res.status(400).send({ message: 'Account Cannot be Deleted' })
         }
-        return res.status(404).send({ message: 'User not found, not Deleted' })
     } catch (err) {
         console.error(err)
         return res.status(500).send({ message: 'Error Deleting Account' })

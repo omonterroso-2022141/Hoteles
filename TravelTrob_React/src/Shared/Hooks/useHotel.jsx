@@ -1,5 +1,6 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { getHotelsRequest, getHotelsRequestId } from "../../Services/api";
 
 export const useHotel = () => {

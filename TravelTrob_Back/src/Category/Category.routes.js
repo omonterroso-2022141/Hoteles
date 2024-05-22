@@ -13,6 +13,6 @@ api.delete('/delete/:id', [validateJwt, isAdmin], deleteCategory)
 
 
 // # Role CLIENT
-api.get('/list',list)
+api.get('/list', [validateJwt], list)
 
 export default api

@@ -23,5 +23,4 @@ api.delete('/deleteHotel/:id', [validateJwt, isAdmin], deleteHotel)
 api.get('/getImage/:image', getImage)
 api.get('/getHotelCategory', getHotelCategory)
 
-
 export default api
