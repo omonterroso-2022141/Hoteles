@@ -14,16 +14,6 @@ export const Reserva = () => {
   const { idHabitacion } = useParams()
   const urlBase = 'http://localhost:3200/Hotel/getImage/'
 
-  useEffect(() => {
-    getHotelId(idHabitacion)
-  }, [])
-
-  if (isFetching) {
-    return (
-        <span>Loading...</span>
-    )
-  }
-
   const [fechaInicio, setFechaInicio] = useState(null);
   const [fechaFinalizacion, setFechaFinalizacion] = useState(null)
   const [formData, setFormData] = useState(
@@ -55,6 +45,16 @@ export const Reserva = () => {
       }
     }
   )
+
+  useEffect(() => {
+    getHotelId(idHabitacion)
+  }, [])
+
+  if (isFetching) {
+    return (
+        <span>Loading...</span>
+    )
+  }
 
   const handleValidationOnBlur = (value, field) => {
     let isValid = false;
