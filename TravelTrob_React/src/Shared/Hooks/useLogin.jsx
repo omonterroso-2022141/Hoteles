@@ -21,11 +21,14 @@ export const useLogin = () => {
                 response?.e?.response?.data ||
                 '¡Oh! No pudimos ingresar, intenta de nuevo :)'
             )
+        }const userInto = response.data.loggedUser
+        if(userInto.role == "ADMIN"){
+            localStorage.setItem('token', response.data.token)
+            return true
+        }else{
+            localStorage.setItem('token', response.data.token)
+            return false
         }
-        localStorage.setItem('token', response.data.token)
-        navigate('/feed')
-        
-        
     }
 
     return {

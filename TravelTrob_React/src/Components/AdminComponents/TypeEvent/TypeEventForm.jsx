@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useCatHabitacion } from '../../../Shared/Hooks/useCatHabitacion'
 import { useNavigate } from 'react-router-dom'
 
-export const CatHabitacionForm = () => {
+export const typeEventForm = () => {
     const navigate = useNavigate()
 
     const { saveCatHabHook } = useCatHabitacion()
@@ -24,7 +24,6 @@ export const CatHabitacionForm = () => {
     }
 
     const navigateToCatHabs = () => {
-        navigate('/admin/catHabs')
     }
 
     return (

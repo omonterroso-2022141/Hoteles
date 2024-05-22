@@ -27,15 +27,20 @@ export const AdminFeed = () => {
         navigate('/admin/graficosReserva')
     }
 
+    const navigateToTypeEvent = () => {
+        navigate('/admin/typeEvent')
+    }
+
     return (
         <>
             <h1>AdminFeed:</h1>
-            <h3 onClick={navigateToCategories}>Categorías</h3>
             <h3 onClick={navigateToUsers}>Usuarios</h3>
             <h3 onClick={navigateToHotels}>Hoteles</h3>
+            <h3 onClick={navigateToCategories}>Categoria Hotel</h3>
             <h3 onClick={navigateToHabitaciones}>Habitación</h3>
-            <h3 onClick={navigateToCatHabs}>Cat.Habitación</h3>
-            <h3 onClick={navigateToReserva}>Estadisticas de Reserva ()</h3>
+            <h3 onClick={navigateToCatHabs}>Categoria Habitación</h3>
+            <h3 onClick={navigateToTypeEvent}>Tipo de Evento</h3>
+            <h3 onClick={navigateToReserva}>Estadisticas de Reserva</h3>
         </>
     )
 }

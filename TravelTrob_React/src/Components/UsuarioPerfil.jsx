@@ -10,6 +10,7 @@ import {
     message
   } from '../Shared/Validators/validators.js'
 import './CSS/Info.css'
+import './CSS/UserConfig.css'
 
 export const UsuarioPerfil = () => {
     //Contraseña
@@ -259,10 +260,10 @@ export const UsuarioPerfil = () => {
                         />
                     </div>
                     <button disabled={isSubmitButtonDisable} onClick={handleUpdate} type="submit">Update Profile</button>
+                    <button onClick={handleDelete} style={{ marginTop: '20px', color: 'red' }}>
+                        Delete Account
+                    </button>
                 </form>
-                <button onClick={handleDelete} style={{ marginTop: '20px', color: 'red' }}>
-                    Delete Account
-                </button>
                 {message && <p>{message}</p>}
 
             </div>

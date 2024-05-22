@@ -387,6 +387,18 @@ export const getTipoEventosHotel = async(id)=>{
     }
 }
 
+export const getTipoEventosRequest = async(id)=>{
+    try{
+        return await apiClient.get('/TipoEvento/viewTipoEvento')
+    }catch(err){
+        console.log(err)
+        return{
+            error: true,
+            err
+        }
+    }
+}
+
 export const addEvento = async(data)=>{
     try{
         return await apiClient.post(`/Evento/addTipoEvento`, data)

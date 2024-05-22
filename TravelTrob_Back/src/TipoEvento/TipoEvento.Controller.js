@@ -14,6 +14,7 @@ export const addTipoEvento = async (req, res) => {
 
         if(data.hotel){
             let existeHotel = await Hotel.findOne({_id:data.hotel})
+            console.log(data.hotel);
             if(!existeHotel) return res.status(404).send({message: 'The hotel not found'})
         }
 
@@ -28,7 +29,7 @@ export const addTipoEvento = async (req, res) => {
 
 export const viewTipoEvento = async (req, res) => {
     try {
-        let tipoEvento = await TipoEvento.find({})
+        let tipoEvento = await TipoEvento.find({}).populate('hotel')
         return res.send({ tipoEvento })
     } catch (err) {
         console.error(err)

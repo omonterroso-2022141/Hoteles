@@ -22,6 +22,7 @@ import { useHabitacion } from "../../Shared/Hooks/useHabitacion"
 import { HabitacionForm } from "../../Components/AdminComponents/Habitacion/HabitacionForm"
 import { UpdateHabitacion } from "../../Components/AdminComponents/Habitacion/UpdateHabitacion"
 import { ReservaChart } from "../../Components/ReservaChart"
+import { TypeEvent } from "../../Components/AdminComponents/TypeEvent/TypeEvent"
 
 export const Admin = () => {
     const { categories, getCategories, isFetching } = useCategory()
@@ -80,6 +81,7 @@ export const Admin = () => {
                 <Route path="/catHabs" element={<CatHabitacion cHabs={cHabs}/>}/>
                 <Route path="/habitaciones" element={<Habitacion habitaciones={habitaciones}/>}/>
                 <Route path="/graficosReserva" element={<ReservaChart />}/>
+                <Route path="/typeEvent" element={<TypeEvent />}/>
             </Routes>
         </div>
     )

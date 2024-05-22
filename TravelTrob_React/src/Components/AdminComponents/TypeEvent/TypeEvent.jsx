@@ -1,30 +1,35 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-import { useCatHabitacion } from '../../../Shared/Hooks/useCatHabitacion'
+import { useTypeEvento } from '../../../Shared/Hooks/useTypeEvento'
 
-export const CatHabitacion = ({ cHabs = [] }) => {
+export const TypeEvent = () => {
     const navigate = useNavigate()
+    const { getTypeEvents, typeEvents, isFetchingHabitaciones } = useTypeEvento()
 
-    const { deleteCatHabHook } = useCatHabitacion()
+    useEffect(() => {
+        getTypeEvents()
+    }, [])
+
+    if (isFetchingHabitaciones) {
+        return (
+            <span>Loading...</span>
+        )
+    }
 
     const navigateToUpdate = (catHab) => {
         navigate(`/admin/updateCatHabitacion/${catHab._id}`, { state: { catHab } })
     }
 
     const deleteCatHab = (id, Nombre) => {
-        if (Nombre === 'Default') {
-            return console.log('No se puede borrar categoría Default')
-        }
-        deleteCatHabHook(id)
-        console.log(id)
+
         window.location.reload()
     }
 
     //! No-Data
     const noData = (
-        <div>
-            <h1>No hay Datos, si ve este mensaje, por favor contacte con un técico</h1>
-        </div>
+        <div style={{ textAlign: 'center' }}>
+            <h1>No hay Datos, si ve este mensaje repetidamente, por favor contacte con un técnico</h1>
+        </div>        
     )
 
     return (
@@ -37,22 +42,19 @@ export const CatHabitacion = ({ cHabs = [] }) => {
                     <button>Regresar</button>
                 </Link>
             </div>
-            <h1 style={{ textAlign: 'center' }}>Categoría Habitación:</h1>
+            <h1 style={{ textAlign: 'center' }}>Tipo de Evento:</h1>
             <div className='card-container'>
                 {
-                    cHabs.length == 0 ? noData : (
-                        cHabs.map((catHab) => (
-                            <div key={catHab._id}>
+                    typeEvents == null || typeEvents.length == 0 ? noData : (
+                        typeEvents.map((typeEvent) => (
+                            <div key={typeEvent._id}>
                                 <div className='card-content'>
-                                    <p><strong>ID: </strong>{catHab._id}</p>
-                                    <p><strong>Nombre: </strong>{catHab.Nombre}</p>
-                                    <p><strong>Contenido: </strong></p>
-                                    <div className='parraf'>
-                                        {catHab.Contenido}
-                                    </div>
+                                    <p><strong>ID: </strong>{typeEvent._id}</p>
+                                    <p><strong>Nombre: </strong>{typeEvent.nombre}</p>
+                                    <p><strong>Hotel: </strong>{typeEvent.hotel}</p>
                                     <div style={{ display: 'flex', gap: '40%' }}>
-                                        <button onClick={() => navigateToUpdate(catHab)} className='category-add-button'>Editar</button>
-                                        <button onClick={() => deleteCatHab(catHab._id, catHab.Nombre)} className='category-delete-button'>Eliminar</button>
+                                        <button onClick={() => navigateToUpdate(typeEvent)} className='category-add-button'>Editar</button>
+                                        <button onClick={() => deleteCatHab(typeEvent._id, typeEvent.Nombre)} className='category-delete-button'>Eliminar</button>
                                     </div>
                                 </div>
                             </div>
