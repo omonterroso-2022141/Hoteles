@@ -1,0 +1,676 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "Proyecto (Hoteles)",
+    "collectionId": "711a3763-3af8-436b-86d1-e501d0e88172",
+    "dateExported": "2024-05-15T21:33:30.164Z",
+    "version": "1.2",
+    "folders": [
+        {
+            "_id": "0c9ca6c9-4cce-4247-b13f-a4d5f4bd0512",
+            "name": "User",
+            "containerId": "",
+            "created": "2024-05-15T19:27:20.806Z",
+            "sortNum": 2500
+        },
+        {
+            "_id": "7c337122-8bb1-43e7-802e-a3d2eb6208b1",
+            "name": "CHabitacion",
+            "containerId": "",
+            "created": "2024-04-20T23:53:01.669Z",
+            "sortNum": 5000
+        },
+        {
+            "_id": "083a1064-2a3f-4edb-9ca5-b0533cd98b5d",
+            "name": "Hotel",
+            "containerId": "",
+            "created": "2024-04-17T03:50:53.868Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "43b71f09-4747-4434-9f9f-129cdb0ee0a0",
+            "name": "Habitacion",
+            "containerId": "",
+            "created": "2024-04-21T23:14:37.336Z",
+            "sortNum": 15000
+        },
+        {
+            "_id": "2c2290b3-b81f-4ba1-b3e9-d33ba4df6f28",
+            "name": "Reservacion",
+            "containerId": "",
+            "created": "2024-04-22T00:09:14.251Z",
+            "sortNum": 50000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "c5fb618f-45a4-4e79-879c-0b561fa97c82",
+            "colId": "711a3763-3af8-436b-86d1-e501d0e88172",
+            "containerId": "083a1064-2a3f-4edb-9ca5-b0533cd98b5d",
+            "name": "testHotel",
+            "url": "Hotel/testHotel",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-04-17T03:51:04.795Z",
+            "modified": "2024-04-17T03:56:19.597Z",
+            "headers": []
+        },
+        {
+            "_id": "24bbdd64-e5ef-424a-aa90-c33dade7b895",
+            "colId": "711a3763-3af8-436b-86d1-e501d0e88172",
+            "containerId": "083a1064-2a3f-4edb-9ca5-b0533cd98b5d",
+            "name": "addHotel",
+            "url": "Hotel/addHotel",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-04-17T04:23:00.478Z",
+            "modified": "2024-05-15T19:47:15.647Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "{{token}}"
+                }
+            ],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "nombre",
+                        "value": "Trivago"
+                    },
+                    {
+                        "name": "direccion",
+                        "value": "Decima calle"
+                    },
+                    {
+                        "name": "telefono",
+                        "value": "39278201"
+                    },
+                    {
+                        "name": "descripcion",
+                        "value": "Sepa"
+                    },
+                    {
+                        "name": "categoria",
+                        "value": "6642db92c3c1d7fc59f50362"
+                    }
+                ],
+                "files": [
+                    {
+                        "name": "imagen",
+                        "value": "c:\\Users\\Douglas\\Documents\\1 Escuela\\0 Git\\Hoteles\\Perro.jpg"
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "5b8935d6-9e4c-48e8-a862-493dafaaaf93",
+            "colId": "711a3763-3af8-436b-86d1-e501d0e88172",
+            "containerId": "7c337122-8bb1-43e7-802e-a3d2eb6208b1",
+            "name": "testHabitacion",
+            "url": "CHabitacion/testCHabitacion",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-04-20T23:53:09.840Z",
+            "modified": "2024-04-20T23:55:24.349Z",
+            "headers": []
+        },
+        {
+            "_id": "ae78dd20-ed8b-4841-a692-1988f73f338e",
+            "colId": "711a3763-3af8-436b-86d1-e501d0e88172",
+            "containerId": "7c337122-8bb1-43e7-802e-a3d2eb6208b1",
+            "name": "addCHabitacion",
+            "url": "CHabitacion/addCHabitacion",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2024-04-20T23:56:01.841Z",
+            "modified": "2024-05-15T21:24:34.673Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "{{token}}"
+                }
+            ],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "Nombre",
+                        "value": "VIP"
+                    },
+                    {
+                        "name": "Contenido",
+                        "value": "Solo para gente de prestigio"
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "7d241956-1497-4a42-933c-1efe72926cd9",
+            "colId": "711a3763-3af8-436b-86d1-e501d0e88172",
+            "containerId": "7c337122-8bb1-43e7-802e-a3d2eb6208b1",
+            "name": "viewCHabitacion",
+            "url": "CHabitacion/viewCHabitacion",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2024-04-20T23:58:17.012Z",
+            "modified": "2024-05-15T21:24:47.285Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "{{token}}"
+                }
+            ]
+        },
+        {
+            "_id": "c193de9c-6255-4dfd-858a-53487bc4c38a",
+            "colId": "711a3763-3af8-436b-86d1-e501d0e88172",
+            "containerId": "7c337122-8bb1-43e7-802e-a3d2eb6208b1",
+            "name": "updateCHabitacion",
+            "url": "CHabitacion/updateCHabitacion/",
+            "method": "PUT",
+            "sortNum": 70000,
+            "created": "2024-04-20T23:59:08.538Z",
+            "modified": "2024-05-15T21:24:53.230Z",
+            "headers": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "Nombre",
+                        "value": "VIP Chafa"
+                    },
+                    {
+                        "name": "Contenido",
+                        "value": "Un vip chafa"
+                    },
+                    {
+                        "name": "token",
+                        "value": "{{token}}"
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "64ea8985-4355-4fdd-9373-b3399c6c800b",
+            "colId": "711a3763-3af8-436b-86d1-e501d0e88172",
+            "containerId": "7c337122-8bb1-43e7-802e-a3d2eb6208b1",
+            "name": "deleteCHabitacion",
+            "url": "CHabitacion/deleteCHabitacion/",
+            "method": "DELETE",
+            "sortNum": 80000,
+            "created": "2024-04-21T00:01:32.437Z",
+            "modified": "2024-05-15T21:24:59.709Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "{{token}}"
+                }
+            ]
+        },
+        {
+            "_id": "8cea6d68-f68a-4b3f-972d-5a1894f1f680",
+            "colId": "711a3763-3af8-436b-86d1-e501d0e88172",
+            "containerId": "083a1064-2a3f-4edb-9ca5-b0533cd98b5d",
+            "name": "viewHotel",
+            "url": "Hotel/viewHotel",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2024-04-21T23:05:54.897Z",
+            "modified": "2024-05-15T21:26:07.937Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "{{token}}"
+                }
+            ]
+        },
+        {
+            "_id": "8f7c21c5-b90e-48b3-933c-07b9a80fdca9",
+            "colId": "711a3763-3af8-436b-86d1-e501d0e88172",
+            "containerId": "083a1064-2a3f-4edb-9ca5-b0533cd98b5d",
+            "name": "updateHotel",
+            "url": "Hotel/updateHotel/",
+            "method": "PUT",
+            "sortNum": 100000,
+            "created": "2024-04-21T23:06:23.711Z",
+            "modified": "2024-05-15T21:26:15.349Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "{{token}}"
+                }
+            ],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "nombre",
+                        "value": "HotelTrinvago"
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "cd6a77a9-b433-4e3c-9094-8e152708367c",
+            "colId": "711a3763-3af8-436b-86d1-e501d0e88172",
+            "containerId": "083a1064-2a3f-4edb-9ca5-b0533cd98b5d",
+            "name": "deleteHotel",
+            "url": "Hotel/deleteHotel/",
+            "method": "DELETE",
+            "sortNum": 110000,
+            "created": "2024-04-21T23:10:05.086Z",
+            "modified": "2024-05-15T21:26:20.693Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "{{token}}"
+                }
+            ]
+        },
+        {
+            "_id": "5210b8a8-06e6-4e02-b03e-8b33090b1a7c",
+            "colId": "711a3763-3af8-436b-86d1-e501d0e88172",
+            "containerId": "43b71f09-4747-4434-9f9f-129cdb0ee0a0",
+            "name": "testHabitacion",
+            "url": "Habitacion/testHabitacion",
+            "method": "GET",
+            "sortNum": 120000,
+            "created": "2024-04-21T23:14:54.172Z",
+            "modified": "2024-04-21T23:16:00.185Z",
+            "headers": []
+        },
+        {
+            "_id": "2408fd92-20ef-4423-8e1a-a8de2feaf063",
+            "colId": "711a3763-3af8-436b-86d1-e501d0e88172",
+            "containerId": "43b71f09-4747-4434-9f9f-129cdb0ee0a0",
+            "name": "addHabitacion",
+            "url": "Habitacion/addHabitacion",
+            "method": "POST",
+            "sortNum": 130000,
+            "created": "2024-04-21T23:15:01.616Z",
+            "modified": "2024-05-15T21:00:15.823Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "{{token}}"
+                }
+            ],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "hotel",
+                        "value": ""
+                    },
+                    {
+                        "name": "cHabitacion",
+                        "value": ""
+                    },
+                    {
+                        "name": "disponibilidad",
+                        "value": "true"
+                    },
+                    {
+                        "name": "numeroCuarto",
+                        "value": "12"
+                    },
+                    {
+                        "name": "descripcion",
+                        "value": "Cuarto pequeño"
+                    },
+                    {
+                        "name": "precio",
+                        "value": "200"
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "d9761e11-be30-4840-a68d-5632744175d6",
+            "colId": "711a3763-3af8-436b-86d1-e501d0e88172",
+            "containerId": "43b71f09-4747-4434-9f9f-129cdb0ee0a0",
+            "name": "viewHabitacion",
+            "url": "Habitacion/viewHabitacion",
+            "method": "GET",
+            "sortNum": 140000,
+            "created": "2024-04-21T23:15:18.729Z",
+            "modified": "2024-05-15T21:25:33.568Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "{{token}}"
+                }
+            ]
+        },
+        {
+            "_id": "b6b62ece-0e74-48c4-81ec-e66140b103b1",
+            "colId": "711a3763-3af8-436b-86d1-e501d0e88172",
+            "containerId": "43b71f09-4747-4434-9f9f-129cdb0ee0a0",
+            "name": "updateHabitacion",
+            "url": "Habitacion/updateHabitacion/",
+            "method": "PUT",
+            "sortNum": 150000,
+            "created": "2024-04-21T23:15:35.055Z",
+            "modified": "2024-05-15T21:25:44.136Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "{{token}}"
+                }
+            ],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "disponibilidad",
+                        "value": "false"
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "c89859b4-67b0-4c1f-b98c-43959f5204b0",
+            "colId": "711a3763-3af8-436b-86d1-e501d0e88172",
+            "containerId": "43b71f09-4747-4434-9f9f-129cdb0ee0a0",
+            "name": "deleteHabitacion",
+            "url": "Habitacion/deleteHabitacion/",
+            "method": "DELETE",
+            "sortNum": 160000,
+            "created": "2024-04-21T23:15:44.302Z",
+            "modified": "2024-05-15T21:25:50.023Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "{{token}}"
+                }
+            ]
+        },
+        {
+            "_id": "d39e5689-d60f-4d91-b1ed-1c24733a285c",
+            "colId": "711a3763-3af8-436b-86d1-e501d0e88172",
+            "containerId": "2c2290b3-b81f-4ba1-b3e9-d33ba4df6f28",
+            "name": "testReservacion",
+            "url": "Reservacion/testReservacion",
+            "method": "GET",
+            "sortNum": 180000,
+            "created": "2024-04-22T00:09:28.046Z",
+            "modified": "2024-04-22T00:09:33.568Z",
+            "headers": []
+        },
+        {
+            "_id": "a8be896a-d1bc-46eb-8ddc-b1dab4229d8d",
+            "colId": "711a3763-3af8-436b-86d1-e501d0e88172",
+            "containerId": "2c2290b3-b81f-4ba1-b3e9-d33ba4df6f28",
+            "name": "addReservacion",
+            "url": "Reservacion/addReservacion",
+            "method": "POST",
+            "sortNum": 190000,
+            "created": "2024-04-22T00:43:50.463Z",
+            "modified": "2024-05-15T21:01:46.142Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "{{token}}"
+                }
+            ],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "fechaInicio",
+                        "value": "2024-04-21"
+                    },
+                    {
+                        "name": "fechaFinalizacion",
+                        "value": "2024-04-21"
+                    },
+                    {
+                        "name": "cantidadPersonas",
+                        "value": "2"
+                    },
+                    {
+                        "name": "detallesExtra",
+                        "value": "Ninguna"
+                    },
+                    {
+                        "name": "hotel",
+                        "value": "664511aff78291ca7cd9dd99"
+                    },
+                    {
+                        "name": "habitacion",
+                        "value": "6645224d209e7581a6192b06"
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "af758c4e-656a-4ef8-8bd2-a66e12e7c2d8",
+            "colId": "711a3763-3af8-436b-86d1-e501d0e88172",
+            "containerId": "2c2290b3-b81f-4ba1-b3e9-d33ba4df6f28",
+            "name": "updateReservacion",
+            "url": "Reservacion/updateReservacion/",
+            "method": "PUT",
+            "sortNum": 210000,
+            "created": "2024-04-22T00:44:36.524Z",
+            "modified": "2024-05-15T21:26:40.079Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "{{token}}"
+                }
+            ],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "cantidadPersonas",
+                        "value": "23"
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "5db6dc82-8869-47c8-9f0b-2048aefdaa6c",
+            "colId": "711a3763-3af8-436b-86d1-e501d0e88172",
+            "containerId": "2c2290b3-b81f-4ba1-b3e9-d33ba4df6f28",
+            "name": "deleteReservacion",
+            "url": "Reservacion/deleteReservacion/",
+            "method": "DELETE",
+            "sortNum": 220000,
+            "created": "2024-04-22T00:44:52.572Z",
+            "modified": "2024-05-15T21:26:51.415Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "{{token}}"
+                }
+            ]
+        },
+        {
+            "_id": "35b8e16a-f051-4d50-8c83-a1f04582ccca",
+            "colId": "711a3763-3af8-436b-86d1-e501d0e88172",
+            "containerId": "0c9ca6c9-4cce-4247-b13f-a4d5f4bd0512",
+            "name": "register",
+            "url": "user/register",
+            "method": "POST",
+            "sortNum": 240000,
+            "created": "2024-05-15T19:27:31.212Z",
+            "modified": "2024-05-15T19:28:32.497Z",
+            "headers": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "Douglas"
+                    },
+                    {
+                        "name": "surname",
+                        "value": "Alvarado"
+                    },
+                    {
+                        "name": "username",
+                        "value": "dalvarado"
+                    },
+                    {
+                        "name": "email",
+                        "value": "dalvarado@gmail.com"
+                    },
+                    {
+                        "name": "password",
+                        "value": "123456"
+                    },
+                    {
+                        "name": "phone",
+                        "value": "12345678"
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "30387c9e-5a30-4a74-b8f6-b528bfbe0d3a",
+            "colId": "711a3763-3af8-436b-86d1-e501d0e88172",
+            "containerId": "0c9ca6c9-4cce-4247-b13f-a4d5f4bd0512",
+            "name": "login",
+            "url": "user/login",
+            "method": "POST",
+            "sortNum": 250000,
+            "created": "2024-05-15T19:28:46.299Z",
+            "modified": "2024-05-15T19:29:48.804Z",
+            "headers": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "username",
+                        "value": "dalvarado"
+                    },
+                    {
+                        "name": "password",
+                        "value": "123456"
+                    },
+                    {
+                        "name": "email",
+                        "value": "",
+                        "isDisabled": true
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "c7193782-6436-4755-b0f9-a6ed18a138b8",
+            "colId": "711a3763-3af8-436b-86d1-e501d0e88172",
+            "containerId": "0c9ca6c9-4cce-4247-b13f-a4d5f4bd0512",
+            "name": "update",
+            "url": "user/update/",
+            "method": "PUT",
+            "sortNum": 260000,
+            "created": "2024-05-15T21:28:37.891Z",
+            "modified": "2024-05-15T21:30:37.284Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "{{token}}"
+                }
+            ],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "Douglas Humberto"
+                    },
+                    {
+                        "name": "surname",
+                        "value": "Alvarado Morales"
+                    },
+                    {
+                        "name": "username",
+                        "value": "dalvarado",
+                        "isDisabled": true
+                    },
+                    {
+                        "name": "email",
+                        "value": "dalvarado@kinal.edu.gt",
+                        "isDisabled": true
+                    },
+                    {
+                        "name": "password",
+                        "value": "123456",
+                        "isDisabled": true
+                    },
+                    {
+                        "name": "phone",
+                        "value": "12345678",
+                        "isDisabled": true
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "81249b1f-b55e-47db-8101-be03176a9be7",
+            "colId": "711a3763-3af8-436b-86d1-e501d0e88172",
+            "containerId": "0c9ca6c9-4cce-4247-b13f-a4d5f4bd0512",
+            "name": "delete",
+            "url": "user/delete/",
+            "method": "DELETE",
+            "sortNum": 265000,
+            "created": "2024-05-15T21:31:53.139Z",
+            "modified": "2024-05-15T21:33:14.542Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "{{token}}"
+                }
+            ],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "username",
+                        "value": "dalvarado"
+                    },
+                    {
+                        "name": "password",
+                        "value": "123456"
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "39d66180-57dc-4199-9840-31298340d084",
+            "colId": "711a3763-3af8-436b-86d1-e501d0e88172",
+            "containerId": "0c9ca6c9-4cce-4247-b13f-a4d5f4bd0512",
+            "name": "list",
+            "url": "user/list",
+            "method": "GET",
+            "sortNum": 270000,
+            "created": "2024-05-15T21:31:14.243Z",
+            "modified": "2024-05-15T21:31:28.389Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "{{token}}"
+                }
+            ]
+        }
+    ],
+    "settings": {
+        "options": {
+            "baseUrl": "localhost:3200/"
+        }
+    },
+    "ref": "7eHViEedaP4S7gULSDm6T3euDT1tknRpxrq9raymjxcwNVj1Ry4ov8hd8XNzrIMSRrUUgr8KUPbz6WqasQJDog"
+}
