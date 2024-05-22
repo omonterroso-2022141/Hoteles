@@ -13,29 +13,42 @@ export const testReservacion = (req, res)=>{
 export const addReservacion = async(req, res)=>{
     try{
         let data = req.body
+        let dataCategory = {
+            disponibilidad: false
+        }
         let { id } = req.user
         
+        let existeHabitacion = await Habitacion.findOne({_id:data.habitacion})
+        if(!existeHabitacion) return res.status(404).send({message: 'The Habitacion not found'})
+        if(existeHabitacion.disponibilidad == false) return res.status(401).send({message: 'The Habitacion not is available'})
+
         let existeUser = await User.findOne({_id:id})
         if(!existeUser) return res.status(404).send({message: 'The User not found'})
         data.user = id
 
-        let existeHotel = await Hotel.findOne({_id:data.hotel})
+        let existeHotel = await Hotel.findOne({_id:existeHabitacion.hotel})
         if(!existeHotel) return res.status(404).send({message: 'The Hotel not found'})
+        data.hotel = existeHotel._id
 
-        let existeHabitacion = await Habitacion.findOne({_id:data.habitacion})
-        if(!existeHabitacion) return res.status(404).send({message: 'The Habitacion not found'})
-        
         let reservacion = new Reservacion(data)
-        /*await reservacion.save()
+        await reservacion.save()
+
+        //Cambiar estado
+        let habitacionUpdate = await Habitacion.findOneAndUpdate(
+            {_id: existeHabitacion._id},
+            dataCategory,
+            {new: true})
+        if(!habitacionUpdate) return res.status(401).send({message: 'La habitación no se pudo actualizar.'}) 
+
         setReservacion(existeUser, existeHotel, existeHabitacion, reservacion)
-        */
+        
         let fechaActual = obtenerFechaActual()
-        if(fechaActual>=data.fechaInicio || fechaActual>= fechaFinalizacion)
-            return res.status(400).send({message: 'You cannot request past days'})
+        if(fechaActual>=data.fechaInicio || fechaActual>= data.fechaFinalizacion)
+            return res.status(400).send({message: 'No puedes solicitar días pasados'})
         else if(data.fechaFinalizacion<data.fechaInicio)
-            return res.status(400).send({message: 'Logically, you cannot request a start date after the end date, please try again.'})
+            return res.status(400).send({message: 'Lógicamente no puedes solicitar una fecha de inicio posterior a la fecha de finalización, por favor inténtalo de nuevo.'})
         else if(data.fechaFinalizacion==data.fechaInicio)
-            return res.status(400).send({message: 'You cannot request a room that starts and ends on the same day'})
+            return res.status(400).send({message: 'No se puede solicitar una habitación que empiece y acabe el mismo día'})
         
         return res.send({message: 'saved reservation', reservacion})
     }catch(err){

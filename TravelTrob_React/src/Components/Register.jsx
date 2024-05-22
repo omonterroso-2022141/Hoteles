@@ -8,6 +8,7 @@ import {
 } from '../Shared/Validators/validators.js'
 import { useNavigate } from 'react-router-dom'
 import { Logo } from "./Logo.jsx";
+import { HashLoader } from "react-spinners"
 
 export const Register = ({ switchAuthHandler }) => {
   const { register, isLoading } = useRegister()
@@ -101,6 +102,13 @@ export const Register = ({ switchAuthHandler }) => {
         }
       }
     ))
+  }
+  if (isLoading) {
+    return (
+      <div className="container d-flex align-items-center justify-content-center vh-100">
+        <HashLoader color="Black" />
+      </div>
+    )
   }
 
   const handleRegister = async (e) => {

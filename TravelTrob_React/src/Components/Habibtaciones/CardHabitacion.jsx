@@ -18,7 +18,7 @@ export const CardHabitacion = ({id, disponibilidad, numeroCuarto, descripcion, p
                     <p className="card-description">{numeroCuarto}</p>
                     <p className="card-description">{descripcion}</p>
                     <p className="card-description">{precio}</p>
-                    <button onClick={irReserva}>Ver mas...</button>
+                    <button onClick={irReserva}>Reservar</button>
                 </div>
             </div>
         </div>

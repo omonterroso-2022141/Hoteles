@@ -1,11 +1,15 @@
 import { useState } from 'react';
+import { Footer } from './Footer';
 import DatePicker from 'react-datepicker';
+import { Navbar } from './Navbar';
 import 'react-datepicker/dist/react-datepicker.css';
 import './CSS/Reserva.css';
+import { useNavigate } from 'react-router-dom';
 
 export const ReservaDeEventos = () => {
     const [fechaInicio, setFechaInicio] = useState(null);
     const [fechaFinalizacion, setFechaFinalizacion] = useState(null);
+    const navigate = useNavigate()
 
     const handleFechaInicioChange = (date) => {
         setFechaInicio(date);
@@ -15,12 +19,17 @@ export const ReservaDeEventos = () => {
         setFechaFinalizacion(date);
     };
 
+    const Hoteles = () =>{
+        navigate('/feed')
+    }
+
 
     return (
         <div className='reserva-container'>
+            <Navbar />
             <div className="booking-form">
                 <div className="form-container">
-                    <h2>Detalles de la reserva</h2>
+                    <h2 className='TitleReserva'>Oh.. un evento ¿que sera?</h2>
                     <div className="form-group">
                         <label htmlFor="habitacion">Tipo de evento: </label>
                         <select id="habitacion">
@@ -56,7 +65,8 @@ export const ReservaDeEventos = () => {
                             placeholder="Puede incluir requerimientos dietéticos especiales, necesidades de accesibilidad, solicitud de servicios adicionales como transporte desde el aeropuerto"
                         ></textarea>
                     </div>
-                    <button type="submit">Siguiente</button>
+                    <button  className='Boton-Evento'  type="submit">Siguiente</button>
+                    <button className='Boton-Evento' onClick={Hoteles} type="submit">Cancelar</button>
                 </div>
                 <div className="image-container">
                     <img
@@ -65,6 +75,7 @@ export const ReservaDeEventos = () => {
                     />
                 </div>
             </div>
+            <Footer />
         </div>
     )
 }

@@ -3,6 +3,7 @@ import { CardHabitacion } from './CardHabitacion.jsx';
 import '../../Pages/Feed/Feed.css'
 import { useEffect } from 'react';
 import { useHabitacion } from '../../Shared/Hooks/useHabitacion.jsx'
+import { Footer } from '../Footer.jsx';
 import { Outlet, useParams } from 'react-router-dom';
 
 
@@ -54,6 +55,7 @@ export const ContentHabitacion = () => {
               }
             </div>
             <Outlet />
+            <Footer />
         </div>
     )
 }

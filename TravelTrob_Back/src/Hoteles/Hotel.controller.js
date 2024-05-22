@@ -16,21 +16,23 @@ export const testHotel = (req, res) => {
 
 export const addHotel = async (req, res) => {
     try {
-        let { nombre, direccion, telefono, descripcion, categoria } = req.body
+        let { nombre, direccion, telefono, descripcion, ubicacion, categoria } = req.body
         let existeCategoria = await Category.findOne({_id: categoria})
 
         if (!existeCategoria)
             return res.status(404).send({ message: 'The category not found' })
 
-        const validacion = validar(nombre,direccion,telefono,descripcion,req.file,'Y')
+
+        const validacion = validar(nombre,direccion,telefono,descripcion,ubicacion,req.file,'Y')
         if(validacion == ''){
             const hotel = new Hotel({
                 nombre: nombre,
                 direccion: direccion,
                 telefono: telefono,
                 descripcion: descripcion,
+                ubicacion: ubicacion,
                 categoria: categoria,
-                imagen: '../src/public/uploads/'+req.file.filename
+                imagen: req.file.filename
             })
             await hotel.save()
             return res.send({ message: 'saved hotel', hotel })
@@ -44,8 +46,22 @@ export const addHotel = async (req, res) => {
 
 export const viewHotel = async (req, res) => {
     try {
-        let hoteles = await Hotel.find({})
-        return res.send({ message: hoteles })
+        let categorys = await Category.find({})
+        let hoteles = []
+        
+        await Promise.all(categorys.map(async (category) => {
+            let hotelesAdd = await Hotel.find({ categoria: category.id })
+            hotelesAdd = hotelesAdd.map(hotel => ({
+                ...hotel.toObject(),
+                nombreCategoria: category.name
+            }))
+            hoteles.push({
+                titulo: category.name,
+                hoteles: hotelesAdd
+            })
+        }))
+
+        return res.send({ hoteles })
     } catch (err) {
         console.error(err)
         return res.status(500).send({ message: err })
@@ -93,19 +109,22 @@ export const deleteHotel = async (req, res) => {
     }
 }
 
-const validar = (nombre,direccion,telefono,descripcion,imagen,sevsalida) =>{
+const validar = (nombre,direccion,telefono,descripcion,ubicacion,imagen,sevsalida) =>{
     var errors = []
     if(!nombre || nombre.trim() === ''){
         errors.push('El nombre NO debe de estar vacío')
     }
     if(!direccion || direccion.trim() === ''){
-        errors.push('El nombre NO debe de estar vacío')
+        errors.push('El direccion NO debe de estar vacío')
     }
     if(!telefono || telefono.trim() === ''){
-        errors.push('El nombre NO debe de estar vacío')
+        errors.push('El telefono NO debe de estar vacío')
     }
     if(!descripcion || descripcion.trim() === ''){
-        errors.push('El nombre NO debe de estar vacío')
+        errors.push('El descripcion NO debe de estar vacío')
+    }
+    if(!ubicacion || ubicacion.trim() === ''){
+        errors.push('La ubicacion NO debe de estar vacío')
     }
     if(sevsalida === 'Y' && !imagen){
         errors.push('Selecciona una imagen en formato jpg o png')
@@ -119,4 +138,31 @@ const validar = (nombre,direccion,telefono,descripcion,imagen,sevsalida) =>{
         }
     }
     return errors
+}
+
+export const getImage = async(req, res)=>{
+    const dirname = 'src/public/uploads/'
+    const { image } = req.params
+    try{
+
+        const img = path.resolve(`${dirname}${image}`)
+        return res.sendFile(img)
+    }catch(err){
+        console.error(err)
+        return res.status(500).send({message: 'Error al obtener la imagen'})
+    }
+}
+
+export const getHotelCategory = async(req, res)=>{
+    try{
+        const categorys = await Category.find({})
+        categorys.map((category)=>{
+            console.log('------------------------');
+            console.log(category)
+        })
+        return  res.send({message: categorys})
+    }catch(err){
+        console.error(err)
+        return res.status(500).send({message: 'Error al obtener la imagen'})
+    }
 }

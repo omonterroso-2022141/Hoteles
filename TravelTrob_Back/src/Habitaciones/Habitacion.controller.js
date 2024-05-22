@@ -26,13 +26,52 @@ export const addHabitacion = async(req, res)=>{
     }
 }
 
-export const viewHabitacion = async(req, res)=>{
+export const viewHabitacion = async (req, res) => {
+    try {
+        let { idHotel } = req.params
+        let existHotel = await Hotel.findOne({_id:idHotel})
+        if(!existHotel) return res.status(404).send({message: 'The hotel not found'})
+        let categorys = await CHabitacionModel.find({})
+        let habitaciones = []
+        await Promise.all(categorys.map(async (category) => {
+            let habitacionAdd = await Habitacion.find({
+                $and: [
+                    { cHabitacion: category._id },
+                    { hotel: idHotel },
+                    { disponibilidad: true }
+                ]
+            })
+
+            if(!(habitacionAdd.length === 0)){
+                console.log('into');
+                habitacionAdd = habitacionAdd.map(hotel => ({
+                    ...hotel.toObject(),
+                    nombreCategoria: category.name
+                }))
+                habitaciones.push({
+                    titulo: category.Nombre,
+                    habitaciones: habitacionAdd
+                })
+            }
+        }))
+        return res.send({ habitaciones, hotelName: existHotel.nombre })
+    } catch (err) {
+        console.error(err)
+        return res.status(500).send({ message: err })
+    }
+}
+
+export const viewHotelForHabitacion = async (req, res) => {
     try{
-        let habitaciones = await Habitacion.find({})
-        return res.send({message: habitaciones})
+        let { id } = req.params
+        console.log(id)
+        let habitacion = await Habitacion.findOne({_id:id})
+        let hotel = await Hotel.findOne({_id:habitacion.hotel})
+        console.log(hotel)
+        return res.send({hotel})
     }catch(err){
         console.error(err)
-        return res.status(500).send({message: err})
+        return res.status(500).send({ message: err })
     }
 }
 

@@ -1,141 +1,234 @@
 import { useState } from 'react';
+import { Footer } from './Footer.jsx'
+import { Input } from './Input.jsx'
+import { usePerfilSettings } from '../Shared/Hooks/usePerfilSettings.jsx';
+import { useNavigate } from 'react-router-dom';
+import {
+  validateEmail, validateUsername, validatePassword, validatePasswordConfirm,
+  passConfirmationValidationMessage, passwordValidationMessage, usernameValidationMessage,
+  emailValidationMessage, validatePhone, phoneValidationMessage
+} from '../Shared/Validators/validators.js'
+import './CSS/UsuarioPerfil.css'
 
 export const UsuarioPerfil = () => {
-    const [userData, setUserData] = useState({
-        name: '',
-        surname: '',
-        username: '',
-        email: '',
-        password: '',
-        passwordConfirm: '',
-        phone: '',
-    });
+    const { register, isLoading } = usePerfilSettings()
+    //Contraseña
+    const [showPassword, setShowPassword] = useState(false)
+    const [password, setPassword] = useState('')
+    const navigate = useNavigate()
 
-    const [message, setMessage] = useState('');
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setUserData({
-            ...userData,
-            [name]: value,
-        });
+    const [formData, setFormData] = useState(
+        {
+            name: {
+                value: '',
+                isValid: false,
+                showError: false
+
+            },
+            surname: {
+                value: '',
+                isValid: false,
+                showError: false
+            },
+            username: {
+                value: '',
+                isValid: false,
+                showError: false
+            },
+            email: {
+                value: '',
+                isValid: false,
+                showError: false
+            },
+            password: {
+                value: '',
+                isValid: false,
+                showError: false
+            },
+            passwordConfirm: {
+                value: '',
+                isValid: false,
+                showError: false
+            },
+            phone: {
+                value: '',
+                isValid: false,
+                showError: false
+            }
+        }
+    )
+
+    const onValueChange = (value, field) => {
+        setFormData((prevData) => (
+            {
+                ...prevData,
+                [field]: {
+                    ...prevData[field],
+                    value
+                }
+            }
+        ))
+    }
+
+    const handleValidationOnBlur = (value, field) => {
+        let isValid = false
+        switch (field) {
+            case 'email':
+                isValid = validateEmail(value)
+                break
+            case 'username':
+                isValid = validateUsername(value)
+                break
+            case 'password':
+                isValid = validatePassword(value)
+                break
+            case 'passwordConfirm':
+                isValid = validatePasswordConfirm(formData.password.value, value)
+                break
+            case 'phone':
+                isValid = validatePhone(value)
+                break;
+            default:
+                break
+        }
+        setFormData((prevData) => (
+            {
+                ...prevData,
+                [field]: {
+                    ...prevData[field],
+                    isValid,
+                    showError: !isValid
+                }
+            }
+        ))
+    }
+
+    const handleRegister = async (e) => {
+        e.preventDefault()
+        register(
+            formData.name.value,
+            formData.surname.value,
+            formData.username.value,
+            formData.email.value,
+            formData.password.value,
+            formData.phone.value
+        )
+        switchAuthHandler()
+    }
+
+    const handleTogglePassword = () => {
+        setShowPassword(prevState => !prevState);
     };
 
-    const validateEmail = (email) => {
-        const re = /\S+@\S+\.\S+/;
-        return re.test(email);
-    };
-
-    const handleUpdate = (e) => {
-        e.preventDefault();
-        if (userData.password !== userData.passwordConfirm) {
-            setMessage('Passwords do not match');
-            return;
-        }
-
-        if (!validateEmail(userData.email)) {
-            setMessage('Invalid email format');
-            return;
-        }
-
-        // Simulate an API call to update user data
-        // Here, you would typically make a request to your backend server
-        try {
-            // Simulating a successful response
-            console.log('User data updated:', userData);
-            setMessage('User data updated successfully');
-        } catch (error) {
-            // Simulating an error response
-            console.error('Error updating user data', error);
-            setMessage('Failed to update user data');
-        }
-    };
-
-    const handleDelete = () => {
-        // Simulate an API call to delete user account
-        // Here, you would typically make a request to your backend server
-        try {
-            console.log('User account deleted');
-            setMessage('User account deleted successfully');
-        } catch (error) {
-            console.error('Error deleting user account', error);
-            setMessage('Failed to delete user account');
-        }
-    };
+    const isSubmitButtonDisable =
+        !formData.email.isValid ||
+        !formData.username.isValid ||
+        !formData.password.isValid ||
+        !formData.passwordConfirm.isValid ||
+        !formData.phone.isValid
 
     return (
-        <div className="user-profile">
-            <h2>Update User Profile</h2>
-            <form onSubmit={handleUpdate}>
-                <div>
-                    <label>Name:</label>
-                    <input
-                        type="text"
-                        name="name"
-                        value={userData.name}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div>
-                    <label>Surname:</label>
-                    <input
-                        type="text"
-                        name="surname"
-                        value={userData.surname}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div>
-                    <label>Username:</label>
-                    <input
-                        type="text"
-                        name="username"
-                        value={userData.username}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div>
-                    <label>Email:</label>
-                    <input
-                        type="email"
-                        name="email"
-                        value={userData.email}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div>
-                    <label>Password:</label>
-                    <input
-                        type="password"
-                        name="password"
-                        value={userData.password}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div>
-                    <label>Confirm Password:</label>
-                    <input
-                        type="password"
-                        name="passwordConfirm"
-                        value={userData.passwordConfirm}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div>
-                    <label>Phone:</label>
-                    <input
-                        type="tel"
-                        name="phone"
-                        value={userData.phone}
-                        onChange={handleChange}
-                    />
-                </div>
-                <button type="submit">Update Profile</button>
-            </form>
-            <button onClick={handleDelete} style={{ marginTop: '20px', color: 'red' }}>
-                Delete Account
-            </button>
-            {message && <p>{message}</p>}
+        <div className='ContenedorFondoUsuario'>
+            <div className="user-profile">
+                <h2>Update User Profile</h2>
+                <form>
+                    <div>
+                        <Input
+                            field='name'
+                            label='Nombre'
+                            type='text'
+                            value={formData.name.value}
+                            onChangeHandler={onValueChange}
+                            onBlurHandler={handleValidationOnBlur}
+                            showErrorMessage={formData.name.showError}
+                        />
+                    </div>
+                    <div>
+                        <Input
+                            field='surname'
+                            label='Apellido'
+                            type='text'
+                            value={formData.surname.value}
+                            onChangeHandler={onValueChange}
+                            onBlurHandler={handleValidationOnBlur}
+                            showErrorMessage={formData.surname.showError}
+                        />
+                    </div>
+                    <div>
+                        <Input
+                            field='username'
+                            label='Username'
+                            type='text'
+                            value={formData.username.value}
+                            onChangeHandler={onValueChange}
+                            onBlurHandler={handleValidationOnBlur}
+                            showErrorMessage={formData.username.showError}
+                            validationMessage={usernameValidationMessage}
+                        />
+                    </div>
+                    <div>
+                        <Input
+                            field='email'
+                            label='Email'
+                            type='email'
+                            placeholder='example@gmai.com'
+                            value={formData.email.value}
+                            onChangeHandler={onValueChange}
+                            onBlurHandler={handleValidationOnBlur}
+                            showErrorMessage={formData.email.showError}
+                            validationMessage={emailValidationMessage}
+
+                        />
+                    </div>
+                    <div>
+                        <Input
+                            field='password'
+                            label='Contraseña'
+                            type={'password'}
+                            value={formData.password.value}
+                            onChangeHandler={onValueChange}
+                            onChange={e => setPassword(e.target.value)}
+                            onBlurHandler={handleValidationOnBlur}
+                            showErrorMessage={formData.password.showError}
+                            validationMessage={passwordValidationMessage}
+
+                        />
+
+                    </div>
+                    <div>
+                        <Input
+                            field='passwordConfirm'
+                            label='Confirmar Contraseña'
+                            type={showPassword ? 'text' : 'password'}
+                            value={formData.passwordConfirm.value}
+                            onChangeHandler={onValueChange}
+                            onBlurHandler={handleValidationOnBlur}
+                            showErrorMessage={formData.passwordConfirm.showError}
+                            validationMessage={passConfirmationValidationMessage}
+                        />
+                    </div>
+                    <div>
+                        <Input
+                            field='phone'
+                            label='Telefono'
+                            type='text'
+                            value={formData.phone.value}
+                            onChangeHandler={onValueChange}
+                            onBlurHandler={handleValidationOnBlur}
+                            showErrorMessage={formData.phone.showError}
+                            validationMessage={phoneValidationMessage}
+                        />
+                    </div>
+                    <button type="submit">Update Profile</button>
+                </form>
+                <button onClick={handleDelete} style={{ marginTop: '20px', color: 'red' }}>
+                    Delete Account
+                </button>
+                {message && <p>{message}</p>}
+
+            </div>
+            <Footer />
         </div>
     );
 };

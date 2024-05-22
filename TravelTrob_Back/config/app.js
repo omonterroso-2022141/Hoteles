@@ -10,6 +10,8 @@ import routerHotel from '../src/Hoteles/Hotel.routes.js'
 import routerHabitacion from '../src/Habitaciones/Habitacion.routes.js'
 import routerCHabitacion from '../src/CategoriaHabitacion/CHabitacion.routes.js'
 import routerReservacion from '../src/Reservacion/Reservacion.routes.js'
+import routerTipoEvento from '../src/TipoEvento/TipoEvento.routes.js'
+import routerEvento from '../src/Evento/Evento.routes.js'
 
 //Configs
 const app = express()
@@ -30,6 +32,8 @@ app.use('/Hotel', routerHotel)
 app.use('/Habitacion', routerHabitacion)
 app.use('/CHabitacion', routerCHabitacion)
 app.use('/Reservacion', routerReservacion)
+app.use('/TipoEvento', routerTipoEvento)
+app.use('/Evento', routerEvento)
 
 //Raise the server
 export const initServer = () => {

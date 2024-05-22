@@ -1,8 +1,18 @@
-import { BarraBusqueda } from './BarraBusqueda';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../Components/CSS/Navbar.css';
+import { useUserDetails } from '../Shared/Hooks/useUserDetails.jsx';
+import './CSS/Navbar.css'
+
+const NavLink = ({ text, onClickHandler }) => {
+  return (
+    <span className='navbar-link' onClick={onClickHandler}>
+      {text}
+    </span>
+  );
+};
 
 export const Navbar = () => {
+  const { isLogged, logoutSys } = useUserDetails();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -12,24 +22,38 @@ export const Navbar = () => {
   const handleNavigateToLogin = () => {
     navigate('/auth');
   };
-  const handlerNaavigateToFeed = () => {
-    navigate('/feed')
-  }
 
-  const handlerNavigatetoInfo = () => {
-    navigate('/*')
-  }
+  const handleNavigateToFeed = () => {
+    navigate('/feed');
+  };
+
+  const handleNavigateToPerfil = () => {
+    navigate('/UsuarioPerfil');
+  };
+
+  const handleNavigateToInfo = () => {
+    navigate('/');
+  };
 
   return (
-    <nav className="navbar">
-      <ul className="navbar-links">
-        <a onClick={handlerNavigatetoInfo}>Home</a>
-        <a href="/about"></a>
-        <a onClick={handlerNaavigateToFeed}>Hoteles</a>
-        <a href="/contact">Contact</a>
-      </ul>
-  
-    </nav>
+    <div className="navbar">
+      <div className="navbar-links">
+        <NavLink text='Home' onClickHandler={handleNavigateToInfo} />
+        
+        <NavLink text='Hoteles' onClickHandler={handleNavigateToFeed} />
+      </div>
+      {
+        !isLogged ? (
+          <NavLink text='Login' onClickHandler={handleNavigateToLogin} />
+        ) : (
+          <>
+            <NavLink text='Perfil' onClickHandler={handleNavigateToPerfil} />
+            <NavLink text='LogOut' onClickHandler={handleLogout} />
+          </>
+        )
+      }
+    </div>
+  );
+};
 
-  )
-}
+

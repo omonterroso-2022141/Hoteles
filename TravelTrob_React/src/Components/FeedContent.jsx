@@ -3,10 +3,12 @@ import { Card } from './Card.jsx';
 import '../Pages/Feed/Feed.css'
 import { useEffect } from 'react';
 import { useHotel } from '../Shared/Hooks/useHotel.jsx'
+import { useNavigate } from 'react-router-dom';
 
 
 export const FeedContent = () => {
     const { getHotels, hotels, isFetching } = useHotel()
+    const navigate =useNavigate()
     let nombreCategory = []
 
     useEffect(() => {
@@ -18,14 +20,18 @@ export const FeedContent = () => {
             <span>Loading...</span>
         )
     }
+    const Perfil = ()=>{
+      navigate('/UsuarioPerfil')
+    }
 
     return (
         <div>
             <div className='NavBarBuscar'>
                 <Navbar />
+                <button onClick={Perfil}>Perfil</button>
             </div>
             <div className='feed-content'>
-              <div className='TituloFeed'>
+              <div className='TituloBienvenidaFeed'>
                   <h1>Explora Nuestros Hoteles</h1>
               </div>
               {

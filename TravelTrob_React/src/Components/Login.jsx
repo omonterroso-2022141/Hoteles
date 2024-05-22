@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useLogin } from "../Shared/Hooks/useLogin.jsx";
 import { Logo } from "./Logo.jsx";
 import { useNavigate } from "react-router-dom";
-import { ClockLoader } from "react-spinners"
+import { HashLoader } from "react-spinners"
 
 export const Login = ({ switchAuthHandler }) => {
   const { login, isLoading } = useLogin()
@@ -43,7 +43,7 @@ export const Login = ({ switchAuthHandler }) => {
   if(isLoading){
     return ( 
       <div className="container d-flex align-items-center justify-content-center vh-100">
-        <ClockLoader />
+       <HashLoader color="white" />
       </div>
     )
   }

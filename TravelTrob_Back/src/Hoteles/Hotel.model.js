@@ -20,6 +20,10 @@ const hotelSchema = Schema({
         type: String,
         required: true,
     },
+    ubicacion: {
+        type: String,
+        required: true,
+    },
     imagen:{
         type: String,
         required: true,

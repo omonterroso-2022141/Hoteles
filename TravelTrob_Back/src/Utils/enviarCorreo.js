@@ -16,7 +16,7 @@ const opciones = (data)=>{
     from: 'incmonster365@gmail.com',
     to: data.correoEnviar,
     subject: 'Asunto del correo',
-    text: 'Factura de la Reservacion',
+    text: 'Hola usuario les damos las gracias por optar por nuestro servicio, la reservación se realizó exitosamente: ',
     html: `
 <!DOCTYPE html>
 <html lang="en">
@@ -64,6 +64,7 @@ const opciones = (data)=>{
 </style>
 </head>
 <body>
+  <h>Hola usuario les damos las gracias por optar por nuestro servicio, la reservación se realizó exitosamente: </h>
   <div style="display: flex; justify-content: center;">
     <div class="card">
       <div class="header-triangle"></div>

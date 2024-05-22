@@ -1,24 +1,31 @@
+
+/* Feed Content Styles */
 .feed-content {
   background-image: url('../../Components/IMG/Fondo2.02asda.png');
   background-repeat: no-repeat;
 }
 
+/* NavBar Styles */
 .NavBarBuscar {
   width: 100vw;
 }
-.hotel-cards{
+
+/* Hotel Cards Container */
+.hotel-cards {
   justify-content: center;
   align-items: center;
   display: flex;
-}
-.hotel-cards{
-  margin: 4%;
-  height: 350px;
-  background-color: orange;
-  border-radius: 50px;
+  flex-wrap: wrap; /* Added for responsiveness */
 }
 
-.TituloFeed{
+
+/* Title Feed Styles */
+.TituloFeed {
+  background-color: #000000;
+  border-radius: 100px;
+  color: aliceblue;
+  width:500px;
+  margin: auto;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -28,5 +35,45 @@
   font-stretch: 150%;
   font-variation-settings: 'wght' 850;
   font-weight: 900;
+}
 
+.TituloBienvenidaFeed{
+  background-color: #000000;
+  justify-content: center;
+  color: white;
+  margin-bottom: 50px;
+  align-items: center;
+  display: flex;
+  font-size: large;
+  font-feature-settings: "smcp", "zero";
+  font-kerning: none;
+  font-stretch: 150%;
+  font-variation-settings: 'wght' 850;
+  font-weight: 900;
+
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .card {
+    width: 90%;
+    max-width: 100%;
+    margin: 10px 0; /* Adjust margin for smaller screens */
+  }
+  
+  .hotel-card {
+    height: auto; /* Adjust height for smaller screens */
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 100%;
+    margin: 10px 0; /* Further adjust margin for very small screens */
+  }
+
+  .TituloFeed {
+    font-size: medium; /* Adjust font size for small screens */
+  }
 }

@@ -21,9 +21,9 @@ export const Footer = () => {
                 <div className="footer-social">
                     <h3>Redes Sociales</h3>
                     <ul>
-                        <li><a href="https://facebook.com">Facebook</a></li>
+                        <li><a href="https://www.facebook.com/profile.php?id=61560012417969">Facebook</a></li>
                         <li><a href="https://twitter.com">Twitter</a></li>
-                        <li><a href="https://instagram.com">Instagram</a></li>
+                        <li><a href="https://www.instagram.com/traveltrob/">Instagram</a></li>
                     </ul>
                 </div>
             </div>

@@ -7,6 +7,8 @@ import { useHotel } from '../Shared/Hooks/useHotel.jsx'
 import { numberValidationMessage, textValidationMessage, validateNumber, validateText } from '../Shared/Validators/validators.js'
 import { useReserva } from '../Shared/Hooks/useReserva.jsx'
 import { useNavigate } from 'react-router-dom'
+import { Footer } from './Footer.jsx'
+import { Navbar } from './Navbar.jsx'
 
 export const Reserva = () => {
   let { getHotelId, hotel } = useHotel()
@@ -19,6 +21,7 @@ export const Reserva = () => {
   }, [])
 
   const [fechaInicio, setFechaInicio] = useState(null);
+  const navigate = useNavigate()
   const [fechaFinalizacion, setFechaFinalizacion] = useState(null)
   const [formData, setFormData] = useState(
     {
@@ -52,10 +55,10 @@ export const Reserva = () => {
 
   const handleValidationOnBlur = (value, field) => {
     let isValid = false;
-  
+
     switch (field) {
       case 'numeroPersonas':
-        isValid= validateNumber(value)
+        isValid = validateNumber(value)
         break
       case 'dataExtra':
         isValid = validateText(value)
@@ -85,6 +88,10 @@ export const Reserva = () => {
     ))
   }
 
+  const Hoteles = () => {
+    navigate('/feed')
+  }
+
   const formattedDate = (date) => {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -95,9 +102,9 @@ export const Reserva = () => {
   const handleFechaInicioChange = (date) => {
     date = formattedDate(date)
     setFechaInicio(date)
-    setFormData((prevData)=>({
+    setFormData((prevData) => ({
       ...prevData,
-      fechaInicio:{
+      fechaInicio: {
         value: date,
         isValid: false,
         showError: false,
@@ -108,9 +115,9 @@ export const Reserva = () => {
   const handleFechaFinalizacionChange = (date) => {
     date = formattedDate(date)
     setFechaFinalizacion(date)
-    setFormData((prevData)=>({
+    setFormData((prevData) => ({
       ...prevData,
-      fechaFinalizacion:{
+      fechaFinalizacion: {
         value: date,
         isValid: false,
         showError: false,
@@ -121,24 +128,25 @@ export const Reserva = () => {
   const handleAdd = (e) => {
     e.preventDefault()
     saveReserva(
-      formData.fechaInicio.value, 
-      formData.fechaFinalizacion.value, 
-      formData.numeroPersonas.value, 
-      formData.dataExtra.value, 
+      formData.fechaInicio.value,
+      formData.fechaFinalizacion.value,
+      formData.numeroPersonas.value,
+      formData.dataExtra.value,
       formData.habitacion.value)
   }
 
-  let isValidInput = 
+  let isValidInput =
     !formData.numeroPersonas.isValid ||
     !formData.dataExtra.isValid
 
   return (
     <div className='reserva-container'>
+      <Navbar />
       <div className="booking-form">
         <div className="form-container">
-          <h2>Detalles de la reserva</h2>
+          <h2 className='TitleReserva'>¡Vamos a reserva!</h2>
           <div className="form-group">
-            <label htmlFor="fechaInicio">Fecha de llegada</label>
+            <label htmlFor="fechaInicio">Fecha de llegada: </label>
             <DatePicker
               id="fechaInicio"
               selected={fechaInicio}
@@ -148,7 +156,7 @@ export const Reserva = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="fechaFinalizacion">Fecha de salida</label>
+            <label htmlFor="fechaFinalizacion">Fecha de salida: </label>
             <DatePicker
               id="fechaFinalizacion"
               selected={fechaFinalizacion}
@@ -158,7 +166,7 @@ export const Reserva = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="cantidadPersonas">Número de personas</label>
+            <label htmlFor="cantidadPersonas">Número de personas: </label>
             <input
               type="number"
               id="cantidadPersonas"
@@ -173,7 +181,7 @@ export const Reserva = () => {
             )}
           </div>
           <div className="form-group">
-            <label htmlFor="detallesExtra">Información adicional</label>
+            <label htmlFor="detallesExtra">Información adicional: </label>
             <textarea
               id="detallesExtra"
               placeholder="Puede incluir requerimientos dietéticos especiales, necesidades de accesibilidad, solicitud de servicios adicionales como transporte desde el aeropuerto"
@@ -186,11 +194,13 @@ export const Reserva = () => {
               </span>
             )}
           </div>
-          <button 
+          <button
             disabled={isValidInput}
-            onClick={handleAdd} 
+            onClick={handleAdd}
             type="submit"
           >Aceptar</button>
+          <button className='Boton-Evento' onClick={Hoteles} type="submit">Cancelar</button>
+
         </div>
         <div className="image-container">
           <div className="image-container">
@@ -198,6 +208,7 @@ export const Reserva = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   )
 }

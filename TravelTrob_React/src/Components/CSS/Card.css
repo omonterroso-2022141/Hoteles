@@ -1,32 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
+
+/* General */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #000000;
+  font-family: 'Raleway', sans-serif;
+  margin: 0;
+}
+
 .card {
-    width: 300px;
-    border-radius: 10px;
-    overflow: hidden;
-    margin: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-  }
-  
-  .card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .card-image {
+  width: 300px;
+  overflow: hidden;
+  margin: 15px;
+  padding: 0;
+  border-radius: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #000000;
+  position: relative;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #9b360e 0%, #f79400 100%);
+  z-index: -1;
+  opacity: 0.2; /* Ajustado para que no esté en blanco al principio */
+  transition: opacity 0.3s ease;
+  border-radius: 50px;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover::before {
+  opacity: 0.4;
+}
+
+.card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  border-bottom: 1px solid #e0e0e0;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .card-image {
+  transform: scale(1.05);
+}
+
+.card-content {
+  padding: 15px;
+  font-family: 'Raleway', sans-serif;
+  background-color: #E9AC4E;
+  color: rgb(29, 0, 0);
+  border-radius: 0 0 10px 10px;
+  position: relative;
+  z-index: 1;
+  opacity: 1; /* Ajustado para que no esté en blanco al principio */
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #300000;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.card-description {
+  font-size: 1rem;
+  color: #140000;
+  line-height: 1.5;
+  transition: color 0.3s ease;
+}
+
+.card:hover .card-title {
+  color: #0a0906;
+}
+
+.card:hover .card-description {
+  color: #000000;
+}
+
+@media (max-width: 768px) {
+  .card {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
+    margin: 10px 0;
   }
-  
+
+  .card-image {
+    height: 150px;
+  }
+
   .card-content {
-    padding: 20px;
+    padding: 10px;
   }
-  
+
   .card-title {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+    font-size: 1.25rem;
   }
-  
+
   .card-description {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
-  
+}

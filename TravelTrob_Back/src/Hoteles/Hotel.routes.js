@@ -5,6 +5,8 @@ import { isAdmin, validateJwt } from '../middlewares/validateJwt.js'
 import { 
     addHotel, 
     deleteHotel, 
+    getHotelCategory, 
+    getImage, 
     testHotel, 
     updateHotel, 
     viewHotel 
@@ -18,5 +20,7 @@ api.post('/addHotel', [validateJwt, isAdmin], subirImagen.single('imagen'), addH
 api.get('/viewHotel', [validateJwt], viewHotel)
 api.put('/updateHotel/:id', [validateJwt, isAdmin], updateHotel)
 api.delete('/deleteHotel/:id', [validateJwt, isAdmin], deleteHotel)
+api.get('/getImage/:image', getImage)
+api.get('/getHotelCategory', getHotelCategory)
 
 export default api
