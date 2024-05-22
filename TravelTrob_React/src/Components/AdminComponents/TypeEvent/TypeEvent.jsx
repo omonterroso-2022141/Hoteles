@@ -4,7 +4,7 @@ import { useTypeEvento } from '../../../Shared/Hooks/useTypeEvento'
 
 export const TypeEvent = () => {
     const navigate = useNavigate()
-    const { getTypeEvents, typeEvents, isFetchingHabitaciones } = useTypeEvento()
+    const { getTypeEvents, deleteTypeEvents, typeEvents, isFetchingHabitaciones } = useTypeEvento()
 
     useEffect(() => {
         getTypeEvents()
@@ -17,11 +17,11 @@ export const TypeEvent = () => {
     }
 
     const navigateToUpdate = (catHab) => {
-        navigate(`/admin/updateCatHabitacion/${catHab._id}`, { state: { catHab } })
+        navigate(`/admin/updateTypeEvent/${catHab._id}`, { state: { catHab } })
     }
 
-    const deleteCatHab = (id, Nombre) => {
-
+    const deleteTypeEvent = async(id) => {
+        await deleteTypeEvents(id)
         window.location.reload()
     }
 
@@ -35,10 +35,18 @@ export const TypeEvent = () => {
     return (
         <>
             <div className='add'>
-                <Link to={'/admin/newCatHabitacion'}>
+                <Link to={'/admin/newTypeEvent'}>
                     <button>Añadir</button>
                 </Link>
                 <Link to={'/admin/AdminFeed'}>
+                    <button>Regresar</button>
+                </Link>
+            </div>
+            <div className="superior">
+                <Link to={'/admin/newTypeEvent'}>
+                    <button style={{ width: '100%' }}>Añadir</button>
+                </Link>
+                <Link to={'/admin/Adminfeed'}>
                     <button>Regresar</button>
                 </Link>
             </div>
@@ -51,10 +59,13 @@ export const TypeEvent = () => {
                                 <div className='card-content'>
                                     <p><strong>ID: </strong>{typeEvent._id}</p>
                                     <p><strong>Nombre: </strong>{typeEvent.nombre}</p>
-                                    <p><strong>Hotel: </strong>{typeEvent.hotel}</p>
+                                    <p><strong>Hotel ID: </strong>{typeEvent.hotel._id}</p>
+                                    <p><strong>Hotel: </strong>{typeEvent.hotel.nombre}</p>
+                                    <p><strong>Dirección: </strong>{typeEvent.hotel.direccion}</p>
+                                    <p><strong>Teléfono: </strong>{typeEvent.hotel.telefono}</p>
                                     <div style={{ display: 'flex', gap: '40%' }}>
                                         <button onClick={() => navigateToUpdate(typeEvent)} className='category-add-button'>Editar</button>
-                                        <button onClick={() => deleteCatHab(typeEvent._id, typeEvent.Nombre)} className='category-delete-button'>Eliminar</button>
+                                        <button onClick={() => deleteTypeEvent(typeEvent._id)} className='category-delete-button'>Eliminar</button>
                                     </div>
                                 </div>
                             </div>

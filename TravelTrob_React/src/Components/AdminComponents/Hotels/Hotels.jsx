@@ -43,6 +43,14 @@ export const Hotels = () => {
           <button>Regresar</button>
         </Link>
       </div>
+      <div className="superior">
+          <Link to={'/admin/newHotel'}>
+              <button style={{ width: '100%' }}>Añadir</button>
+          </Link>
+          <Link to={'/admin/Adminfeed'}>
+              <button>Regresar</button>
+          </Link>
+      </div>
       <h1 style={{textAlign:'center'}}>Hoteles:</h1>
       <div className='card-container'>
       {

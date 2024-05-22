@@ -387,9 +387,33 @@ export const getTipoEventosHotel = async(id)=>{
     }
 }
 
+export const addTipoEventoRequest = async(data)=>{
+    try{
+        return await apiClient.post('/TipoEvento/addTipoEvento', data)
+    }catch(err){
+        console.log(err)
+        return{
+            error: true,
+            err
+        }
+    }
+}
+
 export const getTipoEventosRequest = async(id)=>{
     try{
         return await apiClient.get('/TipoEvento/viewTipoEvento')
+    }catch(err){
+        console.log(err)
+        return{
+            error: true,
+            err
+        }
+    }
+}
+
+export const deleteTipoEventosRequest = async(id)=>{
+    try{
+        return await apiClient.delete(`/TipoEvento/deleteTipoEvento/${id}`)
     }catch(err){
         console.log(err)
         return{

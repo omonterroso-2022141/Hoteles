@@ -1,8 +1,8 @@
 .card-container{
     display: grid;
-    grid-template-columns: auto auto auto;
-    height: auto;
-    width: 100%;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+
     padding: 30px;
     gap: 20px;
 }
@@ -58,4 +58,40 @@
     position: fixed;
     left: 89%;
     top: 80%;
+    z-index: 2;
+}
+
+.superior{
+    display: none;
+    width: 50%;
+}
+
+/* Ventana Pequeña */
+@media screen and (max-width: 600px) {
+    .add{
+        display: none;
+    }
+    .superior{
+        display: block;
+    }
+}
+
+/* Ventana Media */
+@media screen and (min-width: 600px) and (max-width: 1514px) {
+    .card-container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .add{
+        display: none;
+    }
+    .superior{
+        display: block;
+    }
+}
+
+/* Ventana Grande */
+@media screen and (min-width: 901px) {
+    .card-container{
+        grid-template-columns: repeat(3, 1fr);
+    }
 }

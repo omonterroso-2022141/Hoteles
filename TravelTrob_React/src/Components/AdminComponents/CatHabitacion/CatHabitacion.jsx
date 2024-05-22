@@ -37,6 +37,14 @@ export const CatHabitacion = ({ cHabs = [] }) => {
                     <button>Regresar</button>
                 </Link>
             </div>
+            <div className="superior">
+                <Link to={'/admin/newCatHabitacion'}>
+                    <button style={{ width: '100%' }}>Añadir</button>
+                </Link>
+                <Link to={'/admin/Adminfeed'}>
+                    <button>Regresar</button>
+                </Link>
+            </div>
             <h1 style={{ textAlign: 'center' }}>Categoría Habitación:</h1>
             <div className='card-container'>
                 {

@@ -42,6 +42,14 @@ export const Habitacion = () => {
             <button>Regresar</button>
         </Link>
     </div>
+    <div className="superior">
+        <Link to={'/admin/newHabitacion'}>
+            <button style={{ width: '100%' }}>Añadir</button>
+        </Link>
+        <Link to={'/admin/Adminfeed'}>
+            <button>Regresar</button>
+        </Link>
+    </div>
     <h1 style={{textAlign:'center'}}>Habitaciones:</h1>
     <div className='card-container'>
         {

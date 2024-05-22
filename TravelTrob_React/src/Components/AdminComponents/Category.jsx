@@ -39,6 +39,14 @@ export const Category = ({ categories = [] }) => {
                     <button>Regresar</button>
                 </Link>
             </div>
+            <div className="superior">
+                <Link to={'/admin/newCategory'}>
+                    <button style={{ width: '100%' }}>Añadir</button>
+                </Link>
+                <Link to={'/admin/Adminfeed'}>
+                    <button>Regresar</button>
+                </Link>
+            </div>
             <div style={{ marginTop: '1em', marginBottom: '5em' }}>
                 <h1 style={{ textAlign: 'center' }}><strong>Categories</strong></h1>
                 <div className="card-container">

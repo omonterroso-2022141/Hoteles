@@ -1,14 +1,14 @@
 import { useState } from 'react'
-import { useCatHabitacion } from '../../../Shared/Hooks/useCatHabitacion'
+import { useTypeEvento } from '../../../Shared/Hooks/useTypeEvento' 
 import { useNavigate } from 'react-router-dom'
 
-export const typeEventForm = () => {
+export const TypeEventForm = () => { // Cambio de nombre a TypeEventForm
     const navigate = useNavigate()
 
-    const { saveCatHabHook } = useCatHabitacion()
+    const { addTypeEvent } = useTypeEvento()
     const [formData, setFormData] = useState({
-        Nombre: '',
-        Contenido: ''
+        nombre: '',
+        hotel: ''
     })
 
     const handleChange = (e) => {
@@ -20,10 +20,12 @@ export const typeEventForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        saveCatHabHook(formData)
+        console.log(formData.nombre);
+        addTypeEvent(formData.nombre, formData.hotel)
     }
 
-    const navigateToCatHabs = () => {
+    const navigateToEventsType = () => {
+        navigate('/typeEvent')
     }
 
     return (
@@ -32,12 +34,12 @@ export const typeEventForm = () => {
             <form onSubmit={handleSubmit}>
                 <div>
                     <h3>Nombre:</h3>
-                    <input value={formData.Nombre} onChange={handleChange} type="text" name="Nombre" id="Nombre" />
-                    <h3>Contenido:</h3>
-                    <textarea value={formData.Contenido} onChange={handleChange} style={{maxHeight:'20em'}} name="Contenido" id="Contenido"></textarea>
+                    <input value={formData.nombre} onChange={handleChange} type="text" name="nombre" id="nombre" />
+                    <h3>Hotel:</h3>
+                    <input value={formData.hotel} onChange={handleChange} type="text" name="hotel" id="hotel" />
                 </div>
                 <button type='submit'>Agregar</button>
-                <button onClick={navigateToCatHabs}>Cancelar</button>
+                <button onClick={navigateToEventsType}>Cancelar</button>
             </form>
         </>
     )

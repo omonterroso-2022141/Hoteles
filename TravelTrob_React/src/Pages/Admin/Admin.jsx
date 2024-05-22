@@ -23,6 +23,9 @@ import { HabitacionForm } from "../../Components/AdminComponents/Habitacion/Habi
 import { UpdateHabitacion } from "../../Components/AdminComponents/Habitacion/UpdateHabitacion"
 import { ReservaChart } from "../../Components/ReservaChart"
 import { TypeEvent } from "../../Components/AdminComponents/TypeEvent/TypeEvent"
+import { updateTypeEvent } from "../../Components/AdminComponents/TypeEvent/UpdateTyepEvent"
+import { TypeEventForm } from "../../Components/AdminComponents/TypeEvent/TypeEventForm";
+
 
 export const Admin = () => {
     const { categories, getCategories, isFetching } = useCategory()
@@ -68,13 +71,15 @@ export const Admin = () => {
                 <Route path="newHotel" element={<HotelsForm/>}/>
                 <Route path="newCatHabitacion" element={<CatHabitacionForm/>}/>
                 <Route path="newHabitacion" element={<HabitacionForm/>}/>
+                <Route path="newTypeEvent" element={<TypeEventForm />}/>
 
                 <Route path="updateCategory/:id" element={<UpdateCategoryForm />} />
                 <Route path="updateUser/:id" element={<UpdateUserForm />} />
                 <Route path="updateHotel/:id" element={<UpdateHotelsForm/>}/>
                 <Route path="updateCatHabitacion/:id" element={<UpdateCatHabitacion/>}/>
                 <Route path="updateHabitacion/:id" element={<UpdateHabitacion/>}/>
-
+                <Route path="updateTypeEvent/:id" element={<updateTypeEvent />}/>
+                
                 <Route path="/categories" element={<Category categories={categories} />} />
                 <Route path="/users" element={<Users users={users} />} />
                 <Route path="/hotels" element={<Hotels hotels={hotels} />} />

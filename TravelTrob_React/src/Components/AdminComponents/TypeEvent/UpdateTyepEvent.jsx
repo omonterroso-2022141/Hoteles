@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { useCatHabitacion } from '../../../Shared/Hooks/useCatHabitacion'
 
-export const UpdateCatHabitacion = () => {
+export const updateTypeEvent = () => {
     const params = useParams()
     const navigate = useNavigate()
     const location = useLocation()

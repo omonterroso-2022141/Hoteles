@@ -87,10 +87,6 @@ export const deleteTipoEvento = async (req, res) => {
         let existeTipoEvento = await TipoEvento.findOne({ _id: id })
         if (!existeTipoEvento)return res.status(404).send({ message: 'This Category Does Not Exists' })
 
-            //# Update CHabitacion To: 'Default'
-        const defaultTipoEvento = await TipoEvento.findOne({Nombre: 'Default'})
-        await Evento.updateMany({cHabitacion: id}, {cHabitacion: defaultTipoEvento._id})
-
         //# Delete CHabitacion
         let tipoEventoDelete = await TipoEvento.findOneAndDelete({ _id: id })
         if (!tipoEventoDelete)return res.status(404).send({ message: 'Category Not Found, Not Deleted' })
