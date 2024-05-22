@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { UpdateHotelRequest, addHotelRequest, deleteHotelRequest, getHotelsRequest, getHotelsRequestId, updateUserRequest } from "../../Services/api";
-import toast from "react-hot-toast";
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { UpdateHotelRequest, addHotelRequest, deleteHotelRequest, getHotelsRequest, getHotelsRequestId, updateUserRequest } from "../../Services/api"
+import toast from "react-hot-toast"
 
 export const useHotel = () => {
   const navigate = useNavigate()

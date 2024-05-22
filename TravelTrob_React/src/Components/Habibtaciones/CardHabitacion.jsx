@@ -1,5 +1,5 @@
-import React from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import React from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 import '../CSS/Card.css'
 
 export const CardHabitacion = ({id, disponibilidad, numeroCuarto, descripcion, precio }) => {
@@ -22,5 +22,5 @@ export const CardHabitacion = ({id, disponibilidad, numeroCuarto, descripcion, p
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}

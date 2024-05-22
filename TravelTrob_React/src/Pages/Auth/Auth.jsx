@@ -1,6 +1,6 @@
-import { Register } from "../../Components/Register.jsx";
-import { Login } from "../../Components/Login.jsx";
-import { useState } from "react";
+import { Register } from "../../Components/Register.jsx"
+import { Login } from "../../Components/Login.jsx"
+import { useState } from "react"
 import './Auth.css'
 
 export const Auth = () => {

@@ -4,7 +4,7 @@ export const Logo = ({text}) => {
     return (
         <div>
             <img  src={logo} alt="Travel Trob" />
-            <span>&nbsp;&nbsp;{text}</span>
+            <span>&nbsp&nbsp{text}</span>
         </div>
     )
 }

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { logOut } from "./useLogOut.jsx";
+import { useState } from "react"
+import { logOut } from "./useLogOut.jsx"
 
 const getDetails = () =>{
     const useDetails = localStorage.getItem('user')

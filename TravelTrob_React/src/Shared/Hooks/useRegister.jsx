@@ -1,6 +1,6 @@
-import { useState } from "react";
-import toast from "react-hot-toast";
-import { registerRequest } from "../../Services/api";
+import { useState } from "react"
+import toast from "react-hot-toast"
+import { registerRequest } from "../../Services/api"
 
 export const useRegister = () => {
     const [isLoading, setIsLoading] = useState(false)

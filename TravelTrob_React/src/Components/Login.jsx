@@ -1,10 +1,10 @@
-import { emailValidationMessage, validateEmail } from "../Shared/Validators/validators.js";
-import { passwordValidationMessage, validatePassword } from "../Shared/Validators/validators.js";
-import { Input } from "./Input.jsx";
-import { useState } from "react";
-import { useLogin } from "../Shared/Hooks/useLogin.jsx";
-import { Logo } from "./Logo.jsx";
-import { useNavigate } from "react-router-dom";
+import { emailValidationMessage, validateEmail } from "../Shared/Validators/validators.js"
+import { passwordValidationMessage, validatePassword } from "../Shared/Validators/validators.js"
+import { Input } from "./Input.jsx"
+import { useState } from "react"
+import { useLogin } from "../Shared/Hooks/useLogin.jsx"
+import { Logo } from "./Logo.jsx"
+import { useNavigate } from "react-router-dom"
 import { ClockLoader } from "react-spinners"
 
 export const Login = ({ switchAuthHandler }) => {

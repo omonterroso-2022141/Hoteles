@@ -1,11 +1,12 @@
 import { useState } from 'react'
-import { deleteUserRequest, getUsersRequest, saveCategoryRequest, saveUserRequest, updateUserRequest } from '../../Services/api'
+import { deleteUserRequest, getUserInfoRequest, getUsersRequest, saveCategoryRequest, saveUserRequest, updateUserRequest } from '../../Services/api'
 import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 
 export const useUser = () => {
     const navigate = useNavigate()
     const [users, setUsers] = useState(null)
+    const [user, setUser] = useState(null)
 
     //# ------------- Get Users -------------
     const getUsersHook = async () => {
@@ -55,6 +56,7 @@ export const useUser = () => {
                 'Error al Actualizar Usuario'
             )
         }
+        alert('Usuario actualizado con exito')
         getUsersHook()
     }
 
@@ -78,10 +80,26 @@ export const useUser = () => {
         }
     }
 
+    //# ------------- Get User Info ------------
+    const getUsersInfoHook = async () => {
+        const res = await getUserInfoRequest()
+        if (res.error) {
+            alert(
+                res.err.res.data.message ||
+                'Error al Obtener Usuarios'
+            )
+        }
+        console.log('A');
+        setUser(res.data.user)
+    }
+
     return {
         users,
+        user,
+        isFetchingUser: !user,
         isFetchingUsers: !users,
         getUsersHook,
+        getUsersInfoHook,
         saveUserHook,
         updateUserHook,
         deleteUserHook

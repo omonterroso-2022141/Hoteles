@@ -1,19 +1,19 @@
-import { useState } from 'react';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import './CSS/Reserva.css';
+import { useState } from 'react'
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
+import './CSS/Reserva.css'
 
 export const ReservaDeEventos = () => {
-    const [fechaInicio, setFechaInicio] = useState(null);
-    const [fechaFinalizacion, setFechaFinalizacion] = useState(null);
+    const [fechaInicio, setFechaInicio] = useState(null)
+    const [fechaFinalizacion, setFechaFinalizacion] = useState(null)
 
     const handleFechaInicioChange = (date) => {
-        setFechaInicio(date);
-    };
+        setFechaInicio(date)
+    }
 
     const handleFechaFinalizacionChange = (date) => {
-        setFechaFinalizacion(date);
-    };
+        setFechaFinalizacion(date)
+    }
 
 
     return (

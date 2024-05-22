@@ -71,6 +71,16 @@ export const defaultAdmin = async () => {
     }
 }
 
+export const getInfoUser = async(req, res)=>{
+    try {
+        let { id } = req.user
+        let user = await User.findOne({_id:id})
+        return res.send({ user })
+    } catch (err) {
+        console.error(err)
+    }
+}
+
 
 /*  
     @ Yerick Aguilar
@@ -79,41 +89,46 @@ export const defaultAdmin = async () => {
 */
 export const updateProfile = async (req, res) => {
     try {
-        let { id } = req.params
-        let data = req.body
-        let user = await User.findById(id)
+        const { id } = req.params;
+        const data = req.body;
+        const user = await User.findById({ _id: id });
 
-        let update = checkUpdate(data, id)
-        if (!update) return res.status(400).send({ message: 'Some Data Cannot Be Updated or Mising Data' })
-
-        if (data.newPassword &&
-            !await checkPassword(data.password, user.password))
-            return res.status(401).send({ message: 'Incorrect Password' })
-
-        if (user.role != 'ADMIN') { // # Role 'Client' cannot update own role
-            if (data.role)
-                return res.status(404).send({ message: 'Some Data Cannot Be Updated or Mising Data' })
+        if (!user) {
+            return res.status(404).send({ message: 'User not found' });
         }
 
-        if (data.password && data.newPassword) {
-            data.password = await encrypt(data.newPassword)
-            let updatedUser = await User.findOneAndUpdate(
-                { _id: id },
-                data,
-                { new: true }
-            )
-            return res.send({ message: 'Updater Successfully', updatedUser })
+        const update = checkUpdate(data, id);
+        if (!update) {
+            return res.status(400).send({ message: 'Some Data Cannot Be Updated or Missing Data' });
         }
-        let updatedUser = await User.findOneAndUpdate(
+
+        if (data.newPassword) {
+            const isPasswordCorrect = await checkPassword(data.password, user.password);
+            if (!isPasswordCorrect) {
+                return res.status(401).send({ message: 'Incorrect Password' });
+            }
+            data.password = await encrypt(data.newPassword);
+            delete data.newPassword;  // No need to store newPassword in the database
+        }
+
+        if (user.role !== 'ADMIN' && data.role) {
+            return res.status(404).send({ message: 'Some Data Cannot Be Updated or Missing Data' });
+        }
+
+        const updatedUser = await User.findOneAndUpdate(
             { _id: id },
             data,
             { new: true }
-        )
-        if (!updatedUser) return res.status(404).send({ message: 'User not Found, Try Again' })
-        return res.send({ message: 'Account Updated Successfully !!', updatedUser })
+        );
+
+        if (!updatedUser) {
+            return res.status(404).send({ message: 'User not Found, Try Again' });
+        }
+
+        return res.send({ message: 'Account Updated Successfully !!', updatedUser });
     } catch (err) {
-        console.error(err)
-        return res.status(500).send({ message: 'Error Updating Account' })
+        console.error(err);
+        return res.status(500).send({ message: 'Error Updating Account' });
     }
 }
 
@@ -144,16 +159,6 @@ export const deleteUser = async (req, res) => {
 export const list = async (req, res) => {
     try {
         let user = await User.find()
-        return res.send({ user })
-    } catch (err) {
-        console.error(err)
-    }
-}
-
-export const getInfoUser = async(req, res)=>{
-    try {
-        let { id } = req.user
-        let user = await User.findOne({_id:id})
         return res.send({ user })
     } catch (err) {
         console.error(err)

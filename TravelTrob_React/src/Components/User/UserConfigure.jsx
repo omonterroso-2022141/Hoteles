@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from "react"
 import {
     validateEmail,
     validateUsername,
@@ -10,8 +10,8 @@ import {
     emailValidationMessage,
     validatePhone,
     phoneValidationMessage
-} from '../../Shared/Validators/validators.js';
-import { Input } from '../Input.jsx';
+} from '../../Shared/Validators/validators.js'
+import { Input } from '../Input.jsx'
 
 export const UserConfigure = ({ settings, saveSettings }) => {
     const inputs = [
@@ -22,19 +22,19 @@ export const UserConfigure = ({ settings, saveSettings }) => {
         { field: 'password', label: 'Contraseña', validationMessage: passwordValidationMessage, type: 'password' },
         { field: 'passwordConfirm', label: 'Confirmar Contraseña', validationMessage: passConfirmationValidationMessage, type: 'password' },
         { field: 'phone', label: 'Teléfono', validationMessage: phoneValidationMessage, type: 'text' }
-    ];
+    ]
 
     const [formState, setFormState] = useState(() => {
-        const initialState = {};
+        const initialState = {}
         inputs.forEach(input => {
             initialState[input.field] = {
                 isValid: input.field === 'passwordConfirm' ? validatePasswordConfirm(settings.password, settings.passwordConfirm) : eval(`validate${input.field.charAt(0).toUpperCase() + input.field.slice(1)}`)(settings[input.field]),
                 showError: false,
                 value: settings[input.field] || ''
-            };
-        });
-        return initialState;
-    });
+            }
+        })
+        return initialState
+    })
 
     const handleInputValueChange = (value, field) => {
         setFormState(prevState => ({
@@ -43,29 +43,29 @@ export const UserConfigure = ({ settings, saveSettings }) => {
                 ...prevState[field],
                 value
             }
-        }));
-    };
+        }))
+    }
 
     const handleInputValidationOnBlur = (value, field) => {
-        let isValid = false;
+        let isValid = false
         switch (field) {
             case 'email':
-                isValid = validateEmail(value);
-                break;
+                isValid = validateEmail(value)
+                break
             case 'username':
-                isValid = validateUsername(value);
-                break;
+                isValid = validateUsername(value)
+                break
             case 'password':
-                isValid = validatePassword(value);
-                break;
+                isValid = validatePassword(value)
+                break
             case 'passwordConfirm':
-                isValid = validatePasswordConfirm(formState.password.value, value);
-                break;
+                isValid = validatePasswordConfirm(formState.password.value, value)
+                break
             case 'phone':
-                isValid = validatePhone(value);
-                break;
+                isValid = validatePhone(value)
+                break
             default:
-                break;
+                break
         }
         setFormState(prevState => ({
             ...prevState,
@@ -74,11 +74,11 @@ export const UserConfigure = ({ settings, saveSettings }) => {
                 isValid,
                 showError: !isValid
             }
-        }));
-    };
+        }))
+    }
 
     const handleFormSubmit = (e) => {
-        e.preventDefault();
+        e.preventDefault()
         saveSettings({
             name: formState.name.value,
             surname: formState.surname.value,
@@ -87,10 +87,10 @@ export const UserConfigure = ({ settings, saveSettings }) => {
             password: formState.password.value,
             passwordConfirm: formState.passwordConfirm.value,
             phone: formState.phone.value
-        });
-    };
+        })
+    }
 
-    const isSubmitButtonDisabled = Object.values(formState).some(input => !input.isValid);
+    const isSubmitButtonDisabled = Object.values(formState).some(input => !input.isValid)
 
     return (
         <form onSubmit={handleFormSubmit}>
@@ -111,5 +111,5 @@ export const UserConfigure = ({ settings, saveSettings }) => {
                 Guardar
             </button>
         </form>
-    );
-};
+    )
+}

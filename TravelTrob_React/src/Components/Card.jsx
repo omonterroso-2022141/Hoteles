@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 import './CSS/Card.css'
 
 export const Card = ({ id, title, image, description, infoButon }) => {
@@ -22,5 +22,5 @@ export const Card = ({ id, title, image, description, infoButon }) => {
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}

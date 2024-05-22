@@ -41,8 +41,8 @@ export const phoneValidationMessage = 'El numero de telefono tiene que ser maxim
 
 //VALIDACION DE TEXTO
 export const validateText = (text) => {
-    const regex = /^[a-zA-Z0-9\s]+$/;
-    return regex.test(text);
+    const regex = /^[a-zA-Z0-9\s]+$/
+    return regex.test(text)
 }
   
 export const textValidationMessage = 'Solo se aceptan letra y numeros'
@@ -54,3 +54,6 @@ export const validateNumber = (phone)=>{
 }
 
 export const numberValidationMessage = 'Solo numeros porfavor'
+
+export const message = 'Error'
+

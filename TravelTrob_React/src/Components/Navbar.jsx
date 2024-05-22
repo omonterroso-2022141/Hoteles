@@ -1,17 +1,17 @@
-import { BarraBusqueda } from './BarraBusqueda';
-import { useNavigate } from 'react-router-dom';
-import '../Components/CSS/Navbar.css';
+import { BarraBusqueda } from './BarraBusqueda'
+import { useNavigate } from 'react-router-dom'
+import '../Components/CSS/Navbar.css'
 
 export const Navbar = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleLogout = () => {
-    logoutSys();
-  };
+    logoutSys()
+  }
 
   const handleNavigateToLogin = () => {
-    navigate('/auth');
-  };
+    navigate('/auth')
+  }
   const handlerNaavigateToFeed = () => {
     navigate('/feed')
   }

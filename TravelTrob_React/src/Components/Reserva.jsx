@@ -14,7 +14,7 @@ export const Reserva = () => {
   const { idHabitacion } = useParams()
   const urlBase = 'http://localhost:3200/Hotel/getImage/'
 
-  const [fechaInicio, setFechaInicio] = useState(null);
+  const [fechaInicio, setFechaInicio] = useState(null)
   const [fechaFinalizacion, setFechaFinalizacion] = useState(null)
   const [formData, setFormData] = useState(
     {
@@ -57,7 +57,7 @@ export const Reserva = () => {
   }
 
   const handleValidationOnBlur = (value, field) => {
-    let isValid = false;
+    let isValid = false
   
     switch (field) {
       case 'numeroPersonas':
@@ -76,7 +76,7 @@ export const Reserva = () => {
         isValid,
         showError: !isValid
       }
-    }));
+    }))
   }
 
   const onValueChange = (value, field) => {
@@ -92,10 +92,10 @@ export const Reserva = () => {
   }
 
   const formattedDate = (date) => {
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
+    const year = date.getFullYear()
+    const month = String(date.getMonth() + 1).padStart(2, '0')
+    const day = String(date.getDate()).padStart(2, '0')
+    return `${year}-${month}-${day}`
   }
 
   const handleFechaInicioChange = (date) => {

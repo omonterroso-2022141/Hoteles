@@ -7,7 +7,7 @@ import {
   emailValidationMessage, validatePhone, phoneValidationMessage
 } from '../Shared/Validators/validators.js'
 import { useNavigate } from 'react-router-dom'
-import { Logo } from "./Logo.jsx";
+import { Logo } from "./Logo.jsx"
 
 export const Register = ({ switchAuthHandler }) => {
   const { register, isLoading } = useRegister()
@@ -87,7 +87,7 @@ export const Register = ({ switchAuthHandler }) => {
         break
       case 'phone':
         isValid = validatePhone(value)
-        break;
+        break
       default:
         break
     }
@@ -117,8 +117,8 @@ export const Register = ({ switchAuthHandler }) => {
   }
 
   const handleTogglePassword = () => {
-    setShowPassword(prevState => !prevState);
-  };
+    setShowPassword(prevState => !prevState)
+  }
 
   const isSubmitButtonDisable =
     !formData.email.isValid ||

@@ -25,7 +25,7 @@ export const Category = ({ categories = [] }) => {
             return console.log('No se puede borrar Default')
         }
         deleteCategoryHook(id)
-        console.log(id);
+        console.log(id)
         window.location.reload()
     }
 

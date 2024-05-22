@@ -1,11 +1,11 @@
-import { Auth } from "./Pages/Auth/Auth.jsx";
-import { Info } from "./Components/Info.jsx";
-import { Feed } from "./Pages/Feed/Feed.jsx";
-import { Reserva } from "./Components/Reserva.jsx";
-import { Register } from "./Components/Register.jsx";
-import { ContentHabitacion } from "./Components/Habibtaciones/ContentHabitacion.jsx";
+import { Auth } from "./Pages/Auth/Auth.jsx"
+import { Info } from "./Components/Info.jsx"
+import { Feed } from "./Pages/Feed/Feed.jsx"
+import { Reserva } from "./Components/Reserva.jsx"
+import { Register } from "./Components/Register.jsx"
+import { ContentHabitacion } from "./Components/Habibtaciones/ContentHabitacion.jsx"
 import { UsuarioPerfil } from './Components/UsuarioPerfil.jsx'
-import { ReservaDeEventos } from "./Components/ReservaDeEventos.jsx";
+import { ReservaDeEventos } from "./Components/ReservaDeEventos.jsx"
 
 
 export const routes = [

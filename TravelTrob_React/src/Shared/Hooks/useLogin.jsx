@@ -1,7 +1,7 @@
-import { useState } from "react";
-import toast from "react-hot-toast";
-import { loginRequest } from "../../Services/api.js";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react"
+import toast from "react-hot-toast"
+import { loginRequest } from "../../Services/api.js"
+import { useNavigate } from "react-router-dom"
 
 export const useLogin = () => {
     const [isLoading, setIsLoading] = useState(false)

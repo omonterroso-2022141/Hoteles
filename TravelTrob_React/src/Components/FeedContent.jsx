@@ -1,7 +1,7 @@
-import { Navbar } from './Navbar.jsx';
-import { Card } from './Card.jsx';
+import { Navbar } from './Navbar.jsx'
+import { Card } from './Card.jsx'
 import '../Pages/Feed/Feed.css'
-import { useEffect } from 'react';
+import { useEffect } from 'react'
 import { useHotel } from '../Shared/Hooks/useHotel.jsx'
 
 

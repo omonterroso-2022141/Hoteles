@@ -1,5 +1,5 @@
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 //Configuraciones base
 const apiClient = axios.create({
@@ -112,6 +112,18 @@ export const delteCategoryRequest = async (id) => {
 export const getUsersRequest = async (list) => {
     try {
         return await apiClient.get('user/list')
+    } catch (err) {
+        return {
+            error: true,
+            err
+        }
+    }
+}
+
+//? ----------------- GetUsersRequest ------------------
+export const getUserInfoRequest = async () => {
+    try {
+        return await apiClient.get('user/getInfoUser')
     } catch (err) {
         return {
             error: true,

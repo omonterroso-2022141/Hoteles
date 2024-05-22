@@ -35,7 +35,7 @@ export const UpdateCatHabitacion = () => {
             )
             navigate('../catHabs')
         } catch (error) {
-            console.error('Error al Actualizar Categoría Habitación', error);
+            console.error('Error al Actualizar Categoría Habitación', error)
         }
     }
 
