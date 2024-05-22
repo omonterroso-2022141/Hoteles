@@ -61,3 +61,4 @@ export const validateTime = (time)=>{
 }
 
 export const timeValidationMessage = 'Ingrese una hora valida porfavor'
+export const message = 'Error'

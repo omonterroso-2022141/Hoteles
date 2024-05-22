@@ -1,15 +1,15 @@
 import { Navbar } from "./Navbar"
-import { BarraBusqueda } from "./BarraBusqueda";
+import { BarraBusqueda } from "./BarraBusqueda"
 import './CSS/Info.css'
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
 
-import { Footer } from "./Footer";
+import { Footer } from "./Footer"
 
 export const Info = () => {
     const navigate = useNavigate()
     const handleNavigateToLogin = () => {
-        navigate('/auth');
-    };
+        navigate('/auth')
+    }
     return (
         <div>
             <header className="header">

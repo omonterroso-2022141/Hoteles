@@ -17,5 +17,6 @@ export const routes = [
     { path: '/habitaciones/:idHotel', element: <ContentHabitacion /> },
     { path: '/habitaciones/:idHotel/reservacion/:idHabitacion', element: <Reserva /> },
     { path: '/UsuarioPerfil', element: <UsuarioPerfil /> },
-    { path: '/ReservaEvento/:idHotel', element: <ReservaDeEventos /> }
+    { path: '/ReservaEvento/:idHotel', element: <ReservaDeEventos /> },
+    { path: '/ReservaEvento', element: <ReservaDeEventos /> }
 ]

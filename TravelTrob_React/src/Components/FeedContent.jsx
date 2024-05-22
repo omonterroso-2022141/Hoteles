@@ -1,21 +1,20 @@
-import { Navbar } from './Navbar.jsx';
-import { Card } from './Card.jsx';
+import { Navbar } from './Navbar.jsx'
+import { Card } from './Card.jsx'
 import '../Pages/Feed/Feed.css'
-import { useEffect } from 'react';
+import { useEffect } from 'react'
 import { useHotel } from '../Shared/Hooks/useHotel.jsx'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 
 
 export const FeedContent = () => {
-    const { getHotels, hotels, isFetching } = useHotel()
-    const navigate =useNavigate()
-    let nombreCategory = []
+    const { getHotels, hotels, isFetchingHotels } = useHotel()
+    let navigate = useNavigate()
 
     useEffect(() => {
-        getHotels()
+      getHotels()
     }, [])
 
-    if (isFetching) {
+    if (isFetchingHotels) {
         return (
             <span>Loading...</span>
         )
