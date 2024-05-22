@@ -1,0 +1,32 @@
+.feed-content {
+  background-image: url('../../Components/IMG/Fondo2.02asda.png');
+  background-repeat: no-repeat;
+}
+
+.NavBarBuscar {
+  width: 100vw;
+}
+.hotel-cards{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.hotel-cards{
+  margin: 4%;
+  height: 350px;
+  background-color: orange;
+  border-radius: 50px;
+}
+
+.TituloFeed{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  font-size: large;
+  font-feature-settings: "smcp", "zero";
+  font-kerning: none;
+  font-stretch: 150%;
+  font-variation-settings: 'wght' 850;
+  font-weight: 900;
+
+}
