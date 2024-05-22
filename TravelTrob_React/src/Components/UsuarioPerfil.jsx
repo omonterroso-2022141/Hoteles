@@ -1,30 +1,36 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react'
 import { Footer } from './Footer.jsx'
 import { Input } from './Input.jsx'
-import { usePerfilSettings } from '../Shared/Hooks/usePerfilSettings.jsx';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
+import { useUser } from '../Shared/Hooks/useUser.jsx'
 import {
-  validateEmail, validateUsername, validatePassword, validatePasswordConfirm,
-  passConfirmationValidationMessage, passwordValidationMessage, usernameValidationMessage,
-  emailValidationMessage, validatePhone, phoneValidationMessage
-} from '../Shared/Validators/validators.js'
-import './CSS/UsuarioPerfil.css'
+    validateEmail, validateUsername, validatePassword, validatePasswordConfirm,
+    passConfirmationValidationMessage, passwordValidationMessage, usernameValidationMessage,
+    emailValidationMessage, validatePhone, phoneValidationMessage,
+    message
+  } from '../Shared/Validators/validators.js'
+import './CSS/Info.css'
+import './CSS/UserConfig.css'
 
 export const UsuarioPerfil = () => {
-    const { register, isLoading } = usePerfilSettings()
     //Contraseña
     const [showPassword, setShowPassword] = useState(false)
     const [password, setPassword] = useState('')
+    const { getUsersInfoHook, updateUserHook, deleteUserHook, user, isFetchingUser } = useUser()
+    const [hasFetched, setHasFetched] = useState(false)
     const navigate = useNavigate()
 
-
     const [formData, setFormData] = useState(
-        {
+        {   
+            id: {
+                value: '',
+                isValid: false,
+                showError: false
+            },
             name: {
                 value: '',
                 isValid: false,
                 showError: false
-
             },
             surname: {
                 value: '',
@@ -55,9 +61,35 @@ export const UsuarioPerfil = () => {
                 value: '',
                 isValid: false,
                 showError: false
-            }
+            },
         }
     )
+
+    useEffect(() => {
+        const fetchData = async () => {
+            await getUsersInfoHook()
+            setFormData({
+                id: { value: user._id, isValid: true, showError: false },
+                name: { value: user.name, isValid: true, showError: false },
+                surname: { value: user.surname, isValid: true, showError: false },
+                username: { value: user.username, isValid: true, showError: false },
+                email: { value: user.email, isValid: true, showError: false },
+                password: { value: '', isValid: false, showError: false },
+                passwordConfirm: { value: '', isValid: false, showError: false },
+                phone: { value: user.phone, isValid: true, showError: false },
+            })
+            setHasFetched(true)
+        }
+        if (!hasFetched) {
+            fetchData()
+        }
+    }, [hasFetched, getUsersInfoHook, user])
+  
+    if (isFetchingUser) {
+      return (
+          <span>Loading...</span>
+      )
+    }
 
     const onValueChange = (value, field) => {
         setFormData((prevData) => (
@@ -104,28 +136,35 @@ export const UsuarioPerfil = () => {
         ))
     }
 
-    const handleRegister = async (e) => {
+    const handleUpdate = async (e) => {
         e.preventDefault()
-        register(
-            formData.name.value,
-            formData.surname.value,
-            formData.username.value,
-            formData.email.value,
-            formData.password.value,
-            formData.phone.value
-        )
-        switchAuthHandler()
+        if(formData.password.value == '' || formData.passwordConfirm.value == '')
+            alert('Debe de introducir la contraseña para asegurarnos que es usted')
+        else{
+            updateUserHook(
+                formData.id.value,
+                formData.name.value,
+                formData.surname.value,
+                formData.username.value,
+                formData.email.value,
+                formData.password.value,
+                formData.phone.value,
+            )
+            navigate('/feed')
+        }
     }
-
-    const handleTogglePassword = () => {
-        setShowPassword(prevState => !prevState);
-    };
+    const handleDelete = async (e)=>{
+        e.preventDefault()
+        deleteUserHook(
+            formData.id.value
+        )
+        navigate('/info')
+    }
 
     const isSubmitButtonDisable =
         !formData.email.isValid ||
         !formData.username.isValid ||
         !formData.password.isValid ||
-        !formData.passwordConfirm.isValid ||
         !formData.phone.isValid
 
     return (
@@ -220,15 +259,15 @@ export const UsuarioPerfil = () => {
                             validationMessage={phoneValidationMessage}
                         />
                     </div>
-                    <button type="submit">Update Profile</button>
+                    <button disabled={isSubmitButtonDisable} onClick={handleUpdate} type="submit">Update Profile</button>
+                    <button onClick={handleDelete} style={{ marginTop: '20px', color: 'red' }}>
+                        Delete Account
+                    </button>
                 </form>
-                <button onClick={handleDelete} style={{ marginTop: '20px', color: 'red' }}>
-                    Delete Account
-                </button>
                 {message && <p>{message}</p>}
 
             </div>
             <Footer />
         </div>
-    );
-};
+    )
+}

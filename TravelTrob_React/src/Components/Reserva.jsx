@@ -11,7 +11,8 @@ import { Footer } from './Footer.jsx'
 import { Navbar } from './Navbar.jsx'
 
 export const Reserva = () => {
-  let { getHotelId, hotel } = useHotel()
+
+  let { getHotelId, hotel, isFetching } = useHotel()
   let { saveReserva } = useReserva()
   const { idHabitacion } = useParams()
   const urlBase = 'http://localhost:3200/Hotel/getImage/'
@@ -53,12 +54,22 @@ export const Reserva = () => {
     }
   )
 
-  const handleValidationOnBlur = (value, field) => {
-    let isValid = false;
+  useEffect(() => {
+    getHotelId(idHabitacion)
+  }, [])
 
+  if (isFetching) {
+    return (
+        <span>Loading...</span>
+    )
+  }
+
+  const handleValidationOnBlur = (value, field) => {
+    let isValid = false
+  
     switch (field) {
       case 'numeroPersonas':
-        isValid = validateNumber(value)
+        isValid= validateNumber(value)
         break
       case 'dataExtra':
         isValid = validateText(value)
@@ -73,7 +84,7 @@ export const Reserva = () => {
         isValid,
         showError: !isValid
       }
-    }));
+    }))
   }
 
   const onValueChange = (value, field) => {

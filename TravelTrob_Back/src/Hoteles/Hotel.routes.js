@@ -9,7 +9,8 @@ import {
     getImage, 
     testHotel, 
     updateHotel, 
-    viewHotel 
+    viewHotel, 
+    viewHotelRequest
 } from './Hotel.controller.js'
 import { subirImagen } from '../Utils/ImageAdd.js'
 
@@ -22,5 +23,6 @@ api.put('/updateHotel/:id', [validateJwt, isAdmin], updateHotel)
 api.delete('/deleteHotel/:id', [validateJwt, isAdmin], deleteHotel)
 api.get('/getImage/:image', getImage)
 api.get('/getHotelCategory', getHotelCategory)
+api.get('/viewHotelRequest', [validateJwt], viewHotelRequest)
 
 export default api

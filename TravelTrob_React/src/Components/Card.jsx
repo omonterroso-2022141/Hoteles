@@ -20,8 +20,8 @@ export const Card = ({ id, title, image, description, infoButton }) => {
         <div className="card">
             <img src={`${urlBase}${image}`} crossOrigin="anonymous" alt={title} className="card-image" />
             <div className="card-content">
-                <h2 className="card-title">{title}</h2>
-                <p className="card-description">{description}</p>
+                <h2 className="card-title" style={{ textAlign: 'center' }}>{title}</h2>
+                <p className="card-description" style={{ textAlign: 'center' }}>{description}</p>
                 <button onClick={evento}>{infoButton}Reservar Evento</button>
                 <button onClick={habitaciones}>{infoButton} Ver Habitaciones</button>
             </div>

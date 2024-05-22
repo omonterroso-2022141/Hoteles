@@ -9,6 +9,7 @@ const tipoEventoSchema = Schema({
     },
     hotel: {
         type: mongoose.Schema.ObjectId,
+        ref: 'Hotel',
         required: true
     }
 })

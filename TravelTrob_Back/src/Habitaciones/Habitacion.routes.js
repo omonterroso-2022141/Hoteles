@@ -8,6 +8,7 @@ import {
     testHabitacion,
     updateHabitacion, 
     viewHabitacion, 
+    viewHoteHabitacion, 
     viewHotelForHabitacion
 } from './Habitacion.controller.js'
 
@@ -19,5 +20,6 @@ api.get('/viewHabitacion/:idHotel', [validateJwt], viewHabitacion)
 api.put('/updateHabitacion/:id', [validateJwt, isAdmin], updateHabitacion)
 api.delete('/deleteHabitacion/:id', [validateJwt, isAdmin], deleteHabitacion)
 api.get('/viewHotelForHabitacion/:id', [validateJwt], viewHotelForHabitacion)
+api.get('/viewHoteHabitacion', [validateJwt, isAdmin], viewHoteHabitacion)
 
 export default api

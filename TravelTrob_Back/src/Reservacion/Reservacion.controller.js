@@ -49,7 +49,6 @@ export const addReservacion = async(req, res)=>{
         if(!habitacionUpdate) return res.status(401).send({message: 'La habitación no se pudo actualizar.'}) 
 
         setReservacion(existeUser, existeHotel, existeHabitacion, reservacion)
-
         return res.send({message: 'saved reservation', reservacion})
     }catch(err){
         console.error(err)

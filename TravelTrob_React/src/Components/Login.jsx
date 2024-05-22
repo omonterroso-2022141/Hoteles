@@ -81,8 +81,17 @@ export const Login = ({ switchAuthHandler }) => {
     ))
   }
   //Viajar a Feed
-    const handlerNavigateToLogin = () =>{
-      navigate('/feed')
+    const handlerNavigateToLogin = async() =>{
+      let admin = await login(
+        formData.email.value,
+        formData.password.value
+      )
+      console.log(admin)
+      if(admin){
+        navigate('/admin/adminfeed')
+      }
+      else
+        navigate('/feed')
     }
 
   return (
@@ -123,6 +132,7 @@ export const Login = ({ switchAuthHandler }) => {
         />
         <button
           disabled={isSubmitButtonDisable}
+          onClick={handlerNavigateToLogin}
         >
           LogIn
         </button>

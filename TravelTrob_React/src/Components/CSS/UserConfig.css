@@ -1,0 +1,78 @@
+/* Estilo general para el contenedor del formulario */
+form {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para el título del formulario */
+form h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Estilo para las etiquetas */
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Estilo para los campos de entrada */
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Estilo para el botón de actualización */
+form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #ff5722;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form input[type="submit"]:hover {
+    background-color: #e64a19;
+}
+
+/* Estilo para mantener la estética del formulario */
+form input::placeholder {
+    color: #aaa;
+}
+
+form .form-group {
+    margin-bottom: 15px;
+}
+
+form .form-group:last-child {
+    margin-bottom: 0;
+}
+
+/* Asegurarse de que el formulario se vea bien en dispositivos móviles */
+@media (max-width: 600px) {
+    form {
+        padding: 10px;
+    }
+
+    form input[type="submit"] {
+        padding: 15px;
+    }
+}
