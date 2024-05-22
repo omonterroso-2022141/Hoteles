@@ -24,6 +24,8 @@ export const Login = ({ switchAuthHandler }) => {
       }
     }
   )
+  const [showPassword, setShowPassword] = useState(false);
+  const [password, setPassword] = useState('');
 
   const isSubmitButtonDisable =
     !formData.email.isValid ||
@@ -80,6 +82,12 @@ export const Login = ({ switchAuthHandler }) => {
       }
     ))
   }
+
+  //Mostrar o oCULTAR cONTRASEÑA
+  const handleTogglePassword = () => {
+    setShowPassword(prevState => !prevState);
+  }
+
   //Viajar a Feed
     const handlerNavigateToLogin = () =>{
       navigate('/feed')
@@ -96,18 +104,18 @@ export const Login = ({ switchAuthHandler }) => {
         onSubmit={handleLogin}
       >
 
-        <Input
-          field='email'
-          label='Email'
-          type='email'
-          placeholder='example@gmai.com'
-          value={formData.email.value}
-          onChangeHandler={onValueChange}
-          onBlurHandler={handleValidationOnBlur}
-          showErrorMessage={formData.email.showError}
-          validationMessage={emailValidationMessage}
-         
-        />
+      <Input
+        field='email'
+        label='Email'
+        type='email'
+        placeholder='example@gmai.com'
+        value={formData.email.value}
+        onChangeHandler={onValueChange}
+        onBlurHandler={handleValidationOnBlur}
+        showErrorMessage={formData.email.showError}
+        validationMessage={emailValidationMessage}
+        
+      />
 
         <Input
           field='password'
@@ -122,6 +130,7 @@ export const Login = ({ switchAuthHandler }) => {
 
         />
         <button
+          onClick={handlerNavigateToLogin}
           disabled={isSubmitButtonDisable}
         >
           LogIn
@@ -131,7 +140,12 @@ export const Login = ({ switchAuthHandler }) => {
           ¿Aún no tienes una cuenta? ¡Regístrate...!
         </span>
       </form>
+      <div className="Contra">
 
+        <button onClick={handleTogglePassword}>
+          {showPassword ? '0.0' : '-.-'}
+        </button>
+      </div>
 
     </div>
   )

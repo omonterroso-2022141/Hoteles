@@ -20,4 +20,5 @@ api.put('/updateHabitacion/:id', [validateJwt, isAdmin], updateHabitacion)
 api.delete('/deleteHabitacion/:id', [validateJwt, isAdmin], deleteHabitacion)
 api.get('/viewHotelForHabitacion/:id', [validateJwt], viewHotelForHabitacion)
 
+
 export default api

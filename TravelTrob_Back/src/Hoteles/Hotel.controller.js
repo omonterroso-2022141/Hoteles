@@ -19,12 +19,13 @@ export const addHotel = async (req, res) => {
         let { nombre, direccion, telefono, descripcion, ubicacion, categoria } = req.body
         let existeCategoria = await Category.findOne({_id: categoria})
 
+
         if (!existeCategoria)
             return res.status(404).send({ message: 'The category not found' })
 
-
         const validacion = validar(nombre,direccion,telefono,descripcion,ubicacion,req.file,'Y')
         if(validacion == ''){
+
             const hotel = new Hotel({
                 nombre: nombre,
                 direccion: direccion,
@@ -33,6 +34,7 @@ export const addHotel = async (req, res) => {
                 ubicacion: ubicacion,
                 categoria: categoria,
                 imagen: req.file.filename
+
             })
             await hotel.save()
             return res.send({ message: 'saved hotel', hotel })
@@ -72,12 +74,23 @@ export const updateHotel = async (req, res) => {
     try {
         let { id } = req.params
         let existHotel = await Hotel.findOne({ _id: id })
+
         if (!existHotel)
             return res.status(500).send({ message: 'The Hotel not exist' })
-        let data = req.body
-        let hotelUpdate = await Hotel.findOneAndUpdate({ _id: id }, data, {
-            new: true,
-        })
+
+        let { nombre, direccion, telefono, descripcion, categoria } = req.body
+        console.log(nombre, direccion, telefono, descripcion, categoria)
+
+        let updatedData = { nombre, direccion, telefono, descripcion, categoria }
+        if (req.file) {
+            updatedData.imagen = req.file.filename
+        }
+
+        let hotelUpdate = await Hotel.findOneAndUpdate(
+            { _id: id },
+            updatedData,
+            { new: true, })
+
         if (!hotelUpdate)
             return res
                 .status(401)
@@ -144,7 +157,6 @@ export const getImage = async(req, res)=>{
     const dirname = 'src/public/uploads/'
     const { image } = req.params
     try{
-
         const img = path.resolve(`${dirname}${image}`)
         return res.sendFile(img)
     }catch(err){

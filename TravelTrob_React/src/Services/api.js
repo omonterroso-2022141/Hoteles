@@ -1,11 +1,11 @@
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 //Configuraciones base
 const apiClient = axios.create({
     baseURL: 'http://localhost:3200',
     timeout: 5000
 })
+
 //Interceptor = middleware para agregar datos como Headers
 apiClient.interceptors.request.use(
     config=> {
@@ -56,7 +56,17 @@ export const getHotelsRequest = async()=>{
     try{
         return await apiClient.get('/Hotel/viewHotel')
     }catch(err){
-        console.log(err)
+        return{
+            error: true,
+            err
+        }
+    }
+}
+
+export const getCategoryRequest = async(list)=>{
+    try {
+        return await apiClient.get('category/list')
+    } catch (err) {
         return{
             error: true,
             err

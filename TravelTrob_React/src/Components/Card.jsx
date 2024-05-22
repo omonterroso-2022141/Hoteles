@@ -14,6 +14,7 @@ export const Card = ({ id, title, image, description, infoButon }) => {
         <div>
             <div className="card">
                 <img src={`${urlBase}${image}`} crossOrigin='anonymous' alt={title} className="card-image" />
+
                 <div className="card-content">
                     <h2 className="card-title">{title}</h2>
                     <p className="card-description">{description}</p>

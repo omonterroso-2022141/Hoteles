@@ -1,13 +1,13 @@
 'use strict'
 import express from "express"
 import { deleteUser, getInfoUser, list, login, register, test, updateProfile } from './User.controller.js'
-import { isAdmin, validateJwt } from "../middlewares/validateJwt.js"
+import { validateJwt } from "../middlewares/validateJwt.js"
 
 const api = express.Router()
 
 //# Role ADMIN
 api.get('/test', test)
-api.get('/list', [validateJwt, isAdmin], list)
+api.get('/list', list)
 
 //# Role CLIENT
 api.post('/register', register)

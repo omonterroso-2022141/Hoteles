@@ -64,7 +64,10 @@ const opciones = (data)=>{
 </style>
 </head>
 <body>
+<<<<<<< HEAD
   <h>Hola usuario les damos las gracias por optar por nuestro servicio, la reservación se realizó exitosamente: </h>
+=======
+>>>>>>> Area_Trabajo_2
   <div style="display: flex; justify-content: center;">
     <div class="card">
       <div class="header-triangle"></div>

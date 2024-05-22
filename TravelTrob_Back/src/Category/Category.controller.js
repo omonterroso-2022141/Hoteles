@@ -72,17 +72,18 @@ export const deleteCategory = async (req, res) => {
     try {
         let { id } = req.params
         //# Validate if Exists
-        let exist = await Category.findOne({_id: id})
-        if(!exist)return res.status(404).send({message: 'This Category Does Not Exists'})
+        let exist = await Category.findOne({ _id: id })
+        if (!exist) return res.status(404).send({ message: 'This Category Does Not Exists' })
 
         //# Update Category To: 'DEFAULT'
-        const defaultCategory = await Category.findOne({name: 'DEFAULT'})
-        await Hotel.updateMany({categoria: id}, {categoria: defaultCategory._id})
+        const defaultCategory = await Category.findOne({ name: 'DEFAULT' })
+        await Hotel.updateMany({ categoria: id }, { categoria: defaultCategory._id })
 
         //# Delete Category
-        let categoryDelete = await Category.findOneAndDelete({_id: id})
-        if(!categoryDelete)return res.status(404).send({message: 'Category Not Found, Not deleted'})
-        return res.send({ message: 'Category deleted Successfully !!' })
+        let categoryDelete = await Category.findOneAndDelete({ _id: id })
+        if (!categoryDelete) return res.status(404).send({ message: 'Category Not Found, Not deleted' })
+
+            return res.send({ message: 'Category deleted Successfully !!' })
     } catch (err) {
         console.error(err)
         return res.status(500).send({ message: 'Error deleting Category' })

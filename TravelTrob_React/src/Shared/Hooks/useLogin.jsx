@@ -25,7 +25,6 @@ export const useLogin = () => {
         localStorage.setItem('token', response.data.token)
         navigate('/feed')
         
-        
     }
 
     return {

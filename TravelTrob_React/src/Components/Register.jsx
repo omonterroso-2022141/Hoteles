@@ -176,7 +176,6 @@ export const Register = ({ switchAuthHandler }) => {
           onBlurHandler={handleValidationOnBlur}
           showErrorMessage={formData.email.showError}
           validationMessage={emailValidationMessage}
-
         />
 
         <Input

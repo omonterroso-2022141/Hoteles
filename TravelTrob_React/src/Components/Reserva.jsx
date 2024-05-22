@@ -132,7 +132,7 @@ export const Reserva = () => {
     !formData.numeroPersonas.isValid ||
     !formData.dataExtra.isValid
 
-  return (
+    return (
     <div className='reserva-container'>
       <div className="booking-form">
         <div className="form-container">
