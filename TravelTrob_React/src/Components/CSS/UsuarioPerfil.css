@@ -1,0 +1,106 @@
+.user-profile {
+    max-width: 600px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.user-profile h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.user-profile form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.user-profile label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.user-profile input[type="text"],
+.user-profile input[type="email"],
+.user-profile input[type="password"],
+.user-profile input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.user-profile input[type="text"]:focus,
+.user-profile input[type="email"]:focus,
+.user-profile input[type="password"]:focus,
+.user-profile input[type="tel"]:focus {
+    border-color: #ff5733;
+}
+
+.user-profile button[type="submit"],
+.user-profile button {
+    background-color: #ff5733;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.user-profile button[type="submit"]:hover,
+.user-profile button:hover {
+    background-color: #ff7f50;
+}
+
+.user-profile button {
+    margin-top: 20px;
+}
+
+.user-profile button[onClick] {
+    background-color: #e74c3c;
+}
+
+.user-profile button[onClick]:hover {
+    background-color: #c0392b;
+}
+
+.user-profile p {
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+}
+
+.ContenedorFondoUsuario{
+    width: 100vw;
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+    .user-profile {
+        padding: 10px;
+    }
+
+    .user-profile h2 {
+        font-size: 1.5em;
+    }
+
+    .user-profile input[type="text"],
+    .user-profile input[type="email"],
+    .user-profile input[type="password"],
+    .user-profile input[type="tel"] {
+        padding: 8px;
+    }
+
+    .user-profile button[type="submit"],
+    .user-profile button {
+        padding: 10px 20px;
+    }
+}

@@ -1,0 +1,105 @@
+/* Fondo Reserva */
+.FondoReserva {
+  background-color: rgba(32, 26, 26, 0.8);
+  backdrop-filter: blur(10px);
+  margin: 0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.Boton-Evento{
+  margin: 1%;
+}
+
+.TitleReserva{
+  color: white;
+}
+
+/* Formulario de Reserva */
+.booking-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  gap: 20px;
+}
+
+/* Contenedor del Formulario */
+.form-container {
+  flex: 1 1 45%;
+  min-width: 280px;
+  padding: 20px;
+  margin: 10px;
+  background-color: rgba(34, 28, 28, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenedor de la Imagen */
+.image-container {
+  flex: 1 1 45%;
+  min-width: 280px;
+  margin: 10px;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Grupo del Formulario */
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: white;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  border-color: #ff5733;
+}
+
+/* Botón de Enviar */
+button[type="submit"] {
+  background-color: #ff5733;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #ff7f50;
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+  .form-container,
+  .image-container {
+    flex: 1 1 100%;
+    margin: 10px 0;
+  }
+}
